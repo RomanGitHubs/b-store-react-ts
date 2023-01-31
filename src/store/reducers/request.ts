@@ -5,7 +5,7 @@ interface IRequestState {
   selectedGenres: number[],
   selectedMinPrice: number,
   selectedMaxPrice: number,
-  selectedSort: 'price' | 'title' | 'author' | 'rating' | 'date',
+  selectedSort: string,
   selectedOrder: 'ASC' | 'DESC',
   selectedQuery: string,
   selectedPagination: Pagination,
@@ -40,7 +40,7 @@ const request = createSlice({
       state.selectedMinPrice = action.payload.min;
       state.selectedMaxPrice = action.payload.max;
     },
-    reqSort(state, action: PayloadAction<'price' | 'title' | 'author' | 'rating' | 'date'>) {
+    reqSort(state, action: PayloadAction<string>) {
       state.selectedSort = action.payload;
     },
     reqOrder(state, action: PayloadAction<'ASC' | 'DESC'>) {

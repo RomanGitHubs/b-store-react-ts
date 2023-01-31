@@ -7,16 +7,12 @@ import * as yup from 'yup';
 import { useAppDispatch } from '../../store/hooks';
 import { putUser } from '../../store/reducers/user';
 import { loginUser } from '../../api/services/users';
+import { LoginForm } from '../../models/loginForm';
 import UButton from '../../components/UI/Button/UButton';
 import UInput from '../../components/UI/Input/UInput';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
 import mainPicture from '../../assets/reg-chel.webp';
-
-interface IValues {
-  email: string,
-  password: string,
-}
 
 const constans = {
   mailIco,
@@ -42,6 +38,7 @@ const warningPassword = {
 const loginSchema = yup.object({
   email: yup.string().email(warningEmail.email).required(warningEmail.required),
   password: yup.string().required(warningPassword.required),
+  replay: yup.string(),
 });
 
 interface ILocation {
@@ -68,10 +65,11 @@ const Login: React.FC = () => {
     defaultValues: {
       email: '',
       password: '',
+      replay: '',
     },
   });
 
-  const onSubmit = async (data: IValues) => {
+  const onSubmit = async (data: LoginForm) => {
     // console.log('Send it ...');
     try {
       const response = await loginUser(data);

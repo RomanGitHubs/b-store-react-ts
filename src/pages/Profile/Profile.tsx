@@ -13,7 +13,7 @@ import userIco from '../../assets/user-ico.svg';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
 
-interface IValues {
+export interface IProfileValues {
   name: string,
   email: string,
   password: string
@@ -53,7 +53,7 @@ const Profile: React.FC = () => {
     },
   });
 
-  const onSubmit = async (data: IValues) => {
+  const onSubmit = async (data: IProfileValues) => {
     // console.log('Form data >>> ', data);
     try {
       if (data.password === '') {

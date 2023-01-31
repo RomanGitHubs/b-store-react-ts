@@ -15,12 +15,12 @@ const Header: React.FC = () => {
   const user = useAppSelector((state) => state.userSlice.user);
   const cartBooks = useAppSelector((state) => state.cartSlice.cartBooks);
 
-  const handleQueryFind = (e: any) => {
+  const handleQueryFind = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(reqQuery({ query: e.target.value }));
   };
 
-  const debounce = (func: (e: any) => void) => {
-    let timer: any;
+  const debounce = (func: (e: React.ChangeEvent<HTMLInputElement>) => void) => {
+    let timer: ReturnType<typeof setTimeout> | null;
     return function name(...args: any) {
       const context = timer;
       if (timer) clearTimeout(timer);

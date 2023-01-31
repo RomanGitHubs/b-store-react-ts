@@ -12,7 +12,12 @@ import { useAppSelector } from '../../../store/hooks';
 interface ISlider {
   min: number;
   max: number;
-  onChange: (e: any) => void;
+  onChange: (price: IPrice) => void;
+}
+
+export interface IPrice {
+  min: number;
+  max: number;
 }
 
 const Slider: React.FC<ISlider> = ({

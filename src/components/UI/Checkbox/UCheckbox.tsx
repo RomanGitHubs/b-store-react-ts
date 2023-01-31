@@ -5,7 +5,7 @@ import { Genre } from '../../../models/genre';
 
 interface ICheckbox {
   genre: Genre
-  func: (e: any) => void;
+  func: (item: Genre) => void;
   selectedGenres: number[]
 }
 

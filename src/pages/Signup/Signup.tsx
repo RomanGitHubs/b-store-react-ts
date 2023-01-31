@@ -13,12 +13,7 @@ import UButton from '../../components/UI/Button/UButton';
 import mainPicture from '../../assets/reg-chel.webp';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
-
-interface IValues {
-  email: string,
-  password: string,
-  replay?: string,
-}
+import { SignUpForm } from '../../models/signUpForm';
 
 const constans = {
   mailIco,
@@ -69,11 +64,11 @@ const Signup: React.FC = () => {
     },
   });
 
-  const onSubmit = async (data: IValues) => {
+  const onSubmit = async (data: SignUpForm) => {
     // console.log('Send it ...');
     try {
       if (data.password !== data.replay) return;
-      delete data.replay;
+      // delete data.replay;
       const response = await registerUser(data);
       dispatch(putUser(response.data.user));
       // console.log('Response SignUp >>> ', response);

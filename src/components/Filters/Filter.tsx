@@ -7,7 +7,7 @@ interface IFilter {
   title: string
   sort?: string
   openFilter: string
-  setOpenFilter: (e: string) => void
+  setOpenFilter: (filterType: string) => void
   children: ReactNode
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
+import { UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
+import { IProfileValues } from '../../../pages/Profile/Profile';
 
 interface IInput {
   icon: string,
@@ -8,8 +10,8 @@ interface IInput {
   type?: string,
   placeholder: string,
   disabled: boolean,
-  register: any,
-  registerName: string,
+  register: UseFormRegister<IProfileValues>,
+  registerName: 'name' | 'email' | 'password' | 'newPassword' | 'newPasswordReplay',
 }
 
 const UProfileInput: React.FC<IInput> = ({

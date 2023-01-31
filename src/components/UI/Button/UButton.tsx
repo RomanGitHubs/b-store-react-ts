@@ -7,13 +7,13 @@ interface IButton {
   width?: string,
   mtop?: string,
   mright?: string,
-  onClick?: (e: any) => void,
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void,
 }
 
 const UButton: React.FC<IButton> = ({
   text, view, icon, width, mtop, mright, onClick,
 }) => {
-  const thisFunc = (e: any) => {
+  const thisFunc = (e: React.MouseEvent<HTMLElement>) => {
     if (!onClick) return;
     onClick(e);
   };

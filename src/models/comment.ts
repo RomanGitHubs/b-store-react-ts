@@ -5,4 +5,3 @@ export type Comment = {
   timer: string,
   text: string
 }
-  

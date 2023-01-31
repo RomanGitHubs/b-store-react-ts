@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // import { getBooks } from '../../api/services/books';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { reqPrice } from '../../store/reducers/request';
-import MultiRangeSlider from './MultiRangeSlider/MultiRangeSlider';
+import MultiRangeSlider, { IPrice } from './MultiRangeSlider/MultiRangeSlider';
 import SortFilter from './SortFilter';
 import Filter from './Filter';
 import GenresFilter from './GenresFilter';
@@ -16,15 +16,14 @@ const Filters: React.FC = () => {
   const { minPrice, maxPrice } = useAppSelector((state) => state.bookSlice);
   const { selectedSort } = useAppSelector((state) => state.requestSlice);
 
-  const handleChangePrice = ({ min, max }: { min: number; max: number }) => {
+  const handleChangePrice = (price: IPrice) => {
     // console.log(`min = ${min}, max = ${max}`);
-    const price = { min, max };
     // console.log(price)
     dispatch(reqPrice(price));
   };
 
-  const debounce = (func: (e: any) => void) => {
-    let timer: any;
+  const debounce = (func: (price: IPrice) => void) => {
+    let timer: ReturnType<typeof setTimeout> | null;
     return function name(...args: any) {
       const context = timer;
       if (timer) clearTimeout(timer);
