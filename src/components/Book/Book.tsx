@@ -27,7 +27,8 @@ const Book: React.FC<IBook> = ({ book }) => {
   const isFavoriteBook = user?.favoriteBooks.includes(book.bookId);
   // const actions = useActionCreators(userAction)
 
-  const handleAddToCart = (id: number) => {
+  const handleAddToCart = (id: number, available: boolean) => {
+    if (!available) return;
     dispatch(putCart({ id, view: 'hard' }));
   };
 
@@ -64,7 +65,7 @@ const Book: React.FC<IBook> = ({ book }) => {
           ? <ULink to='/cart' text='Added to cart' view='secondary' width='long'/>
           : <BookButton
             title={`$ ${(book.hardPrice * 100).toFixed(2)} USD`}
-            func={() => handleAddToCart(book.bookId)}
+            func={() => handleAddToCart(book.bookId, book.available)}
             available={book.available}
           />
         }
