@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AxiosError } from 'axios';
 import * as yup from 'yup';
 import { useAppDispatch } from '../../store/hooks';
 import { putUser } from '../../store/reducers/user';
 import { loginUser } from '../../api/services/users';
-import { LoginForm } from '../../models/loginForm';
+import { LoginModel } from '../../models/loginForm';
 import UButton from '../../components/UI/Button/UButton';
 import UInput from '../../components/UI/Input/UInput';
 import mailIco from '../../assets/mail-ico.svg';
@@ -69,7 +70,7 @@ const Login: React.FC = () => {
     },
   });
 
-  const onSubmit = async (data: LoginForm) => {
+  const onSubmit = async (data: LoginModel) => {
     // console.log('Send it ...');
     try {
       const response = await loginUser(data);
@@ -77,8 +78,11 @@ const Login: React.FC = () => {
       // console.log('Response Login >>> ', response);
 
       navigate(from.from.pathname, { replace: true });
-    } catch (e: any) {
-      console.error('Error Login >>> ', e.response.data);
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        const { response } = e as AxiosError;
+        return console.error('Error App >>> ', response?.data);
+      }
     }
   };
 

@@ -18,18 +18,17 @@ const testBooks: BookModel[] = [
     photo: bookCover1,
     author: 'C. S. Lewis',
     title: 'The Chronicles of Narnia',
-    // description: `"Rupi Kaur is the Writer of the Decade." - The New Requblic
-    // <br/><br/>
-    // #1 New York Times bestsaller milk and honey is a collection of poetry
-    // and prose about surival. About the experience of volience, abuse, love, loss
-    // and femininity.
-    // <br/><br/>
-    // The book is divided into four chapters, and each chapter server a different
-    // purpose. Deals with a different pain. Heals a different heartache. milk
-    // and honey takes readers throгпр a journey of the most bitter moments in life
-    // and finds sweetness in them becouse there is sweetness everywhere
-    // if you are just willing to look.`,
-    description: 'Description Chronicles',
+    description: `"Rupi Kaur is the Writer of the Decade." - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: true,
     hardcover: true,
@@ -43,7 +42,17 @@ const testBooks: BookModel[] = [
     photo: bookCover2,
     author: 'Morgan Housel',
     title: 'The Psychlogy of Money',
-    description: 'Description Psychlogy',
+    description: `"The Psychlogy of Money" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 4,
     available: true,
     hardcover: true,
@@ -57,7 +66,17 @@ const testBooks: BookModel[] = [
     photo: bookCover3,
     author: 'Oscar Wilde',
     title: 'The Picture of Dorian Gray',
-    description: 'Description Dorian Gray',
+    description: `"The Picture of Dorian Gray" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 0,
     available: true,
     hardcover: false,
@@ -71,7 +90,17 @@ const testBooks: BookModel[] = [
     photo: bookCover4,
     author: 'Mark Manson',
     title: 'The Subtle Art of Not Giving a F*ck',
-    description: 'Description Subtle Art',
+    description: `"The Subtle Art of Not Giving a F*ck" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: true,
     hardcover: true,
@@ -85,7 +114,17 @@ const testBooks: BookModel[] = [
     photo: bookCover5,
     author: 'J. R. R. Tolkien',
     title: 'The Two towers',
-    description: 'Description towers',
+    description: `"The Two towers" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: false,
     hardcover: true,
@@ -99,7 +138,17 @@ const testBooks: BookModel[] = [
     photo: bookCover6,
     author: 'Angela Carter',
     title: 'Book of Fairy Tales',
-    description: 'Description Narnia',
+    description: `"Book of Fairy Tales" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: true,
     hardcover: true,
@@ -113,7 +162,17 @@ const testBooks: BookModel[] = [
     photo: bookCover7,
     author: 'Dale Carnegie',
     title: 'How to stop warrying and start',
-    description: 'Description Psychlogy',
+    description: `"How to stop warrying and start" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 1,
     available: true,
     hardcover: true,
@@ -127,7 +186,17 @@ const testBooks: BookModel[] = [
     photo: bookCover8,
     author: 'Richard Carlson',
     title: 'Don`t sweet to Small Stuuff',
-    description: 'Description Dorian Gray',
+    description: `"Don't sweet to Small Stuuff" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: true,
     hardcover: true,
@@ -141,7 +210,17 @@ const testBooks: BookModel[] = [
     photo: bookCover9,
     author: 'Marianne Flitz',
     title: 'The weight of Things',
-    description: 'Description Subtle Art',
+    description: `"The weight of Things" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 3,
     available: true,
     hardcover: true,
@@ -155,7 +234,17 @@ const testBooks: BookModel[] = [
     photo: bookCover10,
     author: 'Rupi Kaur',
     title: 'Milk and honey',
-    description: 'Description towers',
+    description: `"Milk and honey" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: false,
     hardcover: true,
@@ -169,7 +258,17 @@ const testBooks: BookModel[] = [
     photo: bookCover11,
     author: 'Herman Melville',
     title: 'Moby Dick',
-    description: 'Description Narnia',
+    description: `"Moby Dick" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 5,
     available: true,
     hardcover: true,
@@ -183,7 +282,17 @@ const testBooks: BookModel[] = [
     photo: bookCover12,
     author: 'Heather Christle',
     title: 'The Crying book',
-    description: 'Description Psychlogy',
+    description: `"The Crying book" - The New Requblic
+    <br/><br/>
+    #1 New York Times bestsaller milk and honey is a collection of poetry
+    and prose about surival. About the experience of volience, abuse, love, loss
+    and femininity.
+    <br/><br/>
+    The book is divided into four chapters, and each chapter server a different
+    purpose. Deals with a different pain. Heals a different heartache. milk
+    and honey takes readers throгпр a journey of the most bitter moments in life
+    and finds sweetness in them becouse there is sweetness everywhere
+    if you are just willing to look.`,
     rating: 3,
     available: true,
     hardcover: true,

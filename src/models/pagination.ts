@@ -1,4 +1,4 @@
-export type Pagination = {
+export type PaginationModel = {
   currentPage: number;
   numberPerPage: number;
   has_previous: boolean;

@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { AxiosError } from 'axios';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { loadBookThunk, putBooks, putGenres } from '../../store/reducers/book';
-import { getBooks } from '../../api/services/books';
-import tempBooks from '../../api/temp/books';
-import tempGenres from '../../api/temp/genres';
-import { reqGenres, reqPagination } from '../../store/reducers/request';
-import Pagination from '../Pagination/Pagination';
+import { loadBookThunk, loadGenreThunk } from '../../store/reducers/book';
 import Filters from '../Filters/Filters';
 import Book from '../Book/Book';
 import Loader from '../Loaders/Loader';
@@ -14,63 +10,22 @@ import Loader from '../Loaders/Loader';
 const CatalogBody: React.FC = () => {
   const dispatch = useAppDispatch();
   const books = useAppSelector((state) => state.bookSlice.books);
-
-  const {
-    selectedGenres,
-    selectedMinPrice,
-    selectedMaxPrice,
-    selectedSort,
-    selectedOrder,
-    selectedQuery,
-    selectedPagination,
-  } = useAppSelector((state) => state.requestSlice);
-
-  useEffect(() => {
-    (async () => {
-      try {
-      // const init = await getBooks(data);
-      // dispatch(putBooks(filtred.data));
-      // dispatch(putBooks(books));
-      // dispatch(putGenres(genres));
-      // dispatch(putBooks(filtred.data));
-      // dispatch(putBooks(tempBooks));
-      // dispatch(putGenres(tempGenres));
-      } catch (e: any) {
-        console.error('Error books >>> ', e);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = {
-          genre: selectedGenres,
-          minPrice: selectedMinPrice,
-          maxPrice: selectedMaxPrice,
-          sort: selectedSort,
-          order: selectedOrder,
-          query: selectedQuery,
-          page: selectedPagination?.currentPage,
-        };
-        dispatch(loadBookThunk());
-
-        // console.log('Sended data >>> ', data);
-      } catch (e: any) {
-        console.error('Error books >>> ', e);
-      }
-    })();
-  }, [
-    selectedGenres,
-    selectedMinPrice,
-    selectedMaxPrice,
-    selectedSort,
-    selectedOrder,
-    selectedQuery,
-    selectedPagination,
-  ]);
-
   const status = useAppSelector((state) => state.bookSlice.status);
+  const requestSlice = useAppSelector((state) => state.requestSlice);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        dispatch(loadBookThunk());
+        dispatch(loadGenreThunk());
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          const { response } = e as AxiosError;
+          return console.error('Error App >>> ', response?.data);
+        }
+      }
+    })();
+  }, [requestSlice]);
 
   return (
     <Body>

@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getBooks } from '../../api/servicesTest/books';
+import { getGenres } from '../../api/servicesTest/genres';
 import { BookModel } from '../../models/book';
-import { Genre } from '../../models/genre';
+import { GenreModel } from '../../models/genre';
 
 interface IBooksState {
   books: BookModel[];
   minPrice: number;
   maxPrice: number;
-  genres: Genre[];
+  genres: GenreModel[];
   status: 'init' | 'loading' | 'error' | 'success';
 }
 
@@ -34,7 +35,7 @@ const book = createSlice({
       state.minPrice = action.payload.minPriceBook * 100;
       state.maxPrice = action.payload.maxPriceBook * 100;
     },
-    putGenres(state, action: PayloadAction<Genre[]>) {
+    putGenres(state, action: PayloadAction<GenreModel[]>) {
       state.genres = action.payload;
     },
     putRating(state, action: PayloadAction<{id: number, rate: number}>) {
@@ -53,11 +54,25 @@ const book = createSlice({
     })
     .addCase(loadBookThunk.rejected, (state) => {
       state.status = 'error';
+    })
+    .addCase(loadGenreThunk.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(loadGenreThunk.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.genres = action.payload;
+    })
+    .addCase(loadGenreThunk.rejected, (state) => {
+      state.status = 'error';
     }),
 });
 
 export const loadBookThunk = createAsyncThunk('books/get', () => {
   return getBooks();
+});
+
+export const loadGenreThunk = createAsyncThunk('genres/get', () => {
+  return getGenres();
 });
 
 export const { putBooks, putGenres, putRating } = book.actions;

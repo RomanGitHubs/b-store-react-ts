@@ -1,10 +1,10 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
-import { Genre } from '../../models/genre';
+import { GenreModel } from '../../models/genre';
+import testGenres from '../temp/genres';
 
-const bookAxios = axios.create({
-  baseURL: 'http://localhost:5000/api',
-});
-
-export const getGenres = (): Promise<AxiosResponse<Genre[]>> => {
-  return bookAxios.get('/genres');
+export const getGenres = () => {
+  return new Promise<GenreModel[]>((res) => {
+    setTimeout(() => {
+      res(testGenres);
+    }, 610);
+  });
 };

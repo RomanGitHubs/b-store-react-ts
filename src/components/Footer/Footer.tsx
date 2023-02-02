@@ -15,7 +15,6 @@ const Footer: React.FC = () => {
     localStorage.removeItem('token');
     dispatch(logoutUser());
     navigate('/');
-    // console.log('out')
   };
 
   return (

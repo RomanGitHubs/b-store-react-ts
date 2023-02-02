@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import fillChBox from '../../../assets/checkbox-checked.svg';
 import emptyChBox from '../../../assets/checkbox-empty.svg';
-import { Genre } from '../../../models/genre';
+import { GenreModel } from '../../../models/genre';
 
 interface ICheckbox {
-  genre: Genre
-  func: (item: Genre) => void;
+  genre: GenreModel
+  func: (item: GenreModel) => void;
   selectedGenres: number[]
 }
 

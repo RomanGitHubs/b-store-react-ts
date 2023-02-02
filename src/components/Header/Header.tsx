@@ -21,6 +21,7 @@ const Header: React.FC = () => {
 
   const debounce = (func: (e: React.ChangeEvent<HTMLInputElement>) => void) => {
     let timer: ReturnType<typeof setTimeout> | null;
+    // eslint-disable-next-line
     return function name(...args: any) {
       const context = timer;
       if (timer) clearTimeout(timer);

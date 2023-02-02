@@ -1,3 +1,3 @@
-export type Sort = {
+export type SortModel = {
   sort?: string;
 };

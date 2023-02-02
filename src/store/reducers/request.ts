@@ -1,15 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Pagination } from '../../models/pagination';
-
-interface IRequestState {
-  selectedGenres: number[],
-  selectedMinPrice: number,
-  selectedMaxPrice: number,
-  selectedSort: string,
-  selectedOrder: 'ASC' | 'DESC',
-  selectedQuery: string,
-  selectedPagination: Pagination,
-}
+import { PaginationModel } from '../../models/pagination';
+import { IRequestState } from '../../models/request';
 
 const initialState: IRequestState = {
   selectedGenres: [],
@@ -49,7 +40,7 @@ const request = createSlice({
     reqQuery(state, action: PayloadAction<{ query: string }>) {
       state.selectedQuery = action.payload.query;
     },
-    reqPagination(state, action: PayloadAction<Pagination>) {
+    reqPagination(state, action: PayloadAction<PaginationModel>) {
       state.selectedPagination = action.payload;
     },
   },

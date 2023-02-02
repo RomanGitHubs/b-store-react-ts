@@ -1,7 +1,7 @@
 import userPhoto from '../../assets/user-photo.svg';
-import { Comment } from '../../models/comment';
+import { CommentModel } from '../../models/comment';
 
-const testComments: Comment[] = [
+const testComments: CommentModel[] = [
   {
     commentId: 41441,
     photo: userPhoto,

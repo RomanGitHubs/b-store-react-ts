@@ -1,4 +1,4 @@
-export type Comment = {
+export type CommentModel = {
   commentId: number,
   photo: string,
   author: string,

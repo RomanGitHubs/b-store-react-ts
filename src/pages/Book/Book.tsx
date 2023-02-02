@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import parse from 'html-react-parser';
 import { putCart } from '../../store/reducers/cart';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { BookModel } from '../../models/book';
+
 import AuthBanner from '../../components/AuthBanner/AuthBanner';
 import BookButton from '../../components/Book/Button/BookButton';
 import BookCounter from '../../components/BookCounter/BookCounter';
@@ -57,17 +59,7 @@ const Book: React.FC = () => {
             <h4 className='discription__content__title-m'>Description</h4>
 
             <p className='discription__content__text'>
-              "Rupi Kaur is the Writer of the Decade." - The New Requblic
-              <br/><br/>
-              #1 New York Times bestsaller milk and honey is a collection of poetry
-              and prose about surival. About the experience of volience, abuse, love, loss
-              and femininity.
-              <br/><br/>
-              The book is divided into four chapters, and each chapter server a different
-              purpose. Deals with a different pain. Heals a different heartache. milk
-              and honey takes readers throгпр a journey of the most bitter moments in life
-              and finds sweetness in them becouse there is sweetness everywhere
-              if you are just willing to look.
+              {parse(book.description)}
             </p>
 
             <div className='buy__buttons'>

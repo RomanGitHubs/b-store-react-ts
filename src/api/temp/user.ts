@@ -1,6 +1,6 @@
-import { User } from '../../models/user';
+import { UserModel } from '../../models/user';
 
-const testUser: User = {
+const testUser: UserModel = {
   userId: 777,
   name: 'Charle Robinson',
   email: 'gagaga@gaga.ga',

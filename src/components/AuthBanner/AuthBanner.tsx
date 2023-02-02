@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../store/hooks';
-import { loadUserThunk, putUser } from '../../store/reducers/user';
-import testUser from '../../api/temp/user';
+import { loadUserThunk } from '../../store/reducers/user';
 import ULink from '../UI/Link/ULink';
 import castle from '../../assets/castle.webp';
 import witch from '../../assets/witch.svg';
-import UButton from '../UI/Button/UButton';
 import scrollToTop from '../ScrollToTop/ScrollToTop';
 
 const AuthBanner: React.FC = () => {

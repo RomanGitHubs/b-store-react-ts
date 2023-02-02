@@ -6,10 +6,6 @@ import scrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Layout: React.FC = () => {
   scrollToTop();
-
-  // const location = useLocation();
-  // const path = location?.pathname;
-
   return (
     <>
       <Header />

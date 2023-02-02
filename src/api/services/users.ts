@@ -1,10 +1,10 @@
 import { AxiosResponse } from 'axios';
-import { User } from '../../models/user';
+import { UserModel } from '../../models/user';
 import axios from '../index';
 
 type UserResponse = {
   accessToken?: string;
-  user: User;
+  user: UserModel;
 }
 
 type Data = {
@@ -23,7 +23,7 @@ type EditData = {
 type photoData = {
   file: string;
 }
-export const getUser = (): Promise<AxiosResponse<User>> => {
+export const getUser = (): Promise<AxiosResponse<UserModel>> => {
   return axios.get('/user');
 };
 

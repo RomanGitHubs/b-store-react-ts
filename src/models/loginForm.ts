@@ -1,4 +1,4 @@
-export type LoginForm = {
+export type LoginModel = {
   email: string,
   password: string,
 }

@@ -7,7 +7,6 @@ const Comments: React.FC = () => {
   const [text, setText] = useState('');
 
   const handlePostComment = () => {
-    // console.log('Post comment >> ', text);
     setText('');
   };
 

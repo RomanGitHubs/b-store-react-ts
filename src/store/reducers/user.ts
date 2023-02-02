@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User } from '../../models/user';
+import { UserModel } from '../../models/user';
 import { getUser } from '../../api/servicesTest/users';
 
 interface IUserState {
-  user: User | null;
+  user: UserModel | null;
   error?: string;
   status: 'init' | 'loading' | 'error' | 'success';
 }
@@ -17,7 +17,7 @@ const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    putUser(state, action: PayloadAction<User>) {
+    putUser(state, action: PayloadAction<UserModel>) {
       state.user = action.payload;
     },
     logoutUser(state) {

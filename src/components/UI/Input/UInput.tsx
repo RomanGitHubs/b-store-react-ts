@@ -1,11 +1,11 @@
 import { FieldError, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
-import { SignUpForm } from '../../../models/signUpForm';
+import { SignupModel } from '../../../models/signUpForm';
 
 interface IUinput {
   label: string,
   placeholder: string,
-  register: UseFormRegister<SignUpForm>,
+  register: UseFormRegister<SignupModel>,
   regtxt: 'email' | 'password' | 'replay',
   error?: FieldError,
   icon: string,

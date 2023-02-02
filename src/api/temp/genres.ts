@@ -1,6 +1,6 @@
-import { Genre } from '../../models/genre';
+import { GenreModel } from '../../models/genre';
 
-const testGenres: Genre[] = [
+const testGenres: GenreModel[] = [
   {
     genreId: 112314,
     genre: 'Fiction',
