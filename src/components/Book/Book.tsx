@@ -27,12 +27,12 @@ const Book: React.FC<IBook> = ({ book }) => {
   const isFavoriteBook = user?.favoriteBooks.includes(book.bookId);
   // const actions = useActionCreators(userAction)
 
-  const handleAddToCart = (id: number, available: boolean) => {
+  const handleAddToCart = (id: string, available: boolean) => {
     if (!available) return;
     dispatch(putCart({ id, view: 'hard' }));
   };
 
-  const handleAddFavorite = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
+  const handleAddFavorite = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.stopPropagation();
 
     if (user?.favoriteBooks.includes(id)) {

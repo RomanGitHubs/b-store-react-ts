@@ -1,14 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import comments from '../../api/temp/comments';
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
+import arrayComments from '../../api/temp/comments';
+import { CommentModel } from '../../models/comment';
 import UButton from '../UI/Button/UButton';
+import { useAppSelector } from '../../store/hooks';
+import defaultProfileIco from '../../assets/profile-ico.svg';
 
-const Comments: React.FC = () => {
+interface IProps {
+  bookId: string
+}
+
+const Comments: React.FC<IProps> = ({ bookId }) => {
+  const user = useAppSelector((state) => state.userSlice.user);
   const [text, setText] = useState('');
+  const [comments, setComments] = useState<CommentModel[]>([]);
 
   const handlePostComment = () => {
     setText('');
+    const newComent = {
+      commentId: uuidv4(),
+      bookId,
+      photo: user?.photo,
+      author: user?.name,
+      timer: moment().format('DD-MM-YYYY, h:mm a'),
+      text,
+    };
+    arrayComments.push(newComent);
+    setComments((state) => [...state, newComent]);
   };
+
+  const getComments = () => {
+    arrayComments.forEach((item) => {
+      if (item.bookId === bookId) {
+        setComments((state) => [...state, item]);
+      }
+    });
+  };
+
+  useEffect(() => {
+    getComments();
+  }, []);
 
   return (
     <Body>
@@ -17,22 +50,23 @@ const Comments: React.FC = () => {
       {comments.map((item) => (
         <div className='comment' key={item.commentId}>
           <div className='comment__photo'>
-            <img src={item.photo} alt='photo'/>
+            <img src={item.photo || defaultProfileIco} alt='photo'/>
           </div>
 
           <div className='comment__description'>
             <h4 className='comment__author'>{item.author}</h4>
 
-            <span className='comment__timer'>{item.timer}</span>
+            <span className='comment__timer'>Left a comment {moment(item.timer, 'DD-MM-YYYY, h:mm a').fromNow()}</span>
 
             <p className='comment__text'>{item.text}</p>
           </div>
         </div>
       ))}
-
-      <textarea className='comment__textarea' placeholder='White here' value={text} onChange={(e) => setText(e.target.value)}/>
-
-      <UButton text='Post comment' view='primary' onClick={handlePostComment}/>
+      {user && <>
+        <textarea className='comment__textarea' placeholder='White here' value={text} onChange={(e) => setText(e.target.value)}/>
+        <UButton text='Post comment' view='primary' onClick={handlePostComment}/>
+      </>
+      }
     </Body>
   );
 };

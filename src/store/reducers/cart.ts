@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type CartItem = {
-  cartId: number,
+  cartId: string,
   hardCoverCount: number,
   paperCoverCount: number,
 }
@@ -18,7 +18,7 @@ const cart = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    putCart(state, action: PayloadAction<{id: number, view: 'hard' | 'paper'}>) {
+    putCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
       if (state.cartBooks.find((item) => item.cartId === action.payload.id)) {
         if (action.payload.view === 'hard') {
           const item = state.cartBooks.filter((item) => item.cartId === action.payload.id)[0];
@@ -54,7 +54,7 @@ const cart = createSlice({
       }
       // state.cartBooks = [...state.cartBooks, action.payload];
     },
-    increaseCart(state, action: PayloadAction<{id: number, view: 'hard' | 'paper'}>) {
+    increaseCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
       if (action.payload.view === 'hard') {
         return {
           ...state,
@@ -77,7 +77,7 @@ const cart = createSlice({
         };
       }
     },
-    decreaseCart(state, action: PayloadAction<{id: number, view: 'hard' | 'paper'}>) {
+    decreaseCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
       if (action.payload.view === 'hard') {
         return {
           ...state,
@@ -107,7 +107,7 @@ const cart = createSlice({
         };
       }
     },
-    deleteCart(state, action: PayloadAction<{id: number, view: 'hard' | 'paper'}>) {
+    deleteCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
       const index = state.cartBooks.findIndex((item) => item.cartId === action.payload.id);
       state.cartBooks.splice(index, 1);
     },

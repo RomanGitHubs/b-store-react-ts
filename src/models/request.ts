@@ -1,7 +1,7 @@
 import { PaginationModel } from './pagination';
 
 export interface IRequestState {
-  selectedGenres: number[],
+  selectedGenres: string[],
   selectedMinPrice: number,
   selectedMaxPrice: number,
   selectedSort: string,

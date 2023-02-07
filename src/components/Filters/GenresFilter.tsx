@@ -11,7 +11,7 @@ const GenresFilter: React.FC = () => {
 
   const handleSelectGenre = (genre: GenreModel) => {
     const tempArray = selectedGenres.slice();
-    const findIndex = tempArray.findIndex((item: number) => item === genre.genreId);
+    const findIndex = tempArray.findIndex((item: string) => item === genre.genreId);
     if (tempArray[findIndex]) {
       tempArray.splice(findIndex, 1);
     } else {

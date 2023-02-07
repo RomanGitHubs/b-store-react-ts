@@ -14,7 +14,7 @@ import { BookModel } from '../../models/book';
 
 const testBooks: BookModel[] = [
   {
-    bookId: 8956956,
+    bookId: '936028fe-fd10-4805-8c7d-552393f0e949',
     photo: bookCover1,
     author: 'C. S. Lewis',
     title: 'The Chronicles of Narnia',
@@ -38,7 +38,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
   }, {
-    bookId: 56895697,
+    bookId: '033e7cd6-1dce-4b9c-b370-bfc35086680b',
     photo: bookCover2,
     author: 'Morgan Housel',
     title: 'The Psychlogy of Money',
@@ -62,7 +62,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
   }, {
-    bookId: 78686,
+    bookId: 'd557be17-16a0-4d15-9204-0490b8bafd05',
     photo: bookCover3,
     author: 'Oscar Wilde',
     title: 'The Picture of Dorian Gray',
@@ -86,7 +86,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
   }, {
-    bookId: 5959566,
+    bookId: '3bbd5dbd-fa30-4c27-a2a5-64a99fccf348',
     photo: bookCover4,
     author: 'Mark Manson',
     title: 'The Subtle Art of Not Giving a F*ck',
@@ -110,7 +110,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
   }, {
-    bookId: 786865,
+    bookId: '94fd3c71-d481-430e-a8b3-155a15a88efd',
     photo: bookCover5,
     author: 'J. R. R. Tolkien',
     title: 'The Two towers',
@@ -134,7 +134,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
   }, {
-    bookId: 57957,
+    bookId: 'f470b1b6-f33d-43f2-bcb4-a3fb60dd5d44',
     photo: bookCover6,
     author: 'Angela Carter',
     title: 'Book of Fairy Tales',
@@ -158,7 +158,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
   }, {
-    bookId: 789,
+    bookId: '00bcae7a-ec0e-469c-a8d6-12397e7f7f33',
     photo: bookCover7,
     author: 'Dale Carnegie',
     title: 'How to stop warrying and start',
@@ -182,7 +182,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
   }, {
-    bookId: 59596789,
+    bookId: 'a1611493-5c06-40c7-8a07-72789551a431',
     photo: bookCover8,
     author: 'Richard Carlson',
     title: 'Don`t sweet to Small Stuuff',
@@ -206,7 +206,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
   }, {
-    bookId: 570508,
+    bookId: 'a430cb19-660d-4f2e-8fba-41875c0fa62b',
     photo: bookCover9,
     author: 'Marianne Flitz',
     title: 'The weight of Things',
@@ -230,7 +230,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
   }, {
-    bookId: 57895797,
+    bookId: 'bf14eb1c-c7c8-4e08-81c3-886b2a45e308',
     photo: bookCover10,
     author: 'Rupi Kaur',
     title: 'Milk and honey',
@@ -254,7 +254,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
   }, {
-    bookId: 5789696,
+    bookId: '572aa4f6-7bb5-4af4-b291-358f3bbb6924',
     photo: bookCover11,
     author: 'Herman Melville',
     title: 'Moby Dick',
@@ -278,7 +278,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
   }, {
-    bookId: 895969,
+    bookId: '5f2dbf9e-1be1-4c7b-b866-50bbd161c9e4',
     photo: bookCover12,
     author: 'Heather Christle',
     title: 'The Crying book',

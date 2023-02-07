@@ -1,7 +1,8 @@
 export type CommentModel = {
-  commentId: number,
-  photo: string,
-  author: string,
+  commentId: string,
+  bookId: string,
+  photo: string | null | undefined;
+  author: string | undefined;
   timer: string,
   text: string
 }

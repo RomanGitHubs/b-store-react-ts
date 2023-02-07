@@ -6,7 +6,7 @@ import { GenreModel } from '../../../models/genre';
 interface ICheckbox {
   genre: GenreModel
   func: (item: GenreModel) => void;
-  selectedGenres: number[]
+  selectedGenres: string[]
 }
 
 const UCheckbox: React.FC<ICheckbox> = ({ genre, func, selectedGenres }) => {

@@ -24,7 +24,7 @@ const request = createSlice({
   name: 'request',
   initialState,
   reducers: {
-    reqGenres(state, action: PayloadAction<{ genresId: number[] }>) {
+    reqGenres(state, action: PayloadAction<{ genresId: string[] }>) {
       state.selectedGenres = action.payload.genresId;
     },
     reqPrice(state, action: PayloadAction<{min: number, max: number}>) {

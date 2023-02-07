@@ -4,7 +4,7 @@ import btnPhoto from '../../../assets/button-photo.svg';
 
 interface IPhoto {
   updatable: boolean,
-  photo?: string,
+  photo: string | null,
   updateFunc: React.ChangeEventHandler<HTMLInputElement>
 }
 

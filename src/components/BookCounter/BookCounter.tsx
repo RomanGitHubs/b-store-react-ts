@@ -7,7 +7,7 @@ import Plus from '../../assets/icons/Plus.svg';
 import Delete from '../../assets/icons/Delete.svg';
 
 interface ICounter {
-  id: number
+  id: string
   view: 'hard' | 'paper'
 }
 

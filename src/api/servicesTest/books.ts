@@ -3,6 +3,12 @@ import { BookModel } from '../../models/book';
 // import { useAppSelector } from '../../store/hooks';
 import testBooks from '../temp/books';
 
+interface IPromise {
+  books: BookModel[]
+  minPrice: number
+  maxPrice: number
+}
+
 export const getBooks = () => {
   // const {
   //   selectedGenres,
@@ -24,9 +30,13 @@ export const getBooks = () => {
   //   page: selectedPagination?.currentPage,
   // };
 
-  return new Promise<BookModel[]>((res) => {
+  return new Promise<IPromise>((res) => {
     setTimeout(() => {
-      res(testBooks);
+      res({
+        books: testBooks,
+        minPrice: 0,
+        maxPrice: 250,
+      });
     }, 610);
   });
 };

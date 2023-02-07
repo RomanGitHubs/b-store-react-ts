@@ -21,7 +21,7 @@ interface IBooksAction {
 const initialState: IBooksState = {
   books: [],
   minPrice: 0,
-  maxPrice: 250,
+  maxPrice: 0,
   genres: [],
   status: 'init',
 };
@@ -38,7 +38,7 @@ const book = createSlice({
     putGenres(state, action: PayloadAction<GenreModel[]>) {
       state.genres = action.payload;
     },
-    putRating(state, action: PayloadAction<{id: number, rate: number}>) {
+    putRating(state, action: PayloadAction<{id: string, rate: number}>) {
       const book = state.books.filter((item) => item.bookId === action.payload.id)[0];
       const newRating = (book.rating + action.payload.rate) / 2;
       book.rating = newRating;
@@ -50,7 +50,9 @@ const book = createSlice({
     })
     .addCase(loadBookThunk.fulfilled, (state, action) => {
       state.status = 'success';
-      state.books = action.payload;
+      state.books = action.payload.books;
+      state.minPrice = action.payload.minPrice;
+      state.maxPrice = action.payload.maxPrice;
     })
     .addCase(loadBookThunk.rejected, (state) => {
       state.status = 'error';

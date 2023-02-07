@@ -1,5 +1,5 @@
 export type BookModel = {
-  bookId: number;
+  bookId: string;
   photo: string;
   author: string;
   title: string;

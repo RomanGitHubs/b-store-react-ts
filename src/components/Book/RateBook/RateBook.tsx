@@ -6,29 +6,29 @@ import starFilled from '../../../assets/star-filled.svg';
 import arrow from '../../../assets/icons/Gray-Back Arrow.svg';
 
 interface ICounter {
-  bookId: number
+  bookId: string
   rating: number
 }
 const RateBook: React.FC<ICounter> = ({ bookId, rating }) => {
   const dispatch = useAppDispatch();
 
-  const handleOneStar = (id: number) => {
+  const handleOneStar = (id: string) => {
     dispatch(putRating({ id, rate: 1 }));
   };
 
-  const handleTwoStar = (id: number) => {
+  const handleTwoStar = (id: string) => {
     dispatch(putRating({ id, rate: 2 }));
   };
 
-  const handleTreeStar = (id: number) => {
+  const handleTreeStar = (id: string) => {
     dispatch(putRating({ id, rate: 3 }));
   };
 
-  const handleFourStar = (id: number) => {
+  const handleFourStar = (id: string) => {
     dispatch(putRating({ id, rate: 4 }));
   };
 
-  const handleFiveStar = (id: number) => {
+  const handleFiveStar = (id: string) => {
     dispatch(putRating({ id, rate: 5 }));
   };
 

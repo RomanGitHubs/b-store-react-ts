@@ -23,11 +23,11 @@ const user = createSlice({
     logoutUser(state) {
       state.user = null;
     },
-    addFavoriteBook(state, action: PayloadAction<{ id: number }>) {
+    addFavoriteBook(state, action: PayloadAction<{ id: string }>) {
       if (state.user === null) return;
       state.user.favoriteBooks = [...state.user.favoriteBooks, action.payload.id];
     },
-    removeFavoriteBook(state, action: PayloadAction<{ id: number }>) {
+    removeFavoriteBook(state, action: PayloadAction<{ id: string }>) {
       if (state.user === null) return;
       state.user.favoriteBooks.splice(state.user.favoriteBooks.indexOf(action.payload.id), 1);
     },

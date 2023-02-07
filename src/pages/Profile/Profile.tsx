@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+// import { useLocation, useNavigate } from 'react-router';
 import styled from 'styled-components';
 import { AxiosError } from 'axios';
 import { useForm } from 'react-hook-form';
@@ -24,25 +24,25 @@ export interface IProfileValues {
 const Profile: React.FC = () => {
   const user = useAppSelector((state) => state.userSlice.user);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
   const [updatable, setUpdatable] = useState(false);
-  let userPhoto;
+  const [userPhoto, setUserPhoto] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) {
       setValue('name', user.name);
       setValue('email', user.email);
-      userPhoto = user.photo;
+      if (user.photo !== '') setUserPhoto(user.photo);
     }
   }, []);
 
   const {
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
     register,
     setValue,
-    setError,
+    // setError,
   } = useForm({
     defaultValues: {
       name: '',
@@ -81,7 +81,7 @@ const Profile: React.FC = () => {
         const { response } = e;
         return console.error('Error >>> ', response?.data);
       }
-      alert('UNEXPECTED');
+      // alert('UNEXPECTED');
     }
   };
 
@@ -90,7 +90,8 @@ const Profile: React.FC = () => {
       const uploadFile = event.target?.files?.[0];
 
       if (!uploadFile) {
-        return alert('No file');
+        // return alert('No file');
+        return;
       }
 
       const toDataURL = (uploadFile: File) => new Promise<string>((resolve, reject) => {
@@ -107,8 +108,11 @@ const Profile: React.FC = () => {
       // console.log(response);
 
       dispatch(putUser(response.data.user));
-    } catch (e: any) {
-      console.error('Avatar error >>> ', e.response);
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        const { response } = e as AxiosError;
+        return console.error('Error Avatar >>> ', response?.data);
+      }
     }
   };
 
