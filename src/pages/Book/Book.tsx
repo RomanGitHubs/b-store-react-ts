@@ -123,6 +123,7 @@ const Body = styled.main`
     &__photo__img {
       height: 799px;
       width: 522px;
+      border-radius: 20px;
     }
 
     &__content {

@@ -74,10 +74,20 @@ const Body = styled.section`
   }
 
   .book-content {
+    /* align-content: flex-start;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: space-between; */
+    /* display: grid; */
     display: flex;
     flex-wrap: wrap;
-    margin: 40px auto 0;
-    gap: 20px;
+    /* margin: 40px auto 0; */
+    /* gap: 20px; */
+    justify-content: space-between;
+    -webkit-box-pack: justify;
   }
 
   .empty-catalog {

@@ -98,6 +98,7 @@ const Body = styled.section`
       width: 50px;
       height: 50px;
       border-radius: 50%;
+      border: 1px solid #00000025;
     }
 
     &__description {

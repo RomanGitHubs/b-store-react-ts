@@ -84,14 +84,16 @@ interface IStylesProps {
 const Body = styled.div<IStylesProps>`
   display: flex;
   flex-direction: column;
-  width: 305px;
+  width: calc((100% - 3 * 20px)/ 4);
   height: 713px;
 
   .book {
     &__cover {
       display: flex;
-      width: 305px;
-      height: 448px;
+      /* width: 305px; */
+      /* height: 448px; */
+      width: 100%;
+      height: 100%;
       background: url(${(props) => props.photo});
       background-size: cover;
       border-radius: 16px;

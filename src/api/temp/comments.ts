@@ -5,11 +5,11 @@ import { CommentModel } from '../../models/comment';
 
 const testComments: CommentModel[] = [
   {
-    commentId: 'e3fc80c6-e8fc-4c58-9eb3-1bfa973e4b88',
+    commentId: '319244ee-a536-4b75-9dc4-0d6bc8432806',
     bookId: '936028fe-fd10-4805-8c7d-552393f0e949',
-    photo: userPhoto,
-    author: 'Floyd Miles',
-    timer: '06-02-2023, 4:15 pm',
+    photo: userPhoto3,
+    author: 'Kate Miles',
+    timer: '03-02-2023, 4:14 pm',
     text: 'Love this so much Chronicles! This book open up a new world for me! I advice everyone to get acquainted whit the author this book. He is awesome!',
   },
   {
@@ -21,11 +21,11 @@ const testComments: CommentModel[] = [
     text: 'This book is amazing Chronicles! If you are a romantic person, read it.',
   },
   {
-    commentId: '319244ee-a536-4b75-9dc4-0d6bc8432806',
+    commentId: 'e3fc80c6-e8fc-4c58-9eb3-1bfa973e4b88',
     bookId: '936028fe-fd10-4805-8c7d-552393f0e949',
-    photo: userPhoto3,
-    author: 'Kate Miles',
-    timer: '03-02-2023, 4:14 pm',
+    photo: userPhoto,
+    author: 'Floyd Miles',
+    timer: '06-02-2023, 4:15 pm',
     text: 'Love this so much Chronicles! This book open up a new world for me! I advice everyone to get acquainted whit the author this book. He is awesome!',
   },
   {
