@@ -31,11 +31,13 @@ const Book: React.FC = () => {
     setBook(books.filter((item) => item.bookId === params.id)[0]);
   }, [params, books]);
 
-  const handleAddToCartPaper = (id: string) => {
+  const handleAddToCartPaper = (id: string, available: boolean) => {
+    if (!available) return;
     dispatch(putCart({ id, view: 'paper' }));
   };
 
-  const handleAddToCartHard = (id: string) => {
+  const handleAddToCartHard = (id: string, available: boolean) => {
+    if (!available) return;
     dispatch(putCart({ id, view: 'hard' }));
   };
 
@@ -72,7 +74,7 @@ const Book: React.FC = () => {
                     : <BookButton
                       title={`$ ${(book.paperPrice * 100).toFixed(2)} USD`}
                       // view='catalog-small'
-                      func={() => handleAddToCartPaper(book.bookId)}
+                      func={() => handleAddToCartPaper(book.bookId, book.available)}
                       available={book.available}
                     />
                   }
@@ -84,7 +86,7 @@ const Book: React.FC = () => {
                     : <BookButton
                       title={`$ ${(book.hardPrice * 100).toFixed(2)} USD`}
                       // view='catalog-small'
-                      func={() => handleAddToCartHard(book.bookId)}
+                      func={() => handleAddToCartHard(book.bookId, book.available)}
                       available={book.available}
                     />
                   }
