@@ -8,7 +8,6 @@ import scrollToTop from '../ScrollToTop/ScrollToTop';
 const Recomendation: React.FC = () => {
   const { books } = useAppSelector((state) => state.bookSlice);
   const [localBooks, setLocalBooks] = useState<BookModel[]>([]);
-  scrollToTop();
 
   useEffect(() => {
     (async () => {
@@ -27,7 +26,7 @@ const Recomendation: React.FC = () => {
         <h3 className='recomentation__title'>Recomendation</h3>
         <div className='book-content'>
           {localBooks?.map((item) => (
-            <Book key={item.bookId} book={item}/>
+            <Book key={item.bookId} book={item} onClick={() => scrollToTop()}/>
           ))}
         </div>
       </Body>}

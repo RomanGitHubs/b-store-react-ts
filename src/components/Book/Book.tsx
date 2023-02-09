@@ -15,6 +15,7 @@ import bestsellerBook from '../../assets/bestseller-book.webp';
 
 interface IBook {
   book: BookModel
+  onClick?: () => void
 }
 
 const Book: React.FC<IBook> = ({ book }) => {
