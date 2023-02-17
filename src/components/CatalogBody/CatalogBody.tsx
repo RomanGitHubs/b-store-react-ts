@@ -84,10 +84,10 @@ const Body = styled.section`
     /* display: grid; */
     display: flex;
     flex-wrap: wrap;
-    /* margin: 40px auto 0; */
-    /* gap: 20px; */
-    justify-content: space-between;
-    -webkit-box-pack: justify;
+    margin: 40px auto 0;
+    gap: 20px;
+    /* justify-content: space-between; */
+    /* -webkit-box-pack: justify; */
   }
 
   .empty-catalog {

@@ -12,6 +12,7 @@ import favoriteButton from '../../assets/button-favorite_unpressed.svg';
 import favoriteButtonActive from '../../assets/button-favorite_pressed.svg';
 import newBook from '../../assets/new-book.png';
 import bestsellerBook from '../../assets/bestseller-book.webp';
+import BookLoader from '../Loaders/BookLoader';
 
 interface IBook {
   book: BookModel
@@ -45,16 +46,19 @@ const Book: React.FC<IBook> = ({ book }) => {
 
   return (
     <Body photo={book.photo} isFavorite={isFavoriteBook}>
-      <div className="book__cover" onClick={() => navigate(`/catalog/${book.bookId}`)}>
-        {user && <button className="book__favorite" onClick={(e) => handleAddFavorite(e, book.bookId)} id={book.bookId.toString()} title='Add favorite'/>}
+      {book.photo
+        ? <div className="book__cover" onClick={() => navigate(`/catalog/${book.bookId}`)}>
+          {user && <button className="book__favorite" onClick={(e) => handleAddFavorite(e, book.bookId)} id={book.bookId.toString()} title='Add favorite'/>}
 
-        <div className="book__attributies">
-          {book.news && <img className='book__attributies-new' src={newBook} alt='new book'/>}
+          <div className="book__attributies">
+            {book.news && <img className='book__attributies-new' src={newBook} alt='new book'/>}
 
-          {book.bestsaller && <img className='book__attributies-best' src={bestsellerBook} alt='best book'/>}
+            {book.bestsaller && <img className='book__attributies-best' src={bestsellerBook} alt='best book'/>}
+          </div>
         </div>
-      </div>
-
+        : <BookLoader><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/>
+        </BookLoader>
+      }
       <p className="book__title">{book.title}</p>
 
       <p className="book__author">{book.author}</p>
@@ -91,9 +95,9 @@ const Body = styled.div<IStylesProps>`
   .book {
     &__cover {
       display: flex;
-      /* width: 305px; */
+      width: 305px;
       /* height: 448px; */
-      width: 100%;
+      /* width: 100%; */
       height: 100%;
       background: url(${(props) => props.photo});
       background-size: cover;
