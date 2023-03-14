@@ -15,8 +15,10 @@ import RateBook from '../../components/Book/RateBook/RateBook';
 import Recomendation from '../../components/Recomendation/Recomendation';
 import StarCounter from '../../components/Book/StarCounter/StarCounter';
 import { loadBookThunk } from '../../store/reducers/book';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const Book: React.FC = () => {
+  scrollToTop();
   const dispatch = useAppDispatch();
   const params = useParams<{id: string}>();
   const user = useAppSelector((state) => state.userSlice.user);
@@ -28,6 +30,9 @@ const Book: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadBookThunk());
+  }, []);
+
+  useEffect(() => {
     setBook(books.filter((item) => item.bookId === params.id)[0]);
   }, [params, books]);
 
@@ -102,7 +107,10 @@ const Book: React.FC = () => {
 
       {!user && <AuthBanner/>}
 
-      <Recomendation />
+      {book
+        ? <Recomendation thisBook={book.bookId}/>
+        : <Loader/>
+      }
     </Body>
   );
 };

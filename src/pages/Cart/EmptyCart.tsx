@@ -6,7 +6,7 @@ import books from '../../assets/cart-default.webp';
 const EmptyCart: React.FC = () => {
   return (
     <Body>
-      <img className='image' src={books} alt=''/>
+      <img className='image' src={books} alt='Books'/>
       <div className='content'>
         <h2 className='content__title'>Your cart is empty</h2>
         <p className='content__text'>Add items to cart to make a purchase.<br/>Go to the catalogue now</p>
@@ -18,7 +18,7 @@ const EmptyCart: React.FC = () => {
 
 export default EmptyCart;
 
-const Body = styled.div`
+const Body = styled.section`
   display: flex;
   margin: auto 0;
   

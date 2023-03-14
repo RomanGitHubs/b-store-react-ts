@@ -6,7 +6,7 @@ import books from '../../assets/cart-default.webp';
 const EmptyFavorite: React.FC = () => {
   return (
     <Body>
-      <img className='image' src={books} alt=''/>
+      <img className='image' src={books} alt='Books'/>
       <div className='warning'>
         <h2 className='warning__title'>Your favorite is empty</h2>
         <p className='warning__text'>Add items to favorite to don't forget.<br/>Go to the catalogue now</p>
@@ -18,7 +18,7 @@ const EmptyFavorite: React.FC = () => {
 
 export default EmptyFavorite;
 
-const Body = styled.div`
+const Body = styled.section`
   display: flex;
   margin: auto 0;
   

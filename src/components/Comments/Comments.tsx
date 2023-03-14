@@ -32,6 +32,7 @@ const Comments: React.FC<IProps> = ({ bookId }) => {
   };
 
   const getComments = () => {
+    setComments([]);
     arrayComments.forEach((item) => {
       if (item.bookId === bookId) {
         setComments((state) => [...state, item]);
@@ -41,7 +42,7 @@ const Comments: React.FC<IProps> = ({ bookId }) => {
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, [bookId]);
 
   return (
     <Body>

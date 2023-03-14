@@ -7,8 +7,10 @@ import { BookModel } from '../../models/book';
 import EmptyCart from './EmptyCart';
 import ULink from '../../components/UI/Link/ULink';
 import BookCounter from '../../components/BookCounter/BookCounter';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const Cart: React.FC = () => {
+  scrollToTop();
   const [books, setBooks] = useState<BookModel[]>([]);
   const [total, setTotal] = useState<number>(0);
 
@@ -87,7 +89,7 @@ const Body = styled.main`
   min-height: calc(100vh - 112px - 294px);
 `;
 
-const FullCart = styled.div`
+const FullCart = styled.section`
   display: flex;
   flex-direction: column;
   max-width: var(--width_content);

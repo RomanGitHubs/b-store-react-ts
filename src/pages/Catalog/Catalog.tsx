@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../../store/hooks';
 import CatalogBody from '../../components/CatalogBody/CatalogBody';
@@ -6,10 +6,15 @@ import AuthBanner from '../../components/AuthBanner/AuthBanner';
 
 const Catalog: React.FC = () => {
   const user = useAppSelector((state) => state.userSlice.user);
+  const [openFilter, setOpenFilter] = useState<string>('');
+
+  const handleCloseFilter = () => {
+    setOpenFilter('');
+  };
 
   return (
-    <Body >
-      <CatalogBody />
+    <Body onClick={handleCloseFilter}>
+      <CatalogBody openFilter={openFilter} setOpenFilter={setOpenFilter} />
       {user ? null : <AuthBanner />}
     </Body>
   );

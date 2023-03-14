@@ -5,28 +5,47 @@ import { useAppSelector } from '../../store/hooks';
 import Book from '../Book/Book';
 import scrollToTop from '../ScrollToTop/ScrollToTop';
 
-const Recomendation: React.FC = () => {
+interface ILoaclBook {
+  thisBook: string
+}
+
+const Recomendation: React.FC<ILoaclBook> = ({ thisBook }) => {
   const { books } = useAppSelector((state) => state.bookSlice);
   const [localBooks, setLocalBooks] = useState<BookModel[]>([]);
 
   useEffect(() => {
+    setLocalBooks([]);
     (async () => {
       try {
-        setLocalBooks(books.slice(0, 4));
+        let tempArray: BookModel[] = [];
+
+        const booksCopy = [...books];
+        booksCopy.splice(booksCopy.indexOf(booksCopy
+          .filter((item) => item.bookId === thisBook)[0]), 1);
+
+        for (let i = 0; i < 4; i++) {
+          const randomNum = Math.floor(Math.random() * (booksCopy.length - 4));
+
+          tempArray = [...tempArray, booksCopy[randomNum]];
+
+          booksCopy.splice(booksCopy.indexOf(booksCopy
+            .filter((item) => item.bookId === booksCopy[randomNum].bookId)[0]), 1);
+        }
+        setLocalBooks(tempArray);
       } catch (e) {
         console.error('Error recomendation >>> ', e);
       }
     })();
-  }, []);
+  }, [thisBook]);
 
   return (
     <>
-      {(localBooks !== null && localBooks?.length > 0) &&
+      {localBooks.length > 0 &&
       <Body>
         <h3 className='recomentation__title'>Recomendation</h3>
-        <div className='book-content'>
-          {localBooks?.map((item) => (
-            <Book key={item.bookId} book={item} onClick={() => scrollToTop()}/>
+        <div className='recomentation__content'>
+          {localBooks?.map((item, index) => (
+            <Book key={index} book={item} onClick={() => scrollToTop()}/>
           ))}
         </div>
       </Body>}
@@ -49,7 +68,7 @@ const Body = styled.section`
     color: var(--dark__blue) 
   }
 
-  .book-content {
+  .recomentation__content {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto 0;

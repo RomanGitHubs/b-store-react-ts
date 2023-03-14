@@ -13,6 +13,7 @@ import favoriteButtonActive from '../../assets/button-favorite_pressed.svg';
 import newBook from '../../assets/new-book.png';
 import bestsellerBook from '../../assets/bestseller-book.webp';
 import BookLoader from '../Loaders/BookLoader';
+import scrollToTop from '../ScrollToTop/ScrollToTop';
 
 interface IBook {
   book: BookModel
@@ -47,7 +48,7 @@ const Book: React.FC<IBook> = ({ book }) => {
   return (
     <Body photo={book.photo} isFavorite={isFavoriteBook}>
       {book.photo
-        ? <div className="book__cover" onClick={() => navigate(`/catalog/${book.bookId}`)}>
+        ? <div className="book__cover" onClick={() => { navigate(`/catalog/${book.bookId}`); scrollToTop(); }}>
           {user && <button className="book__favorite" onClick={(e) => handleAddFavorite(e, book.bookId)} id={book.bookId.toString()} title='Add favorite'/>}
 
           <div className="book__attributies">
@@ -89,16 +90,17 @@ interface IStylesProps {
 const Body = styled.div<IStylesProps>`
   display: flex;
   flex-direction: column;
-  width: calc((100% - 3 * 20px)/ 4);
+  /* width: calc((100% - 3 * 20px)/ 4); */
+  width: 305px;
   height: 713px;
 
   .book {
     &__cover {
       display: flex;
       width: 305px;
-      /* height: 448px; */
+      /* height: calc((100vw - 3 * 20px)/ 2); */
       /* width: 100%; */
-      height: 100%;
+      height: 63%;
       background: url(${(props) => props.photo});
       background-size: cover;
       border-radius: 16px;

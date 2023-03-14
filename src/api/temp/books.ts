@@ -26,7 +26,7 @@ const testBooks: BookModel[] = [
     photo: bookCover1,
     author: 'C. S. Lewis',
     title: 'The Chronicles of Narnia',
-    description: `"Rupi Kaur is the Writer of the Decade." - The New Requblic
+    description: `"The Chronicles of Narnia" - The New Requblic
     <br/><br/>
     #1 New York Times bestsaller milk and honey is a collection of poetry
     and prose about surival. About the experience of volience, abuse, love, loss

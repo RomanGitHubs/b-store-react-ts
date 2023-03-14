@@ -1,9 +1,11 @@
 import React from 'react';
 import './notFound.css';
 import styled from 'styled-components';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 // import { useScreenSize } from '../../hooks/useScreenSize';
 
 const NotFound: React.FC = () => {
+  scrollToTop();
   // const [height, width] = useScreenSize();
 
   // console.log('useScreenSize >>> ', {height, width});

@@ -14,6 +14,7 @@ import mainPicture from '../../assets/reg-chel.webp';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
 import { SignupModel } from '../../models/signUpForm';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const constans = {
   mailIco,
@@ -48,6 +49,7 @@ const signupSchema = yup.object().shape({
 });
 
 const Signup: React.FC = () => {
+  scrollToTop();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

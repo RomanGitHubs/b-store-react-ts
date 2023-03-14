@@ -12,6 +12,7 @@ import UButton from '../../components/UI/Button/UButton';
 import userIco from '../../assets/user-ico.svg';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 export interface IProfileValues {
   name: string,
@@ -22,6 +23,7 @@ export interface IProfileValues {
 }
 
 const Profile: React.FC = () => {
+  scrollToTop();
   const user = useAppSelector((state) => state.userSlice.user);
   const dispatch = useAppDispatch();
   // const navigate = useNavigate();

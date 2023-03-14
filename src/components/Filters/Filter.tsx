@@ -12,7 +12,9 @@ interface IFilter {
 }
 
 const Filter: React.FC<IFilter> = ({ title, sort, openFilter, setOpenFilter, children }) => {
-  const handleFilter = () => {
+  const handleFilter = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+
     if (openFilter === title) {
       setOpenFilter('');
       return;
@@ -22,7 +24,7 @@ const Filter: React.FC<IFilter> = ({ title, sort, openFilter, setOpenFilter, chi
 
   return (
     <Body >
-      <div className="filter__title" onClick={handleFilter}>
+      <div className="filter__title" onClick={(e) => handleFilter(e)}>
         {title} {sort}
         <img src={openFilter === title ? downArrow : rightArrow} alt='arrow' className='filter__arrow'/>
       </div>

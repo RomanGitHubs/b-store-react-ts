@@ -14,6 +14,7 @@ import UInput from '../../components/UI/Input/UInput';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
 import mainPicture from '../../assets/reg-chel.webp';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const constans = {
   mailIco,
@@ -49,6 +50,7 @@ interface ILocation {
 }
 
 const Login: React.FC = () => {
+  scrollToTop();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const location = useLocation();

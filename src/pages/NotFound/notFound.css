@@ -53,13 +53,13 @@
 .paper:before {
   content: "";
   position: absolute;
-  top: -0.7rem;
+  top: -0.8rem;
   right: -0.7rem;
   width: 1.4rem;
   height: 1rem;
   background-color: white;
   border-bottom: 0.3rem solid #293b49;
-  transform: rotate(45deg);
+  transform: rotate(38deg);
 }
 
 .face {

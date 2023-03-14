@@ -6,8 +6,15 @@ import { loadBookThunk, loadGenreThunk } from '../../store/reducers/book';
 import Filters from '../Filters/Filters';
 import Book from '../Book/Book';
 import Loader from '../Loaders/Loader';
+import scrollToTop from '../ScrollToTop/ScrollToTop';
 
-const CatalogBody: React.FC = () => {
+interface ICatalogBody {
+  openFilter: string
+  setOpenFilter: (name: string) => void
+}
+
+const CatalogBody: React.FC<ICatalogBody> = (props) => {
+  scrollToTop();
   const dispatch = useAppDispatch();
   const books = useAppSelector((state) => state.bookSlice.books);
   const status = useAppSelector((state) => state.bookSlice.status);
@@ -31,7 +38,7 @@ const CatalogBody: React.FC = () => {
     <Body>
       <div className='bar'>
         <h2 className='bar__title'>Catalog</h2>
-        <Filters/>
+        <Filters filter={props}/>
       </div>
       {status === 'loading' && <Loader/> }
       {(books?.length !== 0 && status !== 'loading') &&

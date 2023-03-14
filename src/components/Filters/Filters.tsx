@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 // import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 // import { getGenres } from '../../api/services/genres';
@@ -10,7 +10,14 @@ import SortFilter from './SortFilter';
 import Filter from './Filter';
 import GenresFilter from './GenresFilter';
 
-const Filters: React.FC = () => {
+interface IFilters {
+  filter: {
+    openFilter: string
+    setOpenFilter: (name: string) => void
+  }
+}
+
+const Filters: React.FC<IFilters> = ({ filter }) => {
   const dispatch = useAppDispatch();
   const { minPrice, maxPrice } = useAppSelector((state) => state.bookSlice);
   const { selectedSort } = useAppSelector((state) => state.requestSlice);
@@ -31,17 +38,15 @@ const Filters: React.FC = () => {
       }, 500);
     };
   };
-
   const debouncePrice = useCallback(debounce(handleChangePrice), []);
-  const [openFilter, setOpenFilter] = useState<string>('');
 
   return (
-    <Body>
-      <Filter title="Genre" setOpenFilter={setOpenFilter} openFilter={openFilter}>
+    <Body onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
+      <Filter title="Genre" setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
         <GenresFilter/>
       </Filter>
 
-      <Filter title="Price" setOpenFilter={setOpenFilter} openFilter={openFilter}>
+      <Filter title="Price" setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
         <MultiRangeSlider
           min={minPrice}
           max={maxPrice}
@@ -49,7 +54,7 @@ const Filters: React.FC = () => {
         />
       </Filter>
 
-      <Filter title='Sort by' sort={selectedSort} setOpenFilter={setOpenFilter} openFilter={openFilter}>
+      <Filter title='Sort by' sort={selectedSort} setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
         <SortFilter />
       </Filter>
     </Body>
