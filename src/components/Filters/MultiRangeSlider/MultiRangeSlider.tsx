@@ -7,35 +7,47 @@ import {
 } from 'react';
 import classnames from 'classnames';
 import './multiRangeSlider.css';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { reqPrice } from '../../../store/reducers/request';
 
-interface ISlider {
-  min: number;
-  max: number;
-  onChange: (price: IPrice) => void;
+interface IPrice {
+  min: number
+  max: number
 }
 
-export interface IPrice {
-  min: number;
-  max: number;
-}
-
-const Slider: React.FC<ISlider> = ({
-  min,
-  max,
-  onChange,
-}) => {
+const Slider: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { minPrice, maxPrice } = useAppSelector((state) => state.bookSlice);
   const { selectedMinPrice, selectedMaxPrice } = useAppSelector((state) => state.requestSlice);
-  const [minVal, setMinVal] = useState<number>(selectedMinPrice);
-  const [maxVal, setMaxVal] = useState<number>(selectedMaxPrice);
+
+  const handleChangePrice = (price: IPrice) => {
+    dispatch(reqPrice(price));
+  };
+
+  const debounce = (func: (price: IPrice) => void) => {
+    let timer: ReturnType<typeof setTimeout> | null;
+    // eslint-disable-next-line
+    return function name(...args: any) {
+      const context = timer;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(context, args);
+      }, 500);
+    };
+  };
+  const debouncePrice = useCallback(debounce(handleChangePrice), []);
+
+  const [minVal, setMinVal] = useState<number>(selectedMinPrice || minPrice);
+  const [maxVal, setMaxVal] = useState<number>(selectedMaxPrice || maxPrice);
   const minValRef = useRef<HTMLInputElement>(null);
   const maxValRef = useRef<HTMLInputElement>(null);
   const range = useRef<HTMLInputElement>(null);
 
   // Convert to percentage
   const getPercent = useCallback(
-    (value: number) => Math.round(((value - min) / (max - min)) * 100),
-    [min, max],
+    (value: number) => Math.round(((value - minPrice) / (maxPrice - minPrice)) * 100),
+    [minPrice, maxPrice],
   );
 
   // Set width of the range to decrease from the left side
@@ -66,15 +78,15 @@ const Slider: React.FC<ISlider> = ({
 
   // Get min and max values when their state changes
   useEffect(() => {
-    onChange({ min: minVal, max: maxVal });
+    debouncePrice({ min: minVal, max: maxVal });
   }, [minVal, maxVal]);
 
   return (
     <div className="container">
       <input
         type="range"
-        min={min}
-        max={max}
+        min={minPrice}
+        max={maxPrice}
         value={minVal}
         ref={minValRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -83,13 +95,13 @@ const Slider: React.FC<ISlider> = ({
           event.target.value = value.toString();
         }}
         className={classnames('thumb thumb--zindex-3', {
-          'thumb--zindex-5': minVal > max - 100,
+          'thumb--zindex-5': minVal > maxPrice - 100,
         })}
       />
       <input
         type="range"
-        min={min}
-        max={max}
+        min={minPrice}
+        max={maxPrice}
         value={maxVal}
         ref={maxValRef}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {

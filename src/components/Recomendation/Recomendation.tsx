@@ -6,7 +6,7 @@ import Book from '../Book/Book';
 import scrollToTop from '../ScrollToTop/ScrollToTop';
 
 interface ILoaclBook {
-  thisBook: string
+  thisBook: string | undefined
 }
 
 const Recomendation: React.FC<ILoaclBook> = ({ thisBook }) => {
@@ -15,27 +15,27 @@ const Recomendation: React.FC<ILoaclBook> = ({ thisBook }) => {
 
   useEffect(() => {
     setLocalBooks([]);
-    (async () => {
-      try {
-        let tempArray: BookModel[] = [];
+    // (async () => {
+    // try {
+    let tempArray: BookModel[] = [];
 
-        const booksCopy = [...books];
-        booksCopy.splice(booksCopy.indexOf(booksCopy
-          .filter((item) => item.bookId === thisBook)[0]), 1);
+    const booksCopy = [...books];
+    booksCopy.splice(booksCopy.indexOf(booksCopy
+      .filter((item) => item.bookId === thisBook)[0]), 1);
 
-        for (let i = 0; i < 4; i++) {
-          const randomNum = Math.floor(Math.random() * (booksCopy.length - 4));
+    for (let i = 0; i < 4; i++) {
+      const randomNum = Math.floor(Math.random() * (booksCopy.length - 4));
 
-          tempArray = [...tempArray, booksCopy[randomNum]];
+      tempArray = [...tempArray, booksCopy[randomNum]];
 
-          booksCopy.splice(booksCopy.indexOf(booksCopy
-            .filter((item) => item.bookId === booksCopy[randomNum].bookId)[0]), 1);
-        }
-        setLocalBooks(tempArray);
-      } catch (e) {
-        console.error('Error recomendation >>> ', e);
-      }
-    })();
+      booksCopy.splice(booksCopy.indexOf(booksCopy
+        .filter((item) => item.bookId === booksCopy[randomNum].bookId)[0]), 1);
+    }
+    setLocalBooks(tempArray);
+    // } catch (e) {
+    // console.error('Error recomendation >>> ', e);
+    // }
+    // })();
   }, [thisBook]);
 
   return (

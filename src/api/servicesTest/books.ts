@@ -1,41 +1,35 @@
 import { BookModel } from '../../models/book';
-// import { IRequestState } from '../../models/request';
-// import { useAppSelector } from '../../store/hooks';
+import { IRequestState } from '../../models/request';
 import testBooks from '../temp/books';
 
 interface IPromise {
   books: BookModel[]
   minPrice: number
   maxPrice: number
+  totalBooks: number
 }
 
-export const getBooks = () => {
-  // const {
-  //   selectedGenres,
-  //   selectedMinPrice,
-  //   selectedMaxPrice,
-  //   selectedSort,
-  //   selectedOrder,
-  //   selectedQuery,
-  //   selectedPagination,
-  // } = useAppSelector((state) => state.requestSlice);
+export const getBooks = (state: IRequestState) => {
+  const books = testBooks.slice(
+    state.currentPage * state.pageSize,
+    (state.currentPage + 1) * state.pageSize,
+  );
 
-  // const data = {
-  //   genre: selectedGenres,
-  //   minPrice: selectedMinPrice,
-  //   maxPrice: selectedMaxPrice,
-  //   sort: selectedSort,
-  //   order: selectedOrder,
-  //   query: selectedQuery,
-  //   page: selectedPagination?.currentPage,
-  // };
+  const totalBooks = testBooks.length;
+
+  const arr: number[] = [];
+  testBooks.forEach((item) => { arr.push(item.hardPrice); arr.push(item.paperPrice); });
+
+  const minPrice = +(Math.min(...arr) * 100).toFixed(2);
+  const maxPrice = +(Math.max(...arr) * 100).toFixed(2);
 
   return new Promise<IPromise>((res) => {
     setTimeout(() => {
       res({
-        books: testBooks,
-        minPrice: 0,
-        maxPrice: 250,
+        books,
+        minPrice,
+        maxPrice,
+        totalBooks,
       });
     }, 610);
   });

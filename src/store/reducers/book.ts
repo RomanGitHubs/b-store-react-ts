@@ -1,27 +1,33 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getBook } from '../../api/servicesTest/book';
 import { getBooks } from '../../api/servicesTest/books';
 import { getGenres } from '../../api/servicesTest/genres';
 import { BookModel } from '../../models/book';
 import { GenreModel } from '../../models/genre';
+import { IRequestState } from '../../models/request';
 
 interface IBooksState {
-  books: BookModel[];
-  minPrice: number;
-  maxPrice: number;
-  genres: GenreModel[];
-  status: 'init' | 'loading' | 'error' | 'success';
+  books: BookModel[]
+  minPrice: number
+  maxPrice: number
+  totalBooks: number
+  currentPage: number
+  genres: GenreModel[]
+  status: 'init' | 'loading' | 'error' | 'success'
 }
 
 interface IBooksAction {
-  books: BookModel[],
-  minPriceBook: number,
-  maxPriceBook: number,
+  books: BookModel[]
+  minPriceBook: number
+  maxPriceBook: number
 }
 
 const initialState: IBooksState = {
   books: [],
   minPrice: 0,
   maxPrice: 0,
+  totalBooks: 0,
+  currentPage: 0,
   genres: [],
   status: 'init',
 };
@@ -45,18 +51,30 @@ const book = createSlice({
     },
   },
   extraReducers: (builder) => builder
-    .addCase(loadBookThunk.pending, (state) => {
+    .addCase(loadBooksThunk.pending, (state) => {
       state.status = 'loading';
     })
-    .addCase(loadBookThunk.fulfilled, (state, action) => {
+    .addCase(loadBooksThunk.fulfilled, (state, action) => {
       state.status = 'success';
       state.books = action.payload.books;
       state.minPrice = action.payload.minPrice;
       state.maxPrice = action.payload.maxPrice;
+      state.totalBooks = action.payload.totalBooks;
     })
-    .addCase(loadBookThunk.rejected, (state) => {
+    .addCase(loadBooksThunk.rejected, (state) => {
       state.status = 'error';
     })
+
+    .addCase(getBookThunk.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getBookThunk.fulfilled, (state) => {
+      state.status = 'success';
+    })
+    .addCase(getBookThunk.rejected, (state) => {
+      state.status = 'error';
+    })
+
     .addCase(loadGenreThunk.pending, (state) => {
       state.status = 'loading';
     })
@@ -69,8 +87,12 @@ const book = createSlice({
     }),
 });
 
-export const loadBookThunk = createAsyncThunk('books/get', () => {
-  return getBooks();
+export const loadBooksThunk = createAsyncThunk('books/getAll', (state: IRequestState) => {
+  return getBooks(state);
+});
+
+export const getBookThunk = createAsyncThunk('books/getOne', (id: string | undefined) => {
+  return getBook(id);
 });
 
 export const loadGenreThunk = createAsyncThunk('genres/get', () => {

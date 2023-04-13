@@ -1,23 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PaginationModel } from '../../models/pagination';
 import { IRequestState } from '../../models/request';
 
 const initialState: IRequestState = {
   selectedGenres: [],
   selectedMinPrice: 0,
-  selectedMaxPrice: 250,
+  selectedMaxPrice: 0,
   selectedSort: 'rating',
   selectedOrder: 'DESC',
   selectedQuery: '',
-  selectedPagination: {
-    currentPage: 1,
-    numberPerPage: 2,
-    has_previous: true,
-    previous: 2,
-    has_next: true,
-    next: 2,
-    last_page: 3,
-  },
+  currentPage: 0,
+  pageSize: 8,
 };
 
 const request = createSlice({
@@ -40,8 +32,8 @@ const request = createSlice({
     reqQuery(state, action: PayloadAction<{ query: string }>) {
       state.selectedQuery = action.payload.query;
     },
-    reqPagination(state, action: PayloadAction<PaginationModel>) {
-      state.selectedPagination = action.payload;
+    reqPagination(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
     },
   },
 });

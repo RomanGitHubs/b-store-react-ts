@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import parse from 'html-react-parser';
-import { putCart } from '../../store/reducers/cart';
+import { CartItem, putCart } from '../../store/reducers/cart';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { BookModel } from '../../models/book';
 
@@ -14,27 +14,32 @@ import Loader from '../../components/Loaders/Loader';
 import RateBook from '../../components/Book/RateBook/RateBook';
 import Recomendation from '../../components/Recomendation/Recomendation';
 import StarCounter from '../../components/Book/StarCounter/StarCounter';
-import { loadBookThunk } from '../../store/reducers/book';
 import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
+import { getBook } from '../../api/servicesTest/book';
 
 const Book: React.FC = () => {
   scrollToTop();
   const dispatch = useAppDispatch();
   const params = useParams<{id: string}>();
+
   const user = useAppSelector((state) => state.userSlice.user);
-  const books = useAppSelector((state) => state.bookSlice.books);
   const cartBooks = useAppSelector((state) => state.cartSlice.cartBooks);
 
   const [book, setBook] = useState<BookModel>();
-  const thisBookInCart = cartBooks.filter((item) => item.cartId === book?.bookId)[0];
+
+  const [thisBookInCart, setThisBookInCart] = useState<CartItem>();
 
   useEffect(() => {
-    dispatch(loadBookThunk());
+    (async () => {
+      try {
+        const respBook = await getBook(params.id);
+        setBook(respBook);
+        setThisBookInCart(cartBooks.filter((item) => item.cartId === respBook?.bookId)[0]);
+      } catch (e) {
+        console.error('Error Fetch one book >> ', e);
+      }
+    })();
   }, []);
-
-  useEffect(() => {
-    setBook(books.filter((item) => item.bookId === params.id)[0]);
-  }, [params, books]);
 
   const handleAddToCartPaper = (id: string, available: boolean) => {
     if (!available) return;
@@ -101,14 +106,9 @@ const Book: React.FC = () => {
           </section>
 
           <Comments bookId={book.bookId}/>
+          {!user && <AuthBanner/>}
+          {/* <Recomendation thisBook={book.bookId}/> */}
         </>
-        : <Loader/>
-      }
-
-      {!user && <AuthBanner/>}
-
-      {book
-        ? <Recomendation thisBook={book.bookId}/>
         : <Loader/>
       }
     </Body>

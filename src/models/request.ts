@@ -1,5 +1,3 @@
-import { PaginationModel } from './pagination';
-
 export interface IRequestState {
   selectedGenres: string[],
   selectedMinPrice: number,
@@ -7,5 +5,6 @@ export interface IRequestState {
   selectedSort: string,
   selectedOrder: 'ASC' | 'DESC',
   selectedQuery: string,
-  selectedPagination: PaginationModel,
+  currentPage: number,
+  pageSize: number,
 }

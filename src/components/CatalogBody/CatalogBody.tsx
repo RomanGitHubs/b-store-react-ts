@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { AxiosError } from 'axios';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { loadBookThunk, loadGenreThunk } from '../../store/reducers/book';
+import { loadBooksThunk, loadGenreThunk } from '../../store/reducers/book';
 import Filters from '../Filters/Filters';
 import Book from '../Book/Book';
 import Loader from '../Loaders/Loader';
 import scrollToTop from '../ScrollToTop/ScrollToTop';
+import Pagination from '../Pagination/Pagination';
 
 interface ICatalogBody {
   openFilter: string
@@ -23,7 +24,7 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        dispatch(loadBookThunk());
+        dispatch(loadBooksThunk(requestSlice));
         dispatch(loadGenreThunk());
       } catch (e) {
         if (e instanceof AxiosError) {
@@ -49,7 +50,7 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
             ))}
           </div>
 
-          {/* <Pagination/> */}
+          <Pagination/>
         </>
         // <div className='empty-catalog'>
         //   Empty
