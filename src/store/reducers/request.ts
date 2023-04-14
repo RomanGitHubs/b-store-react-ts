@@ -10,6 +10,7 @@ const initialState: IRequestState = {
   selectedQuery: '',
   currentPage: 0,
   pageSize: 8,
+  noLimit: false,
 };
 
 const request = createSlice({
@@ -26,8 +27,9 @@ const request = createSlice({
     reqSort(state, action: PayloadAction<string>) {
       state.selectedSort = action.payload;
     },
-    reqOrder(state, action: PayloadAction<'ASC' | 'DESC'>) {
-      state.selectedOrder = action.payload;
+    reqOrder(state) {
+      if (state.selectedOrder === 'DESC') state.selectedOrder = 'ASC';
+      if (state.selectedOrder === 'ASC') state.selectedOrder = 'DESC';
     },
     reqQuery(state, action: PayloadAction<{ query: string }>) {
       state.selectedQuery = action.payload.query;
@@ -35,8 +37,15 @@ const request = createSlice({
     reqPagination(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
+    reqPagesize(state, action: PayloadAction<number>) {
+      state.pageSize = action.payload;
+    },
+    reqNoLimit(state) {
+      state.noLimit = !state.noLimit;
+    },
   },
 });
 
-export const { reqGenres, reqPrice, reqSort, reqOrder, reqQuery, reqPagination } = request.actions;
+export const { reqGenres, reqPrice, reqSort,
+  reqOrder, reqQuery, reqPagination, reqPagesize, reqNoLimit } = request.actions;
 export default request.reducer;

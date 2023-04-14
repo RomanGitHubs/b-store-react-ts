@@ -2,16 +2,18 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import rightArrow from '../../assets/right-arrow.svg';
 import downArrow from '../../assets/down-arrow.svg';
+import { useAppSelector } from '../../store/hooks';
 
 interface IFilter {
   title: string
-  sort?: string
   openFilter: string
   setOpenFilter: (filterType: string) => void
   children: ReactNode
 }
 
-const Filter: React.FC<IFilter> = ({ title, sort, openFilter, setOpenFilter, children }) => {
+const Filter: React.FC<IFilter> = ({ title, openFilter, setOpenFilter, children }) => {
+  const { selectedSort } = useAppSelector((state) => state.requestSlice);
+
   const handleFilter = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
 
@@ -25,7 +27,7 @@ const Filter: React.FC<IFilter> = ({ title, sort, openFilter, setOpenFilter, chi
   return (
     <Body >
       <div className="filter__title" onClick={(e) => handleFilter(e)}>
-        {title} {sort}
+        {title} {title === 'Sort by' && selectedSort}
         <img src={openFilter === title ? downArrow : rightArrow} alt='arrow' className='filter__arrow'/>
       </div>
       {openFilter === title && <div>
@@ -68,5 +70,9 @@ const Body = styled.div`
   .filter__arrow {
     width: 24px;
     height: 24px;
+  }
+
+  :nth-child(1) {
+    width: 50px;
   }
 `;

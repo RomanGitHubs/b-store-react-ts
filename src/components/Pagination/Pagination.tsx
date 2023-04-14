@@ -55,8 +55,8 @@ const Body = styled.div`
     &__left {
       background: url(${arrowLeft});
       background-size: cover;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       margin-right: 5px;
       cursor: pointer;
     }
@@ -68,6 +68,13 @@ const Body = styled.div`
       height: 24px;
       margin: 0 5px;
       cursor: pointer;
+
+      :hover {
+        background: url(${fillDot});
+        background-size: cover;
+        width: 24px;
+        height: 24px;
+      }
     }
 
     &__checked {
@@ -82,8 +89,8 @@ const Body = styled.div`
     &__right {
       background: url(${arrowRight});
       background-size: cover;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       margin-left: 5px;
       cursor: pointer;
     }

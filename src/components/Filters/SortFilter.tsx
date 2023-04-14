@@ -6,42 +6,41 @@ import orderArrow from '../../assets/arrows.png';
 
 const Sort: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { selectedSort, selectedOrder } = useAppSelector((state) => state.requestSlice);
+  const { selectedSort } = useAppSelector((state) => state.requestSlice);
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(reqSort(e.target.value));
   };
 
   const handlerOrder = () => {
-    if (selectedOrder === 'DESC') dispatch(reqOrder('ASC'));
-    if (selectedOrder === 'ASC') dispatch(reqOrder('DESC'));
+    dispatch(reqOrder());
   };
 
   return (
     <Body >
       <Filter>
-        <input id="radio-1" name="radio" type="radio" value="price" onChange={handlerChange} checked={selectedSort === 'price'}/>
-        <label htmlFor="radio-1">Price</label>
+        <input id="sort-1" name="sort" type="radio" value="price" onChange={handlerChange} checked={selectedSort === 'price'}/>
+        <label htmlFor="sort-1">Price</label>
         {selectedSort === 'price' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="radio-2" name="radio" type="radio" value="title" onChange={handlerChange} checked={selectedSort === 'title'}/>
-        <label htmlFor="radio-2">Title</label>
+        <input id="sort-2" name="sort" type="radio" value="title" onChange={handlerChange} checked={selectedSort === 'title'}/>
+        <label htmlFor="sort-2">Title</label>
         {selectedSort === 'title' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="radio-3" name="radio" type="radio" value="author" onChange={handlerChange} checked={selectedSort === 'author'}/>
-        <label htmlFor="radio-3">Author name</label>
+        <input id="sort-3" name="sort" type="radio" value="author" onChange={handlerChange} checked={selectedSort === 'author'}/>
+        <label htmlFor="sort-3">Author name</label>
         {selectedSort === 'author' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="radio-4" name="radio" type="radio" value="rating" onChange={handlerChange} checked={selectedSort === 'rating'}/>
-        <label htmlFor="radio-4">Rating</label>
+        <input id="sort-4" name="sort" type="radio" value="rating" onChange={handlerChange} checked={selectedSort === 'rating'}/>
+        <label htmlFor="sort-4">Rating</label>
         {selectedSort === 'rating' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="radio-5" name="radio" type="radio" value="date" onChange={handlerChange} checked={selectedSort === 'date'}/>
-        <label htmlFor="radio-5">Date of issue</label>
+        <input id="sort-5" name="sort" type="radio" value="date" onChange={handlerChange} checked={selectedSort === 'date'}/>
+        <label htmlFor="sort-5">Date of issue</label>
         {selectedSort === 'date' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
     </Body>

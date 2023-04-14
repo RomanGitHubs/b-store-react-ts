@@ -7,4 +7,5 @@ export interface IRequestState {
   selectedQuery: string,
   currentPage: number,
   pageSize: number,
+  noLimit: boolean,
 }

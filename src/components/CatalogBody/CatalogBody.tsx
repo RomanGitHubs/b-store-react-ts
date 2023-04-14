@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { AxiosError } from 'axios';
+import { Waypoint } from 'react-waypoint';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { loadBooksThunk, loadGenreThunk } from '../../store/reducers/book';
+import { getBooks } from '../../api/servicesTest/books';
 import Filters from '../Filters/Filters';
 import Book from '../Book/Book';
 import Loader from '../Loaders/Loader';
@@ -17,8 +19,7 @@ interface ICatalogBody {
 const CatalogBody: React.FC<ICatalogBody> = (props) => {
   scrollToTop();
   const dispatch = useAppDispatch();
-  const books = useAppSelector((state) => state.bookSlice.books);
-  const status = useAppSelector((state) => state.bookSlice.status);
+  const { books, status } = useAppSelector((state) => state.bookSlice);
   const requestSlice = useAppSelector((state) => state.requestSlice);
 
   useEffect(() => {
@@ -35,22 +36,35 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
     })();
   }, [requestSlice]);
 
+  // const handleUpdateList = async () => {
+  //   try {
+  //     const response = await getBooks();
+  //   } catch (e) {
+  //     console.error('Error update list >> ', e);
+  //   }
+  // };
+
   return (
     <Body>
       <div className='bar'>
         <h2 className='bar__title'>Catalog</h2>
         <Filters filter={props}/>
       </div>
+
       {status === 'loading' && <Loader/> }
+
       {(books?.length !== 0 && status !== 'loading') &&
         <>
           <div className='book-content'>
             {books?.map((item) => (
               <Book key={item.bookId} book={item}/>
             ))}
+            {/* {requestSlice.noLimit && <Waypoint
+              onEnter={handleUpdateList}
+            />} */}
           </div>
 
-          <Pagination/>
+          {!requestSlice.noLimit && <Pagination/>}
         </>
         // <div className='empty-catalog'>
         //   Empty

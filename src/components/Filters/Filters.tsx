@@ -6,6 +6,7 @@ import MultiRangeSlider from './MultiRangeSlider/MultiRangeSlider';
 import SortFilter from './SortFilter';
 import Filter from './Filter';
 import GenresFilter from './GenresFilter';
+import PageSize from './PageSize';
 
 interface IFilters {
   filter: {
@@ -15,10 +16,13 @@ interface IFilters {
 }
 
 const Filters: React.FC<IFilters> = ({ filter }) => {
-  const { selectedSort } = useAppSelector((state) => state.requestSlice);
-
+  const pageSize = useAppSelector((store) => store.requestSlice.pageSize);
   return (
     <Body onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
+      <Filter title={`${pageSize}`} setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
+        <PageSize/>
+      </Filter>
+
       <Filter title="Genre" setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
         <GenresFilter/>
       </Filter>
@@ -27,7 +31,7 @@ const Filters: React.FC<IFilters> = ({ filter }) => {
         <MultiRangeSlider/>
       </Filter>
 
-      <Filter title='Sort by' sort={selectedSort} setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
+      <Filter title='Sort by' setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
         <SortFilter />
       </Filter>
     </Body>
@@ -38,7 +42,8 @@ export default Filters;
 
 const Body = styled.div`
   display: flex;
-  width: 628px;
+  width: 748px;
+  /* width: 628px; */
   height: 48px;
   justify-content: space-between;
   position: relative;
