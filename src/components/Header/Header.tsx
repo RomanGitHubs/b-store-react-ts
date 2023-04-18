@@ -13,7 +13,7 @@ import userIco from '../../assets/button_user.svg';
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userSlice.user);
-  const cartBooks = useAppSelector((state) => state.cartSlice.cartBooks);
+  const cartBooks = useAppSelector((state) => state.cartSlice.cartItems);
 
   const handleQueryFind = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(reqQuery({ query: e.target.value }));

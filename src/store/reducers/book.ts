@@ -1,13 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getBook } from '../../api/servicesTest/book';
-import { getBooks } from '../../api/servicesTest/books';
+import { getBook } from '../../api/servicesTest/getBook';
+import { getBooks } from '../../api/servicesTest/getBooks';
 import { getGenres } from '../../api/servicesTest/genres';
+import { getCartBooks } from '../../api/servicesTest/getCartBooks';
+import { getFavoriteBooks } from '../../api/servicesTest/getFavoriteBooks';
+import { getAdditionalBook } from '../../api/servicesTest/getAdditionalBook';
 import { BookModel } from '../../models/book';
 import { GenreModel } from '../../models/genre';
 import { IRequestState } from '../../models/request';
+import { getRecomendationBooks } from '../../api/servicesTest/getRecomendationBooks';
 
 interface IBooksState {
-  books: BookModel[]
+  catalogBooks: BookModel[]
+  cartBooks: BookModel[]
+  favoriteBooks: BookModel[]
+  oneBook: BookModel[]
+  recomendationBook: BookModel[]
   minPrice: number
   maxPrice: number
   totalBooks: number
@@ -16,14 +24,12 @@ interface IBooksState {
   status: 'init' | 'loading' | 'error' | 'success'
 }
 
-interface IBooksAction {
-  books: BookModel[]
-  minPriceBook: number
-  maxPriceBook: number
-}
-
 const initialState: IBooksState = {
-  books: [],
+  catalogBooks: [],
+  cartBooks: [],
+  favoriteBooks: [],
+  oneBook: [],
+  recomendationBook: [],
   minPrice: 0,
   maxPrice: 0,
   totalBooks: 0,
@@ -36,42 +42,99 @@ const book = createSlice({
   name: 'book',
   initialState,
   reducers: {
-    putBooks(state, action: PayloadAction<IBooksAction>) {
-      state.books = action.payload.books;
-      state.minPrice = action.payload.minPriceBook * 100;
-      state.maxPrice = action.payload.maxPriceBook * 100;
+    putCatalogBooks(state, action: PayloadAction<BookModel[]>) {
+      state.catalogBooks = action.payload;
+    },
+    putCartBooks(state, action: PayloadAction<BookModel[]>) {
+      state.cartBooks = action.payload;
+    },
+    deleteCartBooks(state, action: PayloadAction<string>) {
+      const index = state.cartBooks.findIndex((item) => item.bookId === action.payload);
+      state.cartBooks.splice(index, 1);
+    },
+    putFavoriteBooks(state, action: PayloadAction<BookModel[]>) {
+      state.favoriteBooks = action.payload;
+    },
+    putOneBook(state, action: PayloadAction<BookModel[]>) {
+      state.oneBook = action.payload;
     },
     putGenres(state, action: PayloadAction<GenreModel[]>) {
       state.genres = action.payload;
     },
     putRating(state, action: PayloadAction<{id: string, rate: number}>) {
-      const book = state.books.filter((item) => item.bookId === action.payload.id)[0];
-      const newRating = (book.rating + action.payload.rate) / 2;
+      const book = state.oneBook[0];
+      const newRating = (book.rating * book.ratingCount + action.payload.rate) /
+        (book.ratingCount + 1);
       book.rating = newRating;
     },
   },
   extraReducers: (builder) => builder
-    .addCase(loadBooksThunk.pending, (state) => {
+    .addCase(getCatalogBooksThunk.pending, (state) => {
       state.status = 'loading';
     })
-    .addCase(loadBooksThunk.fulfilled, (state, action) => {
+    .addCase(getCatalogBooksThunk.fulfilled, (state, action) => {
       state.status = 'success';
-      state.books = action.payload.books;
+      state.catalogBooks = action.payload.books;
       state.minPrice = action.payload.minPrice;
       state.maxPrice = action.payload.maxPrice;
       state.totalBooks = action.payload.totalBooks;
     })
-    .addCase(loadBooksThunk.rejected, (state) => {
+    .addCase(getCatalogBooksThunk.rejected, (state) => {
       state.status = 'error';
     })
 
-    .addCase(getBookThunk.pending, (state) => {
+    .addCase(getCartBooksThunk.pending, (state) => {
       state.status = 'loading';
     })
-    .addCase(getBookThunk.fulfilled, (state) => {
+    .addCase(getCartBooksThunk.fulfilled, (state, action) => {
       state.status = 'success';
+      state.cartBooks = action.payload;
     })
-    .addCase(getBookThunk.rejected, (state) => {
+    .addCase(getCartBooksThunk.rejected, (state) => {
+      state.status = 'error';
+    })
+
+    .addCase(getFavoriteBooksThunk.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getFavoriteBooksThunk.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.favoriteBooks = action.payload;
+    })
+    .addCase(getFavoriteBooksThunk.rejected, (state) => {
+      state.status = 'error';
+    })
+
+    .addCase(getOneBookThunk.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getOneBookThunk.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.oneBook = action.payload;
+    })
+    .addCase(getOneBookThunk.rejected, (state) => {
+      state.status = 'error';
+    })
+
+    .addCase(getAdditionalBookThunk.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getAdditionalBookThunk.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.catalogBooks = [...state.catalogBooks, ...action.payload];
+    })
+    .addCase(getAdditionalBookThunk.rejected, (state) => {
+      state.status = 'error';
+    })
+
+    .addCase(getRecomendationBookThunk.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(getRecomendationBookThunk.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.recomendationBook = action.payload;
+    })
+    .addCase(getRecomendationBookThunk.rejected, (state) => {
       state.status = 'error';
     })
 
@@ -87,17 +150,41 @@ const book = createSlice({
     }),
 });
 
-export const loadBooksThunk = createAsyncThunk('books/getAll', (state: IRequestState) => {
+export const getCatalogBooksThunk = createAsyncThunk('books/getAll', (state: IRequestState) => {
   return getBooks(state);
 });
 
-export const getBookThunk = createAsyncThunk('books/getOne', (id: string | undefined) => {
+export const getCartBooksThunk = createAsyncThunk('books/getCart', (state: string[] | undefined) => {
+  return getCartBooks(state);
+});
+
+export const getFavoriteBooksThunk = createAsyncThunk('books/getFavorite', (state: string[] | undefined) => {
+  return getFavoriteBooks(state);
+});
+
+export const getOneBookThunk = createAsyncThunk('books/getOne', (id: string | undefined) => {
   return getBook(id);
 });
 
-export const loadGenreThunk = createAsyncThunk('genres/get', () => {
+export const getAdditionalBookThunk = createAsyncThunk('books/getAdditionalBook', (state: IRequestState) => {
+  return getAdditionalBook(state);
+});
+
+export const getRecomendationBookThunk = createAsyncThunk('books/getRecomendationBook', (id: string | undefined) => {
+  return getRecomendationBooks(id);
+});
+
+export const loadGenreThunk = createAsyncThunk('genres/getAll', () => {
   return getGenres();
 });
 
-export const { putBooks, putGenres, putRating } = book.actions;
+export const {
+  putCatalogBooks,
+  putCartBooks,
+  putFavoriteBooks,
+  putOneBook,
+  putGenres,
+  putRating,
+  deleteCartBooks,
+} = book.actions;
 export default book.reducer;

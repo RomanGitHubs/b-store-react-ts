@@ -1,69 +1,84 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
-import { useAppSelector } from '../../store/hooks';
-import booksArray from '../../api/temp/books';
-import { BookModel } from '../../models/book';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getCartBooksThunk } from '../../store/reducers/book';
 import EmptyCart from './EmptyCart';
 import ULink from '../../components/UI/Link/ULink';
 import BookCounter from '../../components/BookCounter/BookCounter';
-import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
+import Loader from '../../components/Loaders/Loader';
 
 const Cart: React.FC = () => {
-  scrollToTop();
-  const [books, setBooks] = useState<BookModel[]>([]);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.userSlice.user);
+  const { cartItems } = useAppSelector((state) => state.cartSlice);
+  const { cartBooks, status } = useAppSelector((state) => state.bookSlice);
+
   const [total, setTotal] = useState<number>(0);
 
-  const navigate = useNavigate();
-
-  const cartBooks = useAppSelector((state) => state.cartSlice.cartBooks);
-  const user = useAppSelector((state) => state.userSlice.user);
+  useEffect(() => {
+    const ids = cartItems.map((item) => item.cartId);
+    dispatch(getCartBooksThunk(ids));
+  }, []);
 
   useEffect(() => {
-    getBooks();
-  }, [cartBooks]);
-
-  const getBooks = () => {
-    const temp: BookModel[] = [];
     setTotal(0);
 
+    if (cartBooks.length === 0 || cartBooks.length !== cartItems.length) return;
     for (let i = 0; i < cartBooks.length; i++) {
-      const item = booksArray.filter((item) => item.bookId === cartBooks[i].cartId)[0];
-      temp.push(item);
       setTotal((state) => (state +
-        (item.hardPrice * cartBooks[i].hardCoverCount) +
-        (item.paperPrice * cartBooks[i].paperCoverCount)
+        (cartBooks[i].hardPrice * cartItems[i].hardCoverCount) +
+        (cartBooks[i].paperPrice * cartItems[i].paperCoverCount)
       ));
     }
-    setBooks(temp);
-  };
+  }, [cartItems, cartBooks]);
+
+  if (status === 'loading') {
+    return (
+      <Body>
+        <Loader/>
+      </Body>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <Body>
+        Error
+      </Body>
+    );
+  }
 
   return (
     <Body>
-      {books.length !== 0
+      {cartItems.length !== 0
         ? <FullCart>
-          {books?.map((item) => (
-            <div className='item' key={item.bookId}>
-              <div className='item__cover' onClick={() => navigate(`/catalog/${item.bookId}`)}>
-                <img src={item.photo} alt='book__cover'/>
+          {cartBooks?.map((item) => {
+            if (!cartItems.map((item) => item.cartId).includes(item.bookId)) return;
+            return (
+              <div className='item' key={item.bookId}>
+                <div className='item__cover' onClick={() => navigate(`/catalog/${item.bookId}`)}>
+                  <img src={item.photo} alt='book__cover'/>
+                </div>
+
+                <div className='item__description'>
+                  <h2 className='item__title'>{item.title}</h2>
+
+                  <h3 className='item__author'>{item.author}</h3>
+
+                  <p className='item__price__label'>Paperback</p>
+                  <BookCounter id={item.bookId} view='paper'/>
+                  <h3 className='item__price'>$ {(item.paperPrice * 100).toFixed(2)} USD</h3>
+
+                  <p className='item__price__label'>Hardcover</p>
+                  <BookCounter id={item.bookId} view='hard'/>
+                  <h3 className='item__price'>$ {(item.hardPrice * 100).toFixed(2)} USD</h3>
+
+                </div>
               </div>
-
-              <div className='item__description'>
-                <h2 className='item__title'>{item.title}</h2>
-
-                <h3 className='item__author'>{item.author}</h3>
-
-                <p className='item__price__label'>Paperback</p>
-                <BookCounter id={item.bookId} view='paper'/>
-                <h3 className='item__price'>$ {(item.paperPrice * 100).toFixed(2)} USD</h3>
-
-                <p className='item__price__label'>Hardcover</p>
-                <BookCounter id={item.bookId} view='hard'/>
-                <h3 className='item__price'>$ {(item.hardPrice * 100).toFixed(2)} USD</h3>
-
-              </div>
-            </div>
-          ))}
+            );
+          })}
 
           <p className='cart__total'>Total: <b>{(total * 100).toFixed(2)}</b></p>
 

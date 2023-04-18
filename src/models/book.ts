@@ -5,6 +5,7 @@ export type BookModel = {
   title: string;
   description: string;
   rating: number;
+  ratingCount: number;
   available: boolean;
   hardcover: boolean;
   paperback: boolean;

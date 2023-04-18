@@ -1,50 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { getRecomendationBooks } from '../../api/servicesTest/getRecomendationBooks';
 import { BookModel } from '../../models/book';
-import { useAppSelector } from '../../store/hooks';
 import Book from '../Book/Book';
 import scrollToTop from '../ScrollToTop/ScrollToTop';
 
-interface ILoaclBook {
+interface ILocalBook {
   thisBook: string | undefined
 }
 
-const Recomendation: React.FC<ILoaclBook> = ({ thisBook }) => {
-  const { books } = useAppSelector((state) => state.bookSlice);
-  const [localBooks, setLocalBooks] = useState<BookModel[]>([]);
-
+const Recomendation: React.FC<ILocalBook> = ({ thisBook }) => {
+  const [recomendationBook, setRecomendationBook] = useState<BookModel[]>([]);
   useEffect(() => {
-    setLocalBooks([]);
-    // (async () => {
-    // try {
-    let tempArray: BookModel[] = [];
-
-    const booksCopy = [...books];
-    booksCopy.splice(booksCopy.indexOf(booksCopy
-      .filter((item) => item.bookId === thisBook)[0]), 1);
-
-    for (let i = 0; i < 4; i++) {
-      const randomNum = Math.floor(Math.random() * (booksCopy.length - 4));
-
-      tempArray = [...tempArray, booksCopy[randomNum]];
-
-      booksCopy.splice(booksCopy.indexOf(booksCopy
-        .filter((item) => item.bookId === booksCopy[randomNum].bookId)[0]), 1);
-    }
-    setLocalBooks(tempArray);
-    // } catch (e) {
-    // console.error('Error recomendation >>> ', e);
-    // }
-    // })();
-  }, [thisBook]);
+    (async () => {
+      try {
+        const resp = await getRecomendationBooks(thisBook);
+        setRecomendationBook(resp);
+      } catch (e) {
+        console.error('Error gerRecomendation');
+      }
+    })();
+  }, []);
 
   return (
     <>
-      {localBooks.length > 0 &&
+      {recomendationBook.length > 0 &&
       <Body>
         <h3 className='recomentation__title'>Recomendation</h3>
         <div className='recomentation__content'>
-          {localBooks?.map((item, index) => (
+          {recomendationBook?.map((item, index) => (
             <Book key={index} book={item} onClick={() => scrollToTop()}/>
           ))}
         </div>

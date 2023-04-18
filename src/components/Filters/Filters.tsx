@@ -20,7 +20,7 @@ const Filters: React.FC<IFilters> = ({ filter }) => {
   return (
     <Body onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}>
       <Filter title={`${pageSize}`} setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>
-        <PageSize/>
+        <PageSize setOpenFilter={filter.setOpenFilter}/>
       </Filter>
 
       <Filter title="Genre" setOpenFilter={filter.setOpenFilter} openFilter={filter.openFilter}>

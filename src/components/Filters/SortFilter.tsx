@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { reqSort, reqOrder } from '../../store/reducers/request';
+import { reqSort, reqOrder, reqPagination } from '../../store/reducers/request';
 import orderArrow from '../../assets/arrows.png';
+import { putCatalogBooks } from '../../store/reducers/book';
 
 const Sort: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -10,10 +11,14 @@ const Sort: React.FC = () => {
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(reqSort(e.target.value));
+    dispatch(reqPagination(0));
+    dispatch(putCatalogBooks([]));
   };
 
   const handlerOrder = () => {
     dispatch(reqOrder());
+    dispatch(reqPagination(0));
+    dispatch(putCatalogBooks([]));
   };
 
   return (

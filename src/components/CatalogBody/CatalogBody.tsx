@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { AxiosError } from 'axios';
 import { Waypoint } from 'react-waypoint';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { loadBooksThunk, loadGenreThunk } from '../../store/reducers/book';
-import { getBooks } from '../../api/servicesTest/books';
+import { getAdditionalBookThunk, getCatalogBooksThunk, loadGenreThunk, putCatalogBooks } from '../../store/reducers/book';
+import { reqPagination } from '../../store/reducers/request';
 import Filters from '../Filters/Filters';
 import Book from '../Book/Book';
 import Loader from '../Loaders/Loader';
-import scrollToTop from '../ScrollToTop/ScrollToTop';
 import Pagination from '../Pagination/Pagination';
+import { BookModel } from '../../models/book';
 
 interface ICatalogBody {
   openFilter: string
@@ -17,32 +16,25 @@ interface ICatalogBody {
 }
 
 const CatalogBody: React.FC<ICatalogBody> = (props) => {
-  scrollToTop();
   const dispatch = useAppDispatch();
-  const { books, status } = useAppSelector((state) => state.bookSlice);
+  const { catalogBooks, status, totalBooks } = useAppSelector((state) => state.bookSlice);
   const requestSlice = useAppSelector((state) => state.requestSlice);
 
   useEffect(() => {
-    (async () => {
-      try {
-        dispatch(loadBooksThunk(requestSlice));
-        dispatch(loadGenreThunk());
-      } catch (e) {
-        if (e instanceof AxiosError) {
-          const { response } = e as AxiosError;
-          return console.error('Error App >>> ', response?.data);
-        }
-      }
-    })();
+    if (requestSlice.noLimit) {
+      dispatch(getAdditionalBookThunk(requestSlice));
+    }
+    if (!requestSlice.noLimit) {
+      dispatch(putCatalogBooks([]));
+      dispatch(getCatalogBooksThunk(requestSlice));
+      dispatch(loadGenreThunk());
+    }
   }, [requestSlice]);
 
-  // const handleUpdateList = async () => {
-  //   try {
-  //     const response = await getBooks();
-  //   } catch (e) {
-  //     console.error('Error update list >> ', e);
-  //   }
-  // };
+  const handleUpdateList = () => {
+    if (((requestSlice.currentPage + 1) * requestSlice.pageSize) > totalBooks) return;
+    dispatch(reqPagination(requestSlice.currentPage + 1));
+  };
 
   return (
     <Body>
@@ -51,25 +43,23 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
         <Filters filter={props}/>
       </div>
 
-      {status === 'loading' && <Loader/> }
+      {status === 'loading' && !requestSlice.noLimit && catalogBooks.length === 0 && <Body><Loader/></Body> }
 
-      {(books?.length !== 0 && status !== 'loading') &&
+      {catalogBooks?.length !== 0 &&
         <>
           <div className='book-content'>
-            {books?.map((item) => (
+            {catalogBooks?.map((item: BookModel) => (
               <Book key={item.bookId} book={item}/>
             ))}
-            {/* {requestSlice.noLimit && <Waypoint
-              onEnter={handleUpdateList}
-            />} */}
           </div>
+          {requestSlice.noLimit && <Waypoint
+            onEnter={handleUpdateList}
+          />}
 
           {!requestSlice.noLimit && <Pagination/>}
         </>
-        // <div className='empty-catalog'>
-        //   Empty
-        // </div>
       }
+      {status === 'loading' && requestSlice.noLimit && <Body><Loader/></Body> }
     </Body>
   );
 };
@@ -80,6 +70,7 @@ const Body = styled.section`
   display: flex;
   flex-direction: column;
   margin: 90px auto 80px;
+  min-height: calc(100vh - 112px - 756px);
 
   .bar {
     display:flex;

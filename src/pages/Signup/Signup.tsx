@@ -10,11 +10,11 @@ import { useAppDispatch } from '../../store/hooks';
 import { registerUser } from '../../api/services/users';
 import UInput from '../../components/UI/Input/UInput';
 import UButton from '../../components/UI/Button/UButton';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
+import { SignupModel } from '../../models/signUpForm';
 import mainPicture from '../../assets/reg-chel.webp';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
-import { SignupModel } from '../../models/signUpForm';
-import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const constans = {
   mailIco,
@@ -67,13 +67,10 @@ const Signup: React.FC = () => {
   });
 
   const onSubmit = async (data: SignupModel) => {
-    // console.log('Send it ...');
     try {
       if (data.password !== data.replay) return;
-      // delete data.replay;
       const response = await registerUser(data);
       dispatch(putUser(response.data.user));
-      // console.log('Response SignUp >>> ', response);
       navigate('/');
     } catch (e) {
       if (e instanceof AxiosError) {

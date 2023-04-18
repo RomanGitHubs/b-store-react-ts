@@ -1,27 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { BookModel } from '../../models/book';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import Book from '../../components/Book/Book';
+import { getFavoriteBooksThunk } from '../../store/reducers/book';
+import Loader from '../../components/Loaders/Loader';
 import EmptyFavorite from './EmptyFavorite';
-import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const Favorite: React.FC = () => {
-  scrollToTop();
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userSlice.user);
-  const books = useAppSelector((state) => state.bookSlice.books);
-  const [favoriteBooks, setFavoriteBooks] = useState<BookModel[]>([]);
+  const { favoriteBooks, status } = useAppSelector((state) => state.bookSlice);
 
   useEffect(() => {
-    const temp: BookModel[] = [];
-    for (let i = 0; i < books.length; i++) {
-      if (user?.favoriteBooks.includes(books[i].bookId)) temp.push(books[i]);
-    }
-    setFavoriteBooks(temp);
+    dispatch(getFavoriteBooksThunk(user?.favoriteBooks));
   }, []);
+
+  if (status === 'loading') {
+    return (
+      <Body>
+        <Loader/>
+      </Body>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <Body>
+        Error
+      </Body>
+    );
+  }
+
   return (
     <Body>
-      {favoriteBooks.length !== 0
+      {user?.favoriteBooks.length !== 0
         ? <FullFavorite>
           <h2 className='title'>Favorite</h2>
 

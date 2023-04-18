@@ -38,6 +38,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: true,
@@ -62,6 +63,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 4,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -86,6 +88,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 0,
+    ratingCount: 10,
     available: true,
     hardcover: false,
     paperback: true,
@@ -110,6 +113,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: true,
@@ -134,6 +138,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 5,
+    ratingCount: 10,
     available: false,
     hardcover: true,
     paperback: false,
@@ -158,6 +163,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -182,6 +188,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 1,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -206,6 +213,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -230,6 +238,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 3,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -254,6 +263,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 5,
+    ratingCount: 10,
     available: false,
     hardcover: true,
     paperback: false,
@@ -276,6 +286,7 @@ const testBooks: BookModel[] = [
     Queequeg to the natural history of whales, while reaching existential 
     depths that excite debate and contemplation to this day.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -300,6 +311,7 @@ const testBooks: BookModel[] = [
     and finds sweetness in them becouse there is sweetness everywhere
     if you are just willing to look.`,
     rating: 3,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -321,6 +333,7 @@ const testBooks: BookModel[] = [
     supplied for the first time in literature an equivalent in the 
     full scale for the new theory of modern physics.`,
     rating: 3,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: true,
@@ -341,6 +354,7 @@ const testBooks: BookModel[] = [
     Stephen Dedalus and Telemachus). Joyce fans worldwide now 
     celebrate June 16 as Bloomsday.`,
     rating: 4,
+    ratingCount: 10,
     available: true,
     hardcover: false,
     paperback: true,
@@ -360,6 +374,7 @@ const testBooks: BookModel[] = [
     clearly impossible. Quixano eventually appears to other people to have 
     lost his mind from little sleep and food and because of so much reading.`,
     rating: 3,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -392,6 +407,7 @@ const testBooks: BookModel[] = [
     Translated into dozens of languages, this stunning work is no less than 
     an accounting of the history of the human race.`,
     rating: 3,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: true,
@@ -414,6 +430,7 @@ const testBooks: BookModel[] = [
     uncomfortable with the unrestrained materialism and the lack of morality that went with 
     it, a kind of decadence.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -434,6 +451,7 @@ const testBooks: BookModel[] = [
     overwhelming grief to seething rage—and explores themes of treachery, revenge, incest, 
     and moral corruption.`,
     rating: 5,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: true,
@@ -460,6 +478,7 @@ const testBooks: BookModel[] = [
     This new translation does full justice to Dostoevsky's genius, particularly in the use of 
     the spoken word, which ranges over every mode of human expression.`,
     rating: 4,
+    ratingCount: 10,
     available: true,
     hardcover: true,
     paperback: false,
@@ -483,6 +502,7 @@ const testBooks: BookModel[] = [
     sleep through the night and warns him to not speak to Heathcliff about where he is 
     sleeping, for he would get in deep trouble.`,
     rating: 3,
+    ratingCount: 10,
     available: false,
     hardcover: true,
     paperback: false,

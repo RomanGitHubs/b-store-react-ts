@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { reqGenres } from '../../store/reducers/request';
+import { reqGenres, reqPagination } from '../../store/reducers/request';
 import UCheckbox from '../UI/Checkbox/UCheckbox';
 import { GenreModel } from '../../models/genre';
+import { putCatalogBooks } from '../../store/reducers/book';
 
 const GenresFilter: React.FC = () => {
   const genres = useAppSelector((state) => state.bookSlice.genres);
@@ -10,7 +11,7 @@ const GenresFilter: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleSelectGenre = (genre: GenreModel) => {
-    const tempArray = selectedGenres.slice();
+    const tempArray = [...selectedGenres];
     const findIndex = tempArray.findIndex((item: string) => item === genre.genreId);
     if (tempArray[findIndex]) {
       tempArray.splice(findIndex, 1);
@@ -18,6 +19,8 @@ const GenresFilter: React.FC = () => {
       tempArray.push(genre.genreId);
     }
     dispatch(reqGenres({ genresId: tempArray }));
+    dispatch(reqPagination(0));
+    dispatch(putCatalogBooks([]));
   };
 
   return (

@@ -2,7 +2,7 @@ import { BookModel } from '../../models/book';
 import { IRequestState } from '../../models/request';
 import testBooks from '../temp/books';
 
-interface IPromise {
+interface ICatalogBooks {
   books: BookModel[]
   minPrice: number
   maxPrice: number
@@ -23,7 +23,7 @@ export const getBooks = (state: IRequestState) => {
   const minPrice = +(Math.min(...arr) * 100).toFixed(2);
   const maxPrice = +(Math.max(...arr) * 100).toFixed(2);
 
-  return new Promise<IPromise>((res) => {
+  return new Promise<ICatalogBooks>((res) => {
     setTimeout(() => {
       res({
         books,

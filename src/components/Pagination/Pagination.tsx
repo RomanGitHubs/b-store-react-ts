@@ -5,6 +5,7 @@ import arrowLeft from '../../assets/icons/arrow-left.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import fillDot from '../../assets/icons/dot-fill.svg';
 import emptyDot from '../../assets/icons/dot-empty.svg';
+import scrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Pagination: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,15 +21,18 @@ const Pagination: React.FC = () => {
   const handleSetPreviusPage = () => {
     if (currentPage === 0) return;
     dispatch(reqPagination(currentPage - 1));
+    scrollToTop();
   };
 
   const handleSetNextPage = () => {
     if (currentPage + 1 === pageCount) return;
     dispatch(reqPagination(currentPage + 1));
+    scrollToTop();
   };
 
   const handleChangePage = (item: number) => {
     dispatch(reqPagination(item));
+    scrollToTop();
   };
 
   return (

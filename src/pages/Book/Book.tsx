@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import parse from 'html-react-parser';
 import { CartItem, putCart } from '../../store/reducers/cart';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { BookModel } from '../../models/book';
+import { getOneBookThunk } from '../../store/reducers/book';
 
 import AuthBanner from '../../components/AuthBanner/AuthBanner';
 import BookButton from '../../components/Book/Button/BookButton';
@@ -14,32 +14,25 @@ import Loader from '../../components/Loaders/Loader';
 import RateBook from '../../components/Book/RateBook/RateBook';
 import Recomendation from '../../components/Recomendation/Recomendation';
 import StarCounter from '../../components/Book/StarCounter/StarCounter';
-import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
-import { getBook } from '../../api/servicesTest/book';
 
 const Book: React.FC = () => {
-  scrollToTop();
   const dispatch = useAppDispatch();
-  const params = useParams<{id: string}>();
+  const params = useParams<{id: string | undefined}>();
 
   const user = useAppSelector((state) => state.userSlice.user);
-  const cartBooks = useAppSelector((state) => state.cartSlice.cartBooks);
-
-  const [book, setBook] = useState<BookModel>();
+  const cartItems = useAppSelector((state) => state.cartSlice.cartItems);
+  const book = useAppSelector((state) => state.bookSlice.oneBook[0]);
+  const { status } = useAppSelector((state) => state.bookSlice);
 
   const [thisBookInCart, setThisBookInCart] = useState<CartItem>();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const respBook = await getBook(params.id);
-        setBook(respBook);
-        setThisBookInCart(cartBooks.filter((item) => item.cartId === respBook?.bookId)[0]);
-      } catch (e) {
-        console.error('Error Fetch one book >> ', e);
-      }
-    })();
-  }, []);
+    dispatch(getOneBookThunk(params.id));
+  }, [params]);
+
+  useEffect(() => {
+    setThisBookInCart(cartItems.filter((item) => item.cartId === book?.bookId)[0]);
+  }, [cartItems, book]);
 
   const handleAddToCartPaper = (id: string, available: boolean) => {
     if (!available) return;
@@ -50,6 +43,22 @@ const Book: React.FC = () => {
     if (!available) return;
     dispatch(putCart({ id, view: 'hard' }));
   };
+
+  if (status === 'loading') {
+    return (
+      <Body>
+        <Loader/>
+      </Body>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <Body>
+        Error
+      </Body>
+    );
+  }
 
   return (
     <Body>
@@ -107,7 +116,7 @@ const Book: React.FC = () => {
 
           <Comments bookId={book.bookId}/>
           {!user && <AuthBanner/>}
-          {/* <Recomendation thisBook={book.bookId}/> */}
+          <Recomendation thisBook={book.bookId}/>
         </>
         : <Loader/>
       }
@@ -124,6 +133,7 @@ const Body = styled.main`
   padding: 0 calc((1.3% - 9px) * 8); 
   max-width: var(--width_content);
   margin-top: 60px;
+  min-height: calc(100vh - 112px - 294px);
 
   .discription {
     display: flex;

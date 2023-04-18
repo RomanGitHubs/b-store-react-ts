@@ -4,7 +4,7 @@ const Loader = styled.div`
   display: inline-block;
   width: 80px;
   height: 80px;
-  margin: 200px auto;
+  margin: auto;
     
   :after {
     content: " ";

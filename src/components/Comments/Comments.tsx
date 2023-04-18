@@ -18,6 +18,7 @@ const Comments: React.FC<IProps> = ({ bookId }) => {
   const [comments, setComments] = useState<CommentModel[]>([]);
 
   const handlePostComment = () => {
+    if (text.trim().length < 1) return;
     setText('');
     const newComent = {
       commentId: uuidv4(),

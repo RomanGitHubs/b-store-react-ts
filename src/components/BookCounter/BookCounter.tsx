@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { decreaseCart, deleteCart, increaseCart } from '../../store/reducers/cart';
+import { CartItem, decreaseCart, deleteCart, increaseCart } from '../../store/reducers/cart';
+import { deleteCartBooks } from '../../store/reducers/book';
 import Minus from '../../assets/icons/Minus.svg';
 import Plus from '../../assets/icons/Plus.svg';
 import Delete from '../../assets/icons/Delete.svg';
@@ -12,9 +13,19 @@ interface ICounter {
 }
 
 const BookCounter: React.FC<ICounter> = ({ id, view }) => {
-  const cart = useAppSelector((state) => state.cartSlice.cartBooks);
   const dispatch = useAppDispatch();
-  const item = cart.filter((item) => item.cartId === id)[0];
+  const { cartItems } = useAppSelector((state) => state.cartSlice);
+
+  const [item, setItem] = useState<CartItem>();
+
+  useEffect(() => {
+    setItem(cartItems.filter((item) => item.cartId === id)[0]);
+  }, [cartItems]);
+
+  const handleDelete = (id: string, view: 'hard' | 'paper') => {
+    dispatch(deleteCart({ id, view }));
+    dispatch(deleteCartBooks(id));
+  };
 
   return (
     <Body>
@@ -29,7 +40,7 @@ const BookCounter: React.FC<ICounter> = ({ id, view }) => {
         <img className='svg-plus' src={Plus} alt='plus'/>
       </button>
 
-      <button className='counter delete' onClick={() => dispatch(deleteCart({ id, view }))}>
+      <button className='counter delete' onClick={() => handleDelete(id, view)}>
         <img src={Delete} alt='delete'/>
       </button>
     </Body>

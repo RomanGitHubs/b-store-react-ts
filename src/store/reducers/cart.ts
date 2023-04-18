@@ -7,11 +7,11 @@ export type CartItem = {
 }
 
 interface ICartState {
-  cartBooks: CartItem[],
+  cartItems: CartItem[],
 }
 
 const initialState: ICartState = {
-  cartBooks: [],
+  cartItems: [],
 };
 
 const cart = createSlice({
@@ -19,22 +19,22 @@ const cart = createSlice({
   initialState,
   reducers: {
     putCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
-      if (state.cartBooks.find((item) => item.cartId === action.payload.id)) {
+      if (state.cartItems.find((item) => item.cartId === action.payload.id)) {
         if (action.payload.view === 'hard') {
-          const item = state.cartBooks.filter((item) => item.cartId === action.payload.id)[0];
+          const item = state.cartItems.filter((item) => item.cartId === action.payload.id)[0];
           item.hardCoverCount++;
           return;
         }
         if (action.payload.view === 'paper') {
-          const item = state.cartBooks.filter((item) => item.cartId === action.payload.id)[0];
+          const item = state.cartItems.filter((item) => item.cartId === action.payload.id)[0];
           item.paperCoverCount++;
           return;
         }
       }
 
       if (action.payload.view === 'hard') {
-        state.cartBooks = [
-          ...state.cartBooks,
+        state.cartItems = [
+          ...state.cartItems,
           {
             cartId: action.payload.id,
             hardCoverCount: 1,
@@ -43,8 +43,8 @@ const cart = createSlice({
         ];
       }
       if (action.payload.view === 'paper') {
-        state.cartBooks = [
-          ...state.cartBooks,
+        state.cartItems = [
+          ...state.cartItems,
           {
             cartId: action.payload.id,
             hardCoverCount: 0,
@@ -52,13 +52,12 @@ const cart = createSlice({
           },
         ];
       }
-      // state.cartBooks = [...state.cartBooks, action.payload];
     },
     increaseCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
       if (action.payload.view === 'hard') {
         return {
           ...state,
-          cartBooks: state.cartBooks.map((book) => {
+          cartItems: state.cartItems.map((book) => {
             return (book.cartId === action.payload.id
               ? { ...book, hardCoverCount: book.hardCoverCount + 1 }
               : book);
@@ -69,7 +68,7 @@ const cart = createSlice({
       if (action.payload.view === 'paper') {
         return {
           ...state,
-          cartBooks: state.cartBooks.map((book) => {
+          cartItems: state.cartItems.map((book) => {
             return (book.cartId === action.payload.id
               ? { ...book, paperCoverCount: book.paperCoverCount + 1 }
               : book);
@@ -81,7 +80,7 @@ const cart = createSlice({
       if (action.payload.view === 'hard') {
         return {
           ...state,
-          cartBooks: state.cartBooks.map((book) => {
+          cartItems: state.cartItems.map((book) => {
             return (book.cartId === action.payload.id && (
               (book.hardCoverCount > 0 && book.paperCoverCount > 0) ||
               (book.hardCoverCount > 1 && book.paperCoverCount === 0)
@@ -95,7 +94,7 @@ const cart = createSlice({
       if (action.payload.view === 'paper') {
         return {
           ...state,
-          cartBooks: state.cartBooks.map((book) => {
+          cartItems: state.cartItems.map((book) => {
             return (book.cartId === action.payload.id && (
               (book.paperCoverCount > 0 && book.hardCoverCount > 0) ||
               (book.paperCoverCount > 1 && book.hardCoverCount === 0)
@@ -108,8 +107,10 @@ const cart = createSlice({
       }
     },
     deleteCart(state, action: PayloadAction<{id: string, view: 'hard' | 'paper'}>) {
-      const index = state.cartBooks.findIndex((item) => item.cartId === action.payload.id);
-      state.cartBooks.splice(index, 1);
+      const tempArr = [...state.cartItems];
+      const index = state.cartItems.findIndex((item) => item.cartId === action.payload.id);
+      tempArr.splice(index, 1);
+      state.cartItems = tempArr;
     },
   },
 

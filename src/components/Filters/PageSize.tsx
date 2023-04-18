@@ -1,20 +1,30 @@
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { reqNoLimit, reqPagesize } from '../../store/reducers/request';
+import { reqNoLimit, reqPagesize, reqPagination } from '../../store/reducers/request';
 import fillChBox from '../../assets/checkbox-checked.svg';
 import emptyChBox from '../../assets/checkbox-empty.svg';
+import { putCatalogBooks } from '../../store/reducers/book';
 
-const PageSize: React.FC = () => {
+interface IProps {
+  setOpenFilter: (name: string) => void
+}
+
+const PageSize: React.FC<IProps> = ({ setOpenFilter }) => {
   const dispatch = useAppDispatch();
   const { pageSize, noLimit } = useAppSelector((store) => store.requestSlice);
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(reqPagesize(+e.target.value));
+    dispatch(putCatalogBooks([]));
+    dispatch(reqPagination(0));
   };
 
-  // const handleToggleLimit = () => {
-  //   dispatch(reqNoLimit());
-  // };
+  const handleToggleLimit = () => {
+    dispatch(reqNoLimit());
+    dispatch(putCatalogBooks([]));
+    dispatch(reqPagination(0));
+    setOpenFilter('');
+  };
 
   return (
     <Body>
@@ -38,7 +48,7 @@ const PageSize: React.FC = () => {
         <label htmlFor="pagesize-16">16</label>
       </Filter>
 
-      {/* <Checkbox>
+      <Checkbox>
         <input
           type="checkbox"
           className="ucheckbox"
@@ -49,7 +59,7 @@ const PageSize: React.FC = () => {
         <span className="fake-checkbox"/>
 
         No limit
-      </Checkbox> */}
+      </Checkbox>
     </Body>
   );
 };

@@ -9,7 +9,7 @@ const initialState: IRequestState = {
   selectedOrder: 'DESC',
   selectedQuery: '',
   currentPage: 0,
-  pageSize: 8,
+  pageSize: 4,
   noLimit: false,
 };
 
@@ -18,6 +18,8 @@ const request = createSlice({
   initialState,
   reducers: {
     reqGenres(state, action: PayloadAction<{ genresId: string[] }>) {
+      // eslint-disable-next-line no-console
+      console.log(action.payload.genresId);
       state.selectedGenres = action.payload.genresId;
     },
     reqPrice(state, action: PayloadAction<{min: number, max: number}>) {

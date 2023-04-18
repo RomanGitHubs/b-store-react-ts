@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { useActionCreators, useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { putCart } from '../../store/reducers/cart';
 import { addFavoriteBook, removeFavoriteBook } from '../../store/reducers/user';
 import { BookModel } from '../../models/book';
@@ -24,11 +24,10 @@ const Book: React.FC<IBook> = ({ book }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userSlice.user);
-  const cartBooks = useAppSelector((state) => state.cartSlice.cartBooks);
+  const cartBooks = useAppSelector((state) => state.cartSlice.cartItems);
 
   const thisBook = !!cartBooks.filter((item) => item.cartId === book.bookId)[0];
   const isFavoriteBook = user?.favoriteBooks.includes(book.bookId);
-  // const actions = useActionCreators(userAction)
 
   const handleAddToCart = (id: string, available: boolean) => {
     if (!available) return;

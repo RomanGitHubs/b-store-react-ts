@@ -57,8 +57,6 @@ const Login: React.FC = () => {
 
   const from: ILocation = location.state as ILocation || { from: { pathname: '/' } };
 
-  // console.log(from);
-
   const {
     handleSubmit,
     register,
@@ -73,11 +71,9 @@ const Login: React.FC = () => {
   });
 
   const onSubmit = async (data: LoginModel) => {
-    // console.log('Send it ...');
     try {
       const response = await loginUser(data);
       dispatch(putUser(response.data.user));
-      // console.log('Response Login >>> ', response);
 
       navigate(from.from.pathname, { replace: true });
     } catch (e) {

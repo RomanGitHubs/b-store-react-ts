@@ -8,7 +8,8 @@ import {
 import classnames from 'classnames';
 import './multiRangeSlider.css';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { reqPrice } from '../../../store/reducers/request';
+import { reqPagination, reqPrice } from '../../../store/reducers/request';
+import { putCatalogBooks } from '../../../store/reducers/book';
 
 interface IPrice {
   min: number
@@ -22,6 +23,8 @@ const Slider: React.FC = () => {
 
   const handleChangePrice = (price: IPrice) => {
     dispatch(reqPrice(price));
+    dispatch(reqPagination(0));
+    dispatch(putCatalogBooks([]));
   };
 
   const debounce = (func: (price: IPrice) => void) => {

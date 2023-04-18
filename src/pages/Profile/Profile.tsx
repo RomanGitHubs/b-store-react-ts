@@ -59,9 +59,9 @@ const Profile: React.FC = () => {
     // console.log('Form data >>> ', data);
     try {
       if (data.password === '') {
-        const { newPasswordReplay, newPassword, password, ...rest } = data;
+        const { name, email } = data;
 
-        const response = await updateUser(rest);
+        const response = await updateUser({ name, email });
         // console.log(response);
 
         dispatch(putUser(response.data.user));
