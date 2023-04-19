@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getBook } from '../../api/servicesTest/getBook';
-import { getBooks } from '../../api/servicesTest/getBooks';
-import { getGenres } from '../../api/servicesTest/genres';
+import { getCatalogBooks } from '../../api/servicesTest/getCatalogBooks';
+import { getGenres } from '../../api/servicesTest/getGenres';
 import { getCartBooks } from '../../api/servicesTest/getCartBooks';
 import { getFavoriteBooks } from '../../api/servicesTest/getFavoriteBooks';
 import { getAdditionalBook } from '../../api/servicesTest/getAdditionalBook';
@@ -151,7 +151,7 @@ const book = createSlice({
 });
 
 export const getCatalogBooksThunk = createAsyncThunk('books/getAll', (state: IRequestState) => {
-  return getBooks(state);
+  return getCatalogBooks(state);
 });
 
 export const getCartBooksThunk = createAsyncThunk('books/getCart', (state: string[] | undefined) => {

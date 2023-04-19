@@ -12,8 +12,8 @@ import { reqPagination, reqPrice } from '../../../store/reducers/request';
 import { putCatalogBooks } from '../../../store/reducers/book';
 
 interface IPrice {
-  min: number
-  max: number
+  minVal: number
+  maxVal: number
 }
 
 const Slider: React.FC = () => {
@@ -24,7 +24,7 @@ const Slider: React.FC = () => {
   const handleChangePrice = (price: IPrice) => {
     dispatch(reqPrice(price));
     dispatch(reqPagination(0));
-    dispatch(putCatalogBooks([]));
+    // dispatch(putCatalogBooks([]));
   };
 
   const debounce = (func: (price: IPrice) => void) => {
@@ -81,7 +81,7 @@ const Slider: React.FC = () => {
 
   // Get min and max values when their state changes
   useEffect(() => {
-    debouncePrice({ min: minVal, max: maxVal });
+    debouncePrice({ minVal, maxVal });
   }, [minVal, maxVal]);
 
   return (

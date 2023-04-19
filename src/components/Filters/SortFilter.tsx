@@ -10,7 +10,7 @@ const Sort: React.FC = () => {
   const { selectedSort } = useAppSelector((state) => state.requestSlice);
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(reqSort(e.target.value));
+    dispatch(reqSort(e.target.value as unknown as 'title' | 'price' | 'author' | 'rating' | 'date'));
     dispatch(reqPagination(0));
     dispatch(putCatalogBooks([]));
   };
@@ -20,31 +20,30 @@ const Sort: React.FC = () => {
     dispatch(reqPagination(0));
     dispatch(putCatalogBooks([]));
   };
-
   return (
     <Body >
       <Filter>
-        <input id="sort-1" name="sort" type="radio" value="price" onChange={handlerChange} checked={selectedSort === 'price'}/>
+        <input id="sort-1" name="sort" type="radio" value={'price'} onChange={handlerChange} checked={selectedSort === 'price'}/>
         <label htmlFor="sort-1">Price</label>
         {selectedSort === 'price' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="sort-2" name="sort" type="radio" value="title" onChange={handlerChange} checked={selectedSort === 'title'}/>
+        <input id="sort-2" name="sort" type="radio" value={'title'} onChange={handlerChange} checked={selectedSort === 'title'}/>
         <label htmlFor="sort-2">Title</label>
         {selectedSort === 'title' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="sort-3" name="sort" type="radio" value="author" onChange={handlerChange} checked={selectedSort === 'author'}/>
+        <input id="sort-3" name="sort" type="radio" value={'author'} onChange={handlerChange} checked={selectedSort === 'author'}/>
         <label htmlFor="sort-3">Author name</label>
         {selectedSort === 'author' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="sort-4" name="sort" type="radio" value="rating" onChange={handlerChange} checked={selectedSort === 'rating'}/>
+        <input id="sort-4" name="sort" type="radio" value={'rating'} onChange={handlerChange} checked={selectedSort === 'rating'}/>
         <label htmlFor="sort-4">Rating</label>
         {selectedSort === 'rating' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>
       <Filter>
-        <input id="sort-5" name="sort" type="radio" value="date" onChange={handlerChange} checked={selectedSort === 'date'}/>
+        <input id="sort-5" name="sort" type="radio" value={'date'} onChange={handlerChange} checked={selectedSort === 'date'}/>
         <label htmlFor="sort-5">Date of issue</label>
         {selectedSort === 'date' && <img className='arrows' src={orderArrow} onClick={handlerOrder} alt='sort arrows'/>}
       </Filter>

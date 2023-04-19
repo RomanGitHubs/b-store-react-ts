@@ -9,6 +9,7 @@ import Book from '../Book/Book';
 import Loader from '../Loaders/Loader';
 import Pagination from '../Pagination/Pagination';
 import { BookModel } from '../../models/book';
+import books from '../../assets/cart-default.webp';
 
 interface ICatalogBody {
   openFilter: string
@@ -59,6 +60,18 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
           {!requestSlice.noLimit && <Pagination/>}
         </>
       }
+
+      {catalogBooks?.length === 0 && status !== 'loading' &&
+        <div className='book-content'>
+          <NoResults>
+            <img className='image' src={books} alt='Books'/>
+            <div className='content'>
+              <h2 className='content__title'>No results</h2>
+            </div>
+          </NoResults>
+        </div>
+      }
+
       {status === 'loading' && requestSlice.noLimit && <Body><Loader/></Body> }
     </Body>
   );
@@ -87,20 +100,10 @@ const Body = styled.section`
   }
 
   .book-content {
-    /* align-content: flex-start;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    justify-content: space-between; */
-    /* display: grid; */
     display: flex;
     flex-wrap: wrap;
     margin: 40px auto 0;
     gap: 20px;
-    /* justify-content: space-between; */
-    /* -webkit-box-pack: justify; */
   }
 
   .empty-catalog {
@@ -110,5 +113,30 @@ const Body = styled.section`
     line-height: 60px;
     color: var(--dark);
     margin: 100px auto 100px;
+  }
+`;
+
+const NoResults = styled.div`
+   display: flex;
+  margin: auto 0;
+  
+  .image {
+    height: 261px;
+    width: 433px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 110px;
+
+    &__title {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 60px;
+      color: #0D1821;
+      margin: 0;
+      margin-top: 50px;
+    }
   }
 `;

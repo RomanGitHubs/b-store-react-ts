@@ -18,20 +18,26 @@ const request = createSlice({
   initialState,
   reducers: {
     reqGenres(state, action: PayloadAction<{ genresId: string[] }>) {
-      // eslint-disable-next-line no-console
-      console.log(action.payload.genresId);
       state.selectedGenres = action.payload.genresId;
     },
-    reqPrice(state, action: PayloadAction<{min: number, max: number}>) {
-      state.selectedMinPrice = action.payload.min;
-      state.selectedMaxPrice = action.payload.max;
+    reqPrice(state, action: PayloadAction<{minVal: number, maxVal: number}>) {
+      state.selectedMinPrice = action.payload.minVal;
+      state.selectedMaxPrice = action.payload.maxVal;
     },
-    reqSort(state, action: PayloadAction<string>) {
+    reqSort(state, action: PayloadAction<'price' | 'title' | 'author' | 'rating' | 'date'>) {
       state.selectedSort = action.payload;
     },
     reqOrder(state) {
-      if (state.selectedOrder === 'DESC') state.selectedOrder = 'ASC';
-      if (state.selectedOrder === 'ASC') state.selectedOrder = 'DESC';
+      switch (state.selectedOrder) {
+      case 'ASC':
+        state.selectedOrder = 'DESC';
+        break;
+      case 'DESC':
+        state.selectedOrder = 'ASC';
+        break;
+      default:
+        state.selectedOrder = 'DESC';
+      }
     },
     reqQuery(state, action: PayloadAction<{ query: string }>) {
       state.selectedQuery = action.payload.query;

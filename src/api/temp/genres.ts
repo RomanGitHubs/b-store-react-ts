@@ -52,6 +52,9 @@ const testGenres: GenreModel[] = [
   }, {
     genreId: '36f1e803-5626-43b8-b5a8-c20ad111d49c',
     genre: 'Encyclopedia',
+  }, {
+    genreId: '1eeefc40-deba-11ed-b5ea-0242ac120002',
+    genre: 'Self-help book',
   },
 ];
 

@@ -13,4 +13,6 @@ export type BookModel = {
   paperPrice: number;
   news: boolean;
   bestsaller: boolean;
+  date: string;
+  genre: string[];
 }

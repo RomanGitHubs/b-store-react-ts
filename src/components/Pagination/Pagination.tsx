@@ -38,11 +38,15 @@ const Pagination: React.FC = () => {
   return (
     <Body>
       {(currentPage !== 0) && <div className='pagination__left' onClick={handleSetPreviusPage}/>}
-      {arr.map((item) => <div
-        className={item === currentPage ? 'pagination__checked' : 'pagination__point'}
-        key={item}
-        onClick={() => handleChangePage(item)}
-      />)}
+
+      {arr.length > 1 &&
+        arr.map((item) => <div
+          className={item === currentPage ? 'pagination__checked' : 'pagination__point'}
+          key={item}
+          onClick={() => handleChangePage(item)}
+        />)
+      }
+
       {(currentPage + 1 !== pageCount) && <div className='pagination__right' onClick={handleSetNextPage}/>}
     </Body>
   );
