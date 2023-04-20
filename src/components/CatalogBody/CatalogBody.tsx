@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { getAdditionalBookThunk, getCatalogBooksThunk, loadGenreThunk, putCatalogBooks } from '../../store/reducers/book';
+import { getAdditionalBookThunk, getCatalogBooksThunk, putCatalogBooks } from '../../store/reducers/book';
 import { reqPagination } from '../../store/reducers/request';
 import Filters from '../Filters/Filters';
 import Book from '../Book/Book';
@@ -28,7 +28,6 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
     if (!requestSlice.noLimit) {
       dispatch(putCatalogBooks([]));
       dispatch(getCatalogBooksThunk(requestSlice));
-      dispatch(loadGenreThunk());
     }
   }, [requestSlice]);
 

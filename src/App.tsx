@@ -3,6 +3,7 @@ import { AxiosError } from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import { useAppDispatch } from './store/hooks';
 import { loadUserThunk } from './store/reducers/user';
+import { loadGenreThunk } from './store/reducers/book';
 import { RequireAuth } from './components/RequireAuth/RequireAuth';
 import Layout from './components/Layout/Layout';
 import Loader from './components/Loaders/Suspense';
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         if (!token) {
           dispatch(loadUserThunk());
         }
+        dispatch(loadGenreThunk());
       } catch (e) {
         if (e instanceof AxiosError) {
           const { response } = e as AxiosError;

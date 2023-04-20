@@ -8,6 +8,8 @@ const testUser: UserModel = {
   photo: '',
   favoriteBooks: ['936028fe-fd10-4805-8c7d-552393f0e949', 'd557be17-16a0-4d15-9204-0490b8bafd05'],
   myComments: [],
+  cartBooks: [],
+  ratedBooks: [],
 };
 
 export default testUser;

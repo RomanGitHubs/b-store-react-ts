@@ -22,6 +22,7 @@ const Book: React.FC = () => {
   const user = useAppSelector((state) => state.userSlice.user);
   const cartItems = useAppSelector((state) => state.cartSlice.cartItems);
   const book = useAppSelector((state) => state.bookSlice.oneBook[0]);
+  const genres = useAppSelector((state) => state.bookSlice.genres);
   const { status } = useAppSelector((state) => state.bookSlice);
 
   const [thisBookInCart, setThisBookInCart] = useState<CartItem>();
@@ -84,6 +85,17 @@ const Book: React.FC = () => {
               <p className='discription__content__text'>
                 {parse(book.description)}
               </p>
+
+              <p className='discription__content__date'>
+                Published: {book.date}
+              </p>
+
+              <div className='discription__content__genres'>
+                {book.genre.map((book) => {
+                  const name = genres.filter((item) => item.genreId === book)[0];
+                  return <GenreBlock key={name.genreId}>{name.genre}</GenreBlock>;
+                })}
+              </div>
 
               <div className='buy__buttons'>
                 <div className='buy__buttons__wrapper'>
@@ -167,6 +179,15 @@ const Body = styled.main`
         font-weight: 500;
         font-size: 16px;
         line-height: 24px;
+        margin: 10px 0;
+      }
+
+      &__date {
+
+      }
+
+      &__genres {
+        display: flex;
         margin: 10px 0 74px;
       }
 
@@ -185,4 +206,11 @@ const Body = styled.main`
       }
     }
   }
+`;
+
+const GenreBlock = styled.p`
+  padding: 3px 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 12px 12px 0;
 `;

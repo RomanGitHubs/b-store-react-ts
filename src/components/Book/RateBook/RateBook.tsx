@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { useAppDispatch } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { putRating } from '../../../store/reducers/book';
 import star from '../../../assets/star.svg';
 import starFilled from '../../../assets/star-filled.svg';
 import arrow from '../../../assets/icons/Gray-Back Arrow.svg';
+import { putRateBook } from '../../../store/reducers/user';
 
 interface ICounter {
   bookId: string
@@ -11,29 +12,40 @@ interface ICounter {
 }
 const RateBook: React.FC<ICounter> = ({ bookId, rating }) => {
   const dispatch = useAppDispatch();
+  const ratedBooks = useAppSelector((store) => store.userSlice.user?.ratedBooks);
 
   const handleOneStar = (id: string) => {
+    if (ratedBooks?.includes(id)) return;
     dispatch(putRating({ id, rate: 1 }));
+    dispatch(putRateBook(id));
   };
 
   const handleTwoStar = (id: string) => {
+    if (ratedBooks?.includes(id)) return;
     dispatch(putRating({ id, rate: 2 }));
+    dispatch(putRateBook(id));
   };
 
   const handleTreeStar = (id: string) => {
+    if (ratedBooks?.includes(id)) return;
     dispatch(putRating({ id, rate: 3 }));
+    dispatch(putRateBook(id));
   };
 
   const handleFourStar = (id: string) => {
+    if (ratedBooks?.includes(id)) return;
     dispatch(putRating({ id, rate: 4 }));
+    dispatch(putRateBook(id));
   };
 
   const handleFiveStar = (id: string) => {
+    if (ratedBooks?.includes(id)) return;
     dispatch(putRating({ id, rate: 5 }));
+    dispatch(putRateBook(id));
   };
 
   return (
-    <Body>
+    <Body ratedBooks={ratedBooks} bookId={bookId}>
       <div className="rate-stars">
         <img className="star" src={starFilled} alt='star'/>
 
@@ -89,18 +101,24 @@ const RateBook: React.FC<ICounter> = ({ bookId, rating }) => {
           </>
         }
       </div>
-
-      <div className="ratebook-label">
-        <img className="left-arrow" src={arrow} alt='arrow' />
-        Rate this book!
-      </div>
+      {!ratedBooks?.includes(bookId) &&
+        <div className="ratebook-label">
+          <img className="left-arrow" src={arrow} alt='arrow' />
+          Rate this book!
+        </div>
+      }
     </Body>
   );
 };
 
+interface IStyledProps {
+  ratedBooks: string[] | undefined
+  bookId: string
+}
+
 export default RateBook;
 
-const Body = styled.div`
+const Body = styled.div<IStyledProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,7 +136,7 @@ const Body = styled.div`
       display: flex;
       width: 26px;
       height: 26px;
-      cursor: pointer;
+      cursor:  ${(props) => (props.ratedBooks?.includes(props.bookId) ? 'auto' : 'pointer')};
       margin: 0 10px;
       background: url(${star});
       background-size: cover;
@@ -128,7 +146,7 @@ const Body = styled.div`
       display: flex;
       width: 26px;
       height: 26px;
-      cursor: pointer;
+      cursor:  ${(props) => (props.ratedBooks?.includes(props.bookId) ? 'auto' : 'pointer')};
       margin: 0 10px;
       background: url(${starFilled});
       background-size: cover;

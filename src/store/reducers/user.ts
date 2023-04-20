@@ -20,6 +20,9 @@ const user = createSlice({
     putUser(state, action: PayloadAction<UserModel>) {
       state.user = action.payload;
     },
+    putRateBook(state, action: PayloadAction<string>) {
+      if (state.user) state.user.ratedBooks = [...state.user.ratedBooks, action.payload];
+    },
     logoutUser(state) {
       state.user = null;
     },
@@ -51,5 +54,11 @@ export const loadUserThunk = createAsyncThunk('user/get', () => {
 
 // export const { reducer: userReducer, actions: userAction } = user;
 
-export const { putUser, logoutUser, addFavoriteBook, removeFavoriteBook } = user.actions;
+export const {
+  putUser,
+  logoutUser,
+  addFavoriteBook,
+  removeFavoriteBook,
+  putRateBook,
+} = user.actions;
 export default user.reducer;

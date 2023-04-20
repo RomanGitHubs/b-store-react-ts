@@ -9,7 +9,6 @@ import classnames from 'classnames';
 import './multiRangeSlider.css';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { reqPagination, reqPrice } from '../../../store/reducers/request';
-import { putCatalogBooks } from '../../../store/reducers/book';
 
 interface IPrice {
   minVal: number
@@ -20,11 +19,11 @@ const Slider: React.FC = () => {
   const dispatch = useAppDispatch();
   const { minPrice, maxPrice } = useAppSelector((state) => state.bookSlice);
   const { selectedMinPrice, selectedMaxPrice } = useAppSelector((state) => state.requestSlice);
-
+  let i = 0;
   const handleChangePrice = (price: IPrice) => {
+    if (i === 0) { i++; return; }
     dispatch(reqPrice(price));
     dispatch(reqPagination(0));
-    // dispatch(putCatalogBooks([]));
   };
 
   const debounce = (func: (price: IPrice) => void) => {

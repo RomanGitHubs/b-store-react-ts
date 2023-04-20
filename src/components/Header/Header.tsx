@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { reqQuery } from '../../store/reducers/request';
@@ -12,10 +12,12 @@ import userIco from '../../assets/button_user.svg';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const user = useAppSelector((state) => state.userSlice.user);
   const cartBooks = useAppSelector((state) => state.cartSlice.cartItems);
 
   const handleQueryFind = (e: React.ChangeEvent<HTMLInputElement>) => {
+    navigate('catalog');
     dispatch(reqQuery({ query: e.target.value }));
   };
 

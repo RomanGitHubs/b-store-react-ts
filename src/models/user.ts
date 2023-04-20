@@ -5,4 +5,6 @@ export type UserModel = {
   photo: string | null
   favoriteBooks: string[]
   myComments: number[]
+  cartBooks: string[]
+  ratedBooks: string[]
 };
