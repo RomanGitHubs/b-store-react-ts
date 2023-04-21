@@ -4,7 +4,8 @@ import testGenres from '../temp/genres';
 
 export const getGenres = () => {
   const booksGenres = testBooks.map((item) => item.genre).flat();
-  const genres = testGenres.filter((item) => booksGenres.includes(item.genreId));
+  const genres = testGenres.filter((item) => booksGenres.includes(item.genreId))
+    .sort((a, b) => (a.genre > b.genre ? 1 : -1));
 
   return new Promise<GenreModel[]>((res) => {
     setTimeout(() => {

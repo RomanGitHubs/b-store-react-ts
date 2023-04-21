@@ -1,3 +1,4 @@
+import { BookModel } from '../../models/book';
 import bookCover1 from '../../assets/books/narnia.webp';
 import bookCover2 from '../../assets/books/psychlogy.webp';
 import bookCover3 from '../../assets/books/doriangray.webp';
@@ -18,7 +19,20 @@ import bookCover17 from '../../assets/books/the-great-gatsby.webp';
 import bookCover18 from '../../assets/books/hamlet.webp';
 import bookCover19 from '../../assets/books/the-brothers-karamazov.webp';
 import bookCover20 from '../../assets/books/wuthering-heights.webp';
-import { BookModel } from '../../models/book';
+import bookCover21 from '../../assets/books/the-catcher-in-the-rye.webp';
+import bookCover22 from '../../assets/books/pride-and-prejudice.webp';
+import bookCover23 from '../../assets/books/huckleberry-finn.webp';
+import bookCover24 from '../../assets/books/anna-karenina.webp';
+import bookCover25 from '../../assets/books/alices.webp';
+import bookCover26 from '../../assets/books/the-iliad.webp';
+import bookCover27 from '../../assets/books/to-the-lighthouse.webp';
+import bookCover28 from '../../assets/books/catch-22.webp';
+import bookCover29 from '../../assets/books/heart-darkness.webp';
+import bookCover30 from '../../assets/books/the-sound-and-the-fury.webp';
+import bookCover31 from '../../assets/books/1984.webp';
+import bookCover32 from '../../assets/books/great-expectations.webp';
+import bookCover33 from '../../assets/books/1001.webp';
+import bookCover34 from '../../assets/books/the-grapes-of-wrath.webp';
 
 const testBooks: BookModel[] = [
   {
@@ -50,7 +64,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '16-10-1950',
-    genre: ['f3eca9f4-514f-4070-bd70-eb82254b8f60', 'f553e028-0e28-4b99-812f-69e8f78cbe8d', 'e67741e4-3c9e-4cbf-a992-9d1bd2dd40e8'],
+    genre: ['Фэнтези/Приключения '],
   }, {
     bookId: '033e7cd6-1dce-4b9c-b370-bfc35086680b',
     photo: bookCover2,
@@ -80,7 +94,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
     date: '13-09-2022',
-    genre: ['5f5e4d72-3db7-45be-81bc-1c6c547d979b'],
+    genre: ['Учебное пособие'],
   }, {
     bookId: 'd557be17-16a0-4d15-9204-0490b8bafd05',
     photo: bookCover3,
@@ -117,7 +131,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '1-07-1890',
-    genre: ['83088a39-60c5-4e61-8d56-09be5235b73e'],
+    genre: ['Готическая литература, Философский роман'],
   }, {
     bookId: '3bbd5dbd-fa30-4c27-a2a5-64a99fccf348',
     photo: bookCover4,
@@ -141,7 +155,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '13-09-2016',
-    genre: ['1eeefc40-deba-11ed-b5ea-0242ac120002'],
+    genre: ['Литература по саморазвитию'],
   }, {
     bookId: '94fd3c71-d481-430e-a8b3-155a15a88efd',
     photo: bookCover5,
@@ -183,7 +197,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
     date: '05-12-2002',
-    genre: ['83088a39-60c5-4e61-8d56-09be5235b73e', 'f3eca9f4-514f-4070-bd70-eb82254b8f60', '115a8505-3b01-4d29-9ad9-6562b6b856a4'],
+    genre: ['Фэнтези'],
   }, {
     bookId: 'f470b1b6-f33d-43f2-bcb4-a3fb60dd5d44',
     photo: bookCover6,
@@ -205,7 +219,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '03-11-2005',
-    genre: ['7692ec4e-1e11-45a5-8de8-51cf4110cac0', 'f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+    genre: ['Сказка, Фикшн, Фольклор'],
   }, {
     bookId: '00bcae7a-ec0e-469c-a8d6-12397e7f7f33',
     photo: bookCover7,
@@ -237,7 +251,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-10-1948',
-    genre: ['1eeefc40-deba-11ed-b5ea-0242ac120002'],
+    genre: ['Литература по саморазвитию'],
   }, {
     bookId: 'a1611493-5c06-40c7-8a07-72789551a431',
     photo: bookCover8,
@@ -266,7 +280,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-01-1997',
-    genre: ['1eeefc40-deba-11ed-b5ea-0242ac120002'],
+    genre: ['Литература по саморазвитию '],
   }, {
     bookId: 'a430cb19-660d-4f2e-8fba-41875c0fa62b',
     photo: bookCover9,
@@ -292,7 +306,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '01-10-2015',
-    genre: ['7692ec4e-1e11-45a5-8de8-51cf4110cac0'],
+    genre: ['Фикшн'],
   }, {
     bookId: 'bf14eb1c-c7c8-4e08-81c3-886b2a45e308',
     photo: bookCover10,
@@ -319,7 +333,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '04-11-2014',
-    genre: ['9aac6a47-b284-4e0d-94ac-0c5d17a53c78'],
+    genre: ['Поэзия'],
   }, {
     bookId: '572aa4f6-7bb5-4af4-b291-358f3bbb6924',
     photo: bookCover11,
@@ -344,7 +358,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-10-1851',
-    genre: ['115a8505-3b01-4d29-9ad9-6562b6b856a4', 'e67741e4-3c9e-4cbf-a992-9d1bd2dd40e8'],
+    genre: ['Эпопея, Приключенческая художественная литература, Морская художественная литература'],
   }, {
     bookId: '5f2dbf9e-1be1-4c7b-b866-50bbd161c9e4',
     photo: bookCover12,
@@ -375,7 +389,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '05-11-2019',
-    genre: ['82f14fb5-c9de-4f7e-8654-219bc60049ea'],
+    genre: ['Поэзия, Биография, Автобиография'],
   }, {
     bookId: '899453d4-ad15-4dfe-8a2b-3a1ae953cde6',
     photo: bookCover13,
@@ -399,7 +413,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '16-10-1913',
-    genre: ['82f14fb5-c9de-4f7e-8654-219bc60049ea', '409e9b83-151e-4596-8fc5-029447a3e164'],
+    genre: ['Литература модернизма, Философский роман, Социальный роман, Автобиографический роман'],
   }, {
     bookId: 'd788449e-d47a-4859-aba5-ec5cf13f3e13',
     photo: bookCover14,
@@ -422,7 +436,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
     date: '22-12-1920',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164', 'f3eca9f4-514f-4070-bd70-eb82254b8f60'],
+    genre: ['Роман, Фикшн'],
   }, {
     bookId: '305aa776-46a0-4d69-8d51-f461611da72e',
     photo: bookCover15,
@@ -444,7 +458,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-01-1605',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164', '9aac6a47-b284-4e0d-94ac-0c5d17a53c78', '115a8505-3b01-4d29-9ad9-6562b6b856a4'],
+    genre: ['Роман, Пародия, Пикареска, Сатира, Фарс,'],
   }, {
     bookId: '5ca2ad07-9a8e-4e71-8502-6abf48f965df',
     photo: bookCover16,
@@ -479,7 +493,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '10-05-1967',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164', 'f3eca9f4-514f-4070-bd70-eb82254b8f60', '7692ec4e-1e11-45a5-8de8-51cf4110cac0'],
+    genre: ['Роман, Магический реализм, Эпическое фэнтези, Семейная сага, Эпическая фантастика'],
   }, {
     bookId: 'c65a886d-0df3-4c4b-a554-e4f29d9ef834',
     photo: bookCover17,
@@ -504,7 +518,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '10-04-9125',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164', '7692ec4e-1e11-45a5-8de8-51cf4110cac0'],
+    genre: ['Роман, Фикшн, Трагедия'],
   }, {
     bookId: '3fe29e71-efe1-4377-8fef-7d5c1592778f',
     photo: bookCover18,
@@ -527,7 +541,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '08-06-1600',
-    genre: ['9aac6a47-b284-4e0d-94ac-0c5d17a53c78'],
+    genre: ['Трагедия, Драма'],
   }, {
     bookId: '0c8bcfc2-3c77-4b41-895e-79a0f0069b4c',
     photo: bookCover19,
@@ -556,7 +570,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '16-11-1880',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164'],
+    genre: ['Роман, Саспенс, Философский роман'],
   }, {
     bookId: 'c363d42a-dc04-4900-a1e3-503008be0ab9',
     photo: bookCover20,
@@ -582,8 +596,371 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-12-1847',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164'],
+    genre: ['Роман, Готическая литература, Любовный роман, Трагедия'],
   },
+  
+  
+  //       20
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  {
+    bookId: '9d1b6100-dda5-4705-b09a-2f5e15b10824',
+    photo: bookCover21,
+    author: 'J. D. Salinger',
+    title: 'The Catcher in the Rye',
+    description: `The Catcher in the Rye is a 1945 novel by J. D. Salinger. 
+      Originally published for adults, the novel has become a common part of 
+      high school and college curricula throughout the English-speaking world; 
+      it has also been translated into almost all of the world's major languages. 
+      Around 250,000 copies are sold each year, with total sales of more than sixty-five million. 
+      The novel's antihero, Holden Caulfield, has become an icon for teenage rebellion.`,
+    rating: 3.8,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.4698,
+    paperPrice: 0.0698,
+    news: false,
+    bestsaller: false,
+    date: '16-07-1951',
+    genre: ['Роман, Роман воспитания, Подростковая литература,'],
+  }, {
+    bookId: 'd7fa5e7a-45bc-48ac-99f3-99d9ea7f8126',
+    photo: bookCover22,
+    author: 'Jane Austen',
+    title: 'Pride and Prejudice',
+    description: `The book is narrated in free indirect speech following the main character 
+      Elizabeth Bennet as she deals with matters of upbringing, marriage, moral rightness and education 
+      in her aristocratic society. Though the book's setting is uniquely turn of the 19th century, 
+      it remains a fascination of modern readership, continuing to remain at the top of lists titled 
+      "most loved books of all time", and receiving considerable attention from literary critics. 
+      This modern interest has resulted in a number of dramatic adaptations and a plethora of books 
+      developing Austen's memorable characters further.`,
+    rating: 4.3,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.0968,
+    paperPrice: 0.0350,
+    news: false,
+    bestsaller: false,
+    date: '28-01-1813',
+    genre: ['Любовный роман, Фикшн'],
+  }, {
+    bookId: '2616c503-e4ef-4f01-882c-766ad8efbef0',
+    photo: bookCover23,
+    author: 'Mark Twain',
+    title: 'The Adventures of Huckleberry Finn',
+    description: `Revered by all of the town's children and dreaded by all of its mothers, 
+      Huckleberry Finn is indisputably the most appealing child-hero in American literature. 
+      Unlike the tall-tale, idyllic world of Tom Sawyer, The Adventures of Huckleberry Finn 
+      is firmly grounded in early reality. From the abusive drunkard who serves as Huckleberry's 
+      father, to Huck's first tentative grappling with issues of personal liberty and the unknown, 
+      Huckleberry Finn endeavors to delve quite a bit deeper into the complexities — both joyful and tragic of life.`,
+    rating: 3.8,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.0764,
+    paperPrice: 0.0864,
+    news: false,
+    bestsaller: false,
+    date: '10-12-1884',
+    genre: ['Роман, Сатира, Юмор, Детская литература,'],
+  }, {
+    bookId: 'e0ab6eb5-b9e7-4f76-8fa9-7407fa572e71',
+    photo: bookCover24,
+    author: 'Leo Tolstoy',
+    title: 'Anna Karenina',
+    description: `Anna Karenina tells of the doomed love affair between the sensuous and 
+      rebellious Anna and the dashing officer, Count Vronsky. Tragedy unfolds as Anna rejects 
+      her passionless marriage and must endure the hypocrisies of society. Set against a 
+      vast and richly textured canvas of nineteenth-century Russia, the novel's seven major 
+      characters create a dynamic imbalance, playing out the contrasts of city and country 
+      life and all the variations on love and family happiness. While previous versions have 
+      softened the robust, and sometimes shocking, quality of Tolstoy's writing, Pevear and 
+      Volokhonsky have produced a translation true to his powerful voice. This award-winning 
+      team's authoritative edition also includes an illuminating introduction and explanatory notes. 
+      Beautiful, vigorous, and eminently readable, this Anna Karenina will be the definitive 
+      text for generations to come.`,
+    rating: 4.7,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.1191,
+    paperPrice: 0.2300,
+    news: false,
+    bestsaller: false,
+    date: '18-08-1877',
+    genre: ['Роман, Фикшн, Реализм'],
+  }, {
+    bookId: '58b9a6bb-f59e-45be-9e61-379157d54487',
+    photo: bookCover25,
+    author: 'Lewis Carroll',
+    title: `Alice's Adventures in Wonderland`,
+    description: `In 1862 Charles Lutwidge Dodgson, a shy Oxford mathematician with a stammer, 
+      created a story about a little girl tumbling down a rabbit hole. Thus began the immortal 
+      adventures of Alice, perhaps the most popular heroine in English literature. Countless 
+      scholars have tried to define the charm of the Alice books–with those wonderfully eccentric 
+      characters the Queen of Hearts, Tweedledum, and Tweedledee, the Cheshire Cat, Mock Turtle, 
+      the Mad Hatter et al.–by proclaiming that they really comprise a satire on language, 
+      a political allegory, a parody of Victorian children’s literature, even a reflection of 
+      contemporary ecclesiastical history. Perhaps, as Dodgson might have said, Alice is no more 
+      than a dream, a fairy tale about the trials and tribulations of growing up–or down, or 
+      all turned round–as seen through the expert eyes of a child.`,
+    rating: 4.3,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.0331,
+    paperPrice: 0.0959,
+    news: false,
+    bestsaller: false,
+    date: '14-03-1865',
+    genre: ['Детская литература, Фэнтези, Литература абсурда, Фантастика'],
+  }, {
+    bookId: 'b76f5ad3-2aa0-4d54-a006-b92232f3120a',
+    photo: bookCover26,
+    author: 'Homer',
+    title: 'The Iliad',
+    description: `The Iliad is an epic poem in dactylic hexameters, traditionally 
+      attributed to Homer. Set in the Trojan War, the ten-year siege of Ilium by a 
+      coalition of Greek states, it tells of the battles and events during the weeks
+      of a quarrel between King Agamemnon and the warrior Achilles. Although the 
+      story covers only a few weeks in the final year of the war, the Iliad mentions 
+      or alludes to many of the Greek legends about the siege. Along with the Odyssey, 
+      also attributed to Homer, the Iliad is among the oldest extant works of Western 
+      literature, and its written version is usually dated to around the eighth century 
+      BC. The Iliad contains approximately 15,700 lines, and is written in a literary 
+      amalgam of several Greek dialects. The authorship of the poem is disputed.`,
+    rating: 3.9,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.3168,
+    paperPrice: 0.7000,
+    news: false,
+    bestsaller: false,
+    date: '01-01-0000',
+    genre: ['Эпос, Поэзия, Эпопея'],
+  }, {
+    bookId: '8f7043eb-ea34-4716-88b1-dae223a69e45',
+    photo: bookCover27,
+    author: 'Virginia Woolf',
+    title: 'To the Lighthouse',
+    description: `A landmark novel of high modernism, the text, centering on the Ramsay 
+      family and their visits to the Isle of Skye in Scotland between 1910 and 1920, 
+      skillfully manipulates temporality and psychological exploration. The novel includes 
+      little dialogue and almost no action; most of it is written as thoughts and observations. 
+      The novel recalls the power of childhood emotions and highlights the impermanence of 
+      adult relationships. Among the book's many tropes and themes are those of loss, 
+      subjectivity, and the problem of perception.`,
+    rating: 4.2,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.0999,
+    paperPrice: 0.0114,
+    news: false,
+    bestsaller: false,
+    date: '05-05-1927',
+    genre: ['Роман, Поток сознания, Психологический реализм, Домашняя художественная литература'],
+  }, {
+    bookId: '59b4f474-92e0-4063-92a4-781695df3e78',
+    photo: bookCover28,
+    author: 'Joseph Heller',
+    title: 'Catch-22',
+    description: `Catch-22 is a satirical, historical novel by the American author Joseph Heller, 
+      first published in 1961. The novel, set during the later stages of World War II from 1943 onwards, 
+      is frequently cited as one of the great literary works of the twentieth century. 
+      It has a distinctive non-chronological style where events are described from different characters' 
+      points of view and out of sequence so that the time line develops along with the plot.`,
+    rating: 5,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.1849,
+    paperPrice: 0.0937,
+    news: false,
+    bestsaller: false,
+    date: '18-10-1961',
+    genre: ['чёрный юмор, сатира'],
+  }, {
+    bookId: '3696e4ee-dc33-4e1c-b881-4441f7a185e9',
+    photo: bookCover29,
+    author: 'Joseph Conrad',
+    title: 'Heart of Darkness',
+    description: `The story details an incident when Marlow, an Englishman, took a 
+      foreign assignment from a Belgian trading company as a ferry-boat captain in Africa.
+      Although Conrad does not specify the name of the river, at this time Congo Free State, 
+      the location of the large and important Congo River, was a private colony of Belgium's 
+      King Leopold II. Marlow is employed to transport ivory downriver; however, 
+      his more pressing assignment is to return Kurtz, another ivory trader, to civilization 
+      in a cover up. Kurtz has a reputation throughout the region.`,
+    rating: 3.4,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.0799,
+    paperPrice: 0.0252,
+    news: false,
+    bestsaller: false,
+    date: '18-04-1899',
+    genre: ['Фикшн, Новелла, Роман с ключом'],
+  }, {
+    bookId: '9aa429c5-8dbb-4dac-83e4-2ecf368b19ba',
+    photo: bookCover30,
+    author: 'William Faulkner',
+    title: 'The Sound and the Fury',
+    description: `The Sound and the Fury is set in the fictional Yoknapatawpha County. 
+      The novel centers on the Compson family, former Southern aristocrats who are struggling 
+      to deal with the dissolution of their family and its reputation. The novel is separated 
+      into four distinct sections.`,
+    rating: 3.9,
+    ratingCount: 10,
+    available: false,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.1649,
+    paperPrice: 0.0519,
+    news: false,
+    bestsaller: false,
+    date: '18-12-1929',
+    genre: ['Роман, Литература модернизма, Южная готика,'],
+  }, {
+    bookId: '77308e67-eaf3-4f99-8c16-e9e7649dfeea',
+    photo: bookCover31,
+    author: 'George Orwell',
+    title: 'Nineteen Eighty Four',
+    description: `The story follows the life of one seemingly insignificant man, Winston Smith, 
+      a civil servant assigned the task of perpetuating the regime's propaganda by falsifying 
+      records and political literature so that it appears that the government is always correct 
+      in what it says. Smith grows disillusioned with his meager existence and so begins a 
+      rebellion against the system that leads to his arrest, torture, and conversion.`,
+    rating: 4.6,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.1507,
+    paperPrice: 0.0499,
+    news: false,
+    bestsaller: false,
+    date: '8-06-1949',
+    genre: ['Научная фантастика, Антиутопическая литература, Социальная фантастика, Политическая фантастика'],
+  }, {
+    bookId: '06c1cea2-20ea-4549-9980-2f7a70fd9013',
+    photo: bookCover32,
+    author: 'Charles Dickens',
+    title: 'Great Expectations',
+    description: `Great Expectations is written in the genre of "bildungsroman" 
+      or the style of book that follows the story of a man or woman in their quest 
+      for maturity, usually starting from childhood and ending in the main character's 
+      eventual adulthood. Great Expectations is the story of the orphan Pip, writing 
+      his life from his early days of childhood until adulthood and trying to be a 
+      gentleman along the way. The story can also be considered semi-autobiographical 
+      of Dickens, like much of his work, drawing on his experiences of life and people.`,
+    rating: 3.8,
+    ratingCount: 10,
+    available: false,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.1992,
+    paperPrice: 0.0995,
+    news: false,
+    bestsaller: false,
+    date: '21-08-1861',
+    genre: [' Роман, Роман воспитания, Готическая литература'],
+  }, {
+    bookId: 'c184c148-9f88-410e-8f33-334126850613',
+    photo: bookCover33,
+    author: 'India/Iran/Iraq/Egypt',
+    title: 'One Thousand and One Nights',
+    description: `One Thousand and One Nights is a collection of Middle Eastern 
+      and South Asian stories and folk tales compiled in Arabic during the Islamic 
+      Golden Age. It is often known in English as the Arabian Nights, from the first 
+      English language edition (1706), which rendered the title as The Arabian Nights' 
+      Entertainment. The original concept is most likely derived from an ancient Sassanid 
+      Persian prototype that relied partly on Indian elements, but the work as we 
+      have it was collected over many centuries by various authors, translators and 
+      scholars across the Middle East and North Africa. The tales themselves trace their 
+      roots back to ancient and medieval Arabic, Persian, Indian, Egyptian and Mesopotamian 
+      folklore and literature. In particular, many tales were originally folk stories 
+      from the Caliphate era, while others, especially the frame story, are most probably
+      drawn from the Pahlavi Persian work Hazār Afsān. Though the oldest Arabic manuscript 
+      dates from the 14th century, scholarship generally dates the collection's genesis to 
+      around the 9th century. What is common throughout all the editions of the Nights is 
+      the initial frame story of the ruler Shahryar (from Persian: شهريار, meaning "king" 
+      or "sovereign") and his wife Scheherazade (from Persian: شهرزاده, meaning "townswoman") 
+      and the framing device incorporated throughout the tales themselves. The stories proceed 
+      from this original tale; some are framed within other tales, while others begin and end 
+      of their own accord. Some editions contain only a few hundred nights, while others include 
+      1,001 or more. Some of the best-known stories of The Nights, particularly "Aladdin's 
+      Wonderful Lamp", "Ali Baba and the Forty Thieves" and "The Seven Voyages of Sinbad the Sailor", 
+      while almost certainly genuine Middle-Eastern folk tales, were not part of The Nights 
+      in Arabic versions, but were interpolated into the collection by its early European translators.`,
+    rating: 4,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.7499,
+    paperPrice: 0.4078,
+    news: false,
+    bestsaller: false,
+    date: '08-09-1835',
+    genre: [' Нарратив, Фикшн, Обрамление'],
+  }, {
+    bookId: 'a027a6fc-daad-493d-a594-98cac8067931',
+    photo: bookCover34,
+    author: 'John Steinbeck',
+    title: 'The Grapes of Wrath',
+    description: `The narrative is non-linear, involving several flashbacks, 
+      and two primary narrators: Mr. Lockwood and Ellen "Nelly" Dean. 
+      The novel opens in 1801, with Mr. Lockwood arriving at Thrushcross Grange, 
+      a grand house on the Yorkshire moors that he is renting from the surly Heathcliff, 
+      who lives at nearby Wuthering Heights. Lockwood is treated rudely, and coldly 
+      by the brooding, unsociable Heathcliff, and is forced to stay at Wuthering Heights 
+      for a night because one of the savage dogs of the Heights attacks him, and the 
+      weather turns against him. The housekeeper cautiously takes him to a chamber to 
+      sleep through the night and warns him to not speak to Heathcliff about where he is 
+      sleeping, for he would get in deep trouble.`,
+    rating: 4.6,
+    ratingCount: 10,
+    available: true,
+    hardcover: true,
+    paperback: false,
+    hardPrice: 0.1799,
+    paperPrice: 0.0741,
+    news: false,
+    bestsaller: false,
+    date: '14-04-1939',
+    genre: ['Роман, Исторический жанр'],
+  }
 ];
 
 export default testBooks;
