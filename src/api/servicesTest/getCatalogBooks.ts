@@ -11,7 +11,6 @@ interface ICatalogBooks {
 }
 
 export const getCatalogBooks = (state: IRequestState) => {
-  console.log(state)
   const byGenres = getBooksByGenres(state.selectedGenres);
   const byPrice = getBooksByPrice(byGenres, +(state.selectedMinPrice /
   100).toFixed(5), state.selectedMaxPrice / 100);
