@@ -7,9 +7,10 @@ interface ICheckbox {
   genre: GenreModel
   func: (item: GenreModel) => void;
   selectedGenres: string[]
+  count?: number
 }
 
-const UCheckbox: React.FC<ICheckbox> = ({ genre, func, selectedGenres }) => {
+const UCheckbox: React.FC<ICheckbox> = ({ genre, func, selectedGenres, count }) => {
   return (
     <Body>
       <input
@@ -22,6 +23,8 @@ const UCheckbox: React.FC<ICheckbox> = ({ genre, func, selectedGenres }) => {
       <span className="fake-checkbox"/>
 
       {genre.genre}
+      {' '}
+      ({count})
     </Body>
   );
 };

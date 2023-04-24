@@ -64,8 +64,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '16-10-1950',
-    genre: ['Фэнтези/Приключения '],
-  }, {
+    genre: ['11188901-3bca-4399-8f4e-776dcce36e58', '7692ec4e-1e11-45a5-8de8-51cf4110cac0'],
+  },
+  {
     bookId: '033e7cd6-1dce-4b9c-b370-bfc35086680b',
     photo: bookCover2,
     author: 'Morgan Housel',
@@ -94,8 +95,9 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
     date: '13-09-2022',
-    genre: ['Учебное пособие'],
-  }, {
+    genre: ['5f5e4d72-3db7-45be-81bc-1c6c547d979b'],
+  },
+  {
     bookId: 'd557be17-16a0-4d15-9204-0490b8bafd05',
     photo: bookCover3,
     author: 'Oscar Wilde',
@@ -131,8 +133,9 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '1-07-1890',
-    genre: ['Готическая литература, Философский роман'],
-  }, {
+    genre: ['1c92e751-0a7c-44c6-a2a3-e0652e3f9108', '80c5f163-21f3-427b-bfda-89cd6ccd4967'],
+  },
+  {
     bookId: '3bbd5dbd-fa30-4c27-a2a5-64a99fccf348',
     photo: bookCover4,
     author: 'Mark Manson',
@@ -155,8 +158,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '13-09-2016',
-    genre: ['Литература по саморазвитию'],
-  }, {
+    genre: ['51e262ac-7619-4272-8970-d96f33692da4'],
+  },
+  {
     bookId: '94fd3c71-d481-430e-a8b3-155a15a88efd',
     photo: bookCover5,
     author: 'J. R. R. Tolkien',
@@ -197,8 +201,9 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
     date: '05-12-2002',
-    genre: ['Фэнтези'],
-  }, {
+    genre: ['11188901-3bca-4399-8f4e-776dcce36e58'],
+  },
+  {
     bookId: 'f470b1b6-f33d-43f2-bcb4-a3fb60dd5d44',
     photo: bookCover6,
     author: 'Angela Carter',
@@ -219,8 +224,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '03-11-2005',
-    genre: ['Сказка, Фикшн, Фольклор'],
-  }, {
+    genre: ['f3eca9f4-514f-4070-bd70-eb82254b8f60', 'f553e028-0e28-4b99-812f-69e8f78cbe8d', '36f1e803-5626-43b8-b5a8-c20ad111d49c'],
+  },
+  {
     bookId: '00bcae7a-ec0e-469c-a8d6-12397e7f7f33',
     photo: bookCover7,
     author: 'Dale Carnegie',
@@ -251,8 +257,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-10-1948',
-    genre: ['Литература по саморазвитию'],
-  }, {
+    genre: ['51e262ac-7619-4272-8970-d96f33692da4'],
+  },
+  {
     bookId: 'a1611493-5c06-40c7-8a07-72789551a431',
     photo: bookCover8,
     author: 'Richard Carlson',
@@ -280,8 +287,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-01-1997',
-    genre: ['Литература по саморазвитию '],
-  }, {
+    genre: ['51e262ac-7619-4272-8970-d96f33692da4'],
+  },
+  {
     bookId: 'a430cb19-660d-4f2e-8fba-41875c0fa62b',
     photo: bookCover9,
     author: 'Marianne Flitz',
@@ -306,8 +314,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '01-10-2015',
-    genre: ['Фикшн'],
-  }, {
+    genre: ['f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: 'bf14eb1c-c7c8-4e08-81c3-886b2a45e308',
     photo: bookCover10,
     author: 'Rupi Kaur',
@@ -333,8 +342,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '04-11-2014',
-    genre: ['Поэзия'],
-  }, {
+    genre: ['8136cbfc-8256-4baa-b814-e4bda5c97098'],
+  },
+  {
     bookId: '572aa4f6-7bb5-4af4-b291-358f3bbb6924',
     photo: bookCover11,
     author: 'Herman Melville',
@@ -358,8 +368,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-10-1851',
-    genre: ['Эпопея, Приключенческая художественная литература, Морская художественная литература'],
-  }, {
+    genre: ['409e9b83-151e-4596-8fc5-029447a3e164', '7692ec4e-1e11-45a5-8de8-51cf4110cac0'],
+  },
+  {
     bookId: '5f2dbf9e-1be1-4c7b-b866-50bbd161c9e4',
     photo: bookCover12,
     author: 'Heather Christle',
@@ -389,8 +400,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '05-11-2019',
-    genre: ['Поэзия, Биография, Автобиография'],
-  }, {
+    genre: ['8136cbfc-8256-4baa-b814-e4bda5c97098', 'e67741e4-3c9e-4cbf-a992-9d1bd2dd40e8'],
+  },
+  {
     bookId: '899453d4-ad15-4dfe-8a2b-3a1ae953cde6',
     photo: bookCover13,
     author: 'Marcel Proust',
@@ -413,8 +425,9 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '16-10-1913',
-    genre: ['Литература модернизма, Философский роман, Социальный роман, Автобиографический роман'],
-  }, {
+    genre: ['c2eeb8f6-d914-4450-945a-7703ff9bc614', '80c5f163-21f3-427b-bfda-89cd6ccd4967'],
+  },
+  {
     bookId: 'd788449e-d47a-4859-aba5-ec5cf13f3e13',
     photo: bookCover14,
     author: 'James Joyce',
@@ -436,8 +449,9 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: true,
     date: '22-12-1920',
-    genre: ['Роман, Фикшн'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: '305aa776-46a0-4d69-8d51-f461611da72e',
     photo: bookCover15,
     author: 'Miguel de Cervantes',
@@ -458,8 +472,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-01-1605',
-    genre: ['Роман, Пародия, Пикареска, Сатира, Фарс,'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f7f76a58-02b1-48f4-bbbe-dedd1a47b850', 'e87af96f-96a7-4597-873e-2e93a743e931'],
+  },
+  {
     bookId: '5ca2ad07-9a8e-4e71-8502-6abf48f965df',
     photo: bookCover16,
     author: 'Gabriel Garcia Marquez',
@@ -493,8 +508,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '10-05-1967',
-    genre: ['Роман, Магический реализм, Эпическое фэнтези, Семейная сага, Эпическая фантастика'],
-  }, {
+    genre: ['8136cbfc-8256-4baa-b814-e4bda5c97098', '11188901-3bca-4399-8f4e-776dcce36e58', 'f553e028-0e28-4b99-812f-69e8f78cbe8d', 'd9cfab3c-c834-42f7-81c0-aedccbabc02b'],
+  },
+  {
     bookId: 'c65a886d-0df3-4c4b-a554-e4f29d9ef834',
     photo: bookCover17,
     author: 'F. Scott Fitzgerald',
@@ -518,8 +534,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '10-04-9125',
-    genre: ['Роман, Фикшн, Трагедия'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f553e028-0e28-4b99-812f-69e8f78cbe8d', 'd3a50a2e-877e-4ddc-bc8d-1180eb8a77f3'],
+  },
+  {
     bookId: '3fe29e71-efe1-4377-8fef-7d5c1592778f',
     photo: bookCover18,
     author: 'William Shakespeare',
@@ -541,8 +558,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: true,
     date: '08-06-1600',
-    genre: ['Трагедия, Драма'],
-  }, {
+    genre: ['d3a50a2e-877e-4ddc-bc8d-1180eb8a77f3'],
+  },
+  {
     bookId: '0c8bcfc2-3c77-4b41-895e-79a0f0069b4c',
     photo: bookCover19,
     author: 'Fyodor Dostoyevsky',
@@ -570,8 +588,9 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '16-11-1880',
-    genre: ['Роман, Саспенс, Философский роман'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967, e74ca3cb-e5ef-4609-aff2-b9e0a9971144'],
+  },
+  {
     bookId: 'c363d42a-dc04-4900-a1e3-503008be0ab9',
     photo: bookCover20,
     author: 'Emily Brontë',
@@ -596,28 +615,8 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-12-1847',
-    genre: ['Роман, Готическая литература, Любовный роман, Трагедия'],
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', '1c92e751-0a7c-44c6-a2a3-e0652e3f9108', '80c5f163-21f3-427b-bfda-89cd6ccd4967', 'd3a50a2e-877e-4ddc-bc8d-1180eb8a77f3'],
   },
-  
-  
-  //       20
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   {
     bookId: '9d1b6100-dda5-4705-b09a-2f5e15b10824',
     photo: bookCover21,
@@ -639,8 +638,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-07-1951',
-    genre: ['Роман, Роман воспитания, Подростковая литература,'],
-  }, {
+    genre: ['d3a50a2e-877e-4ddc-bc8d-1180eb8a77f3, f3eca9f4-514f-4070-bd70-eb82254b8f60'],
+  },
+  {
     bookId: 'd7fa5e7a-45bc-48ac-99f3-99d9ea7f8126',
     photo: bookCover22,
     author: 'Jane Austen',
@@ -662,8 +662,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '28-01-1813',
-    genre: ['Любовный роман, Фикшн'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: '2616c503-e4ef-4f01-882c-766ad8efbef0',
     photo: bookCover23,
     author: 'Mark Twain',
@@ -684,8 +685,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '10-12-1884',
-    genre: ['Роман, Сатира, Юмор, Детская литература,'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f7f76a58-02b1-48f4-bbbe-dedd1a47b850', '6be329e0-bca8-4009-97da-7047cfe23e7b', 'f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: 'e0ab6eb5-b9e7-4f76-8fa9-7407fa572e71',
     photo: bookCover24,
     author: 'Leo Tolstoy',
@@ -711,12 +713,13 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-08-1877',
-    genre: ['Роман, Фикшн, Реализм'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f553e028-0e28-4b99-812f-69e8f78cbe8d', 'd9cfab3c-c834-42f7-81c0-aedccbabc02b'],
+  },
+  {
     bookId: '58b9a6bb-f59e-45be-9e61-379157d54487',
     photo: bookCover25,
     author: 'Lewis Carroll',
-    title: `Alice's Adventures in Wonderland`,
+    title: 'Alice\'s Adventures in Wonderland',
     description: `In 1862 Charles Lutwidge Dodgson, a shy Oxford mathematician with a stammer, 
       created a story about a little girl tumbling down a rabbit hole. Thus began the immortal 
       adventures of Alice, perhaps the most popular heroine in English literature. Countless 
@@ -737,8 +740,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '14-03-1865',
-    genre: ['Детская литература, Фэнтези, Литература абсурда, Фантастика'],
-  }, {
+    genre: ['f3eca9f4-514f-4070-bd70-eb82254b8f60', '11188901-3bca-4399-8f4e-776dcce36e58', 'f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: 'b76f5ad3-2aa0-4d54-a006-b92232f3120a',
     photo: bookCover26,
     author: 'Homer',
@@ -763,8 +767,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '01-01-0000',
-    genre: ['Эпос, Поэзия, Эпопея'],
-  }, {
+    genre: ['409e9b83-151e-4596-8fc5-029447a3e164, 8136cbfc-8256-4baa-b814-e4bda5c97098'],
+  },
+  {
     bookId: '8f7043eb-ea34-4716-88b1-dae223a69e45',
     photo: bookCover27,
     author: 'Virginia Woolf',
@@ -786,8 +791,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '05-05-1927',
-    genre: ['Роман, Поток сознания, Психологический реализм, Домашняя художественная литература'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'd9cfab3c-c834-42f7-81c0-aedccbabc02b', 'f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: '59b4f474-92e0-4063-92a4-781695df3e78',
     photo: bookCover28,
     author: 'Joseph Heller',
@@ -807,8 +813,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-10-1961',
-    genre: ['чёрный юмор, сатира'],
-  }, {
+    genre: ['f7f76a58-02b1-48f4-bbbe-dedd1a47b850'],
+  },
+  {
     bookId: '3696e4ee-dc33-4e1c-b881-4441f7a185e9',
     photo: bookCover29,
     author: 'Joseph Conrad',
@@ -830,8 +837,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-04-1899',
-    genre: ['Фикшн, Новелла, Роман с ключом'],
-  }, {
+    genre: ['f553e028-0e28-4b99-812f-69e8f78cbe8d', '80c5f163-21f3-427b-bfda-89cd6ccd4967'],
+  },
+  {
     bookId: '9aa429c5-8dbb-4dac-83e4-2ecf368b19ba',
     photo: bookCover30,
     author: 'William Faulkner',
@@ -850,8 +858,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '18-12-1929',
-    genre: ['Роман, Литература модернизма, Южная готика,'],
-  }, {
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'c2eeb8f6-d914-4450-945a-7703ff9bc614', '1c92e751-0a7c-44c6-a2a3-e0652e3f9108'],
+  },
+  {
     bookId: '77308e67-eaf3-4f99-8c16-e9e7649dfeea',
     photo: bookCover31,
     author: 'George Orwell',
@@ -871,8 +880,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '8-06-1949',
-    genre: ['Научная фантастика, Антиутопическая литература, Социальная фантастика, Политическая фантастика'],
-  }, {
+    genre: ['442255ad-621b-4ab1-8ff2-a5b9c48b1ecd', 'cd700876-11d0-47f3-a9de-5a1e873e74c5', 'd3e4f1c5-8a59-4410-8d3f-6027ad5cdc7c'],
+  },
+  {
     bookId: '06c1cea2-20ea-4549-9980-2f7a70fd9013',
     photo: bookCover32,
     author: 'Charles Dickens',
@@ -895,7 +905,8 @@ const testBooks: BookModel[] = [
     bestsaller: false,
     date: '21-08-1861',
     genre: [' Роман, Роман воспитания, Готическая литература'],
-  }, {
+  },
+  {
     bookId: 'c184c148-9f88-410e-8f33-334126850613',
     photo: bookCover33,
     author: 'India/Iran/Iraq/Egypt',
@@ -933,8 +944,9 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '08-09-1835',
-    genre: [' Нарратив, Фикшн, Обрамление'],
-  }, {
+    genre: ['f553e028-0e28-4b99-812f-69e8f78cbe8d'],
+  },
+  {
     bookId: 'a027a6fc-daad-493d-a594-98cac8067931',
     photo: bookCover34,
     author: 'John Steinbeck',
@@ -959,8 +971,8 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '14-04-1939',
-    genre: ['Роман, Исторический жанр'],
-  }
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', '1797c4d8-9c4a-4d63-ba16-6842b61bd95e'],
+  },
 ];
 
 export default testBooks;

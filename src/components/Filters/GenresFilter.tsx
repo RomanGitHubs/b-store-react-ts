@@ -31,6 +31,7 @@ const GenresFilter: React.FC = () => {
           func={handleSelectGenre}
           genre={item}
           selectedGenres={selectedGenres}
+          count={item.countBooks}
         />
       ))}
     </Body>
