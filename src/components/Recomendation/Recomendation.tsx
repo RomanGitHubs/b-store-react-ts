@@ -56,6 +56,6 @@ const Body = styled.section`
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto 0;
-    gap: 20px;
+    gap: 17px;
   }
 `;

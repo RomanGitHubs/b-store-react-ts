@@ -120,6 +120,10 @@ const Body = styled.div<IStylesProps>`
       left: 20px; 
       background-size: cover;
       background: url(${favoriteButton});
+
+      :hover {
+        background: url(${favoriteButtonActive});
+      }
       
     ${(p) => {
     if (p.isFavorite) {

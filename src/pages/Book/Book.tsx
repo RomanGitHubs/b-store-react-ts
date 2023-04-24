@@ -194,10 +194,14 @@ const Body = styled.main`
       .buy__buttons {
         display: flex;
 
+        
         &__wrapper {
           display: flex;
           flex-direction: column;
-          margin-right: 40px;
+
+          :nth-child(1) {
+            margin-right: 20px
+          }
         }
 
         &__label {

@@ -11,6 +11,7 @@ interface ICatalogBooks {
 }
 
 export const getCatalogBooks = (state: IRequestState) => {
+  console.log(state)
   const byGenres = getBooksByGenres(state.selectedGenres);
   const byPrice = getBooksByPrice(byGenres, +(state.selectedMinPrice /
   100).toFixed(5), state.selectedMaxPrice / 100);
@@ -83,11 +84,22 @@ const getBooksBySort = (books: BookModel[], sort: 'price' | 'title' | 'author' |
   }
 
   function compareDESC(a: BookModel, b: BookModel) {
-    if (a[name] < b[name]) {
-      return 1;
+    if (name === 'date') {
+      if (moment(a[name], 'DD-MM-YYYY').valueOf() > moment(b[name], 'DD-MM-YYYY').valueOf()) {
+        return -1;
+      }
+      if (moment(a[name], 'DD-MM-YYYY').valueOf() < moment(b[name], 'DD-MM-YYYY').valueOf()) {
+        return 1;
+      }
     }
-    if (a[name] > b[name]) {
-      return -1;
+
+    if (name !== 'date') {
+      if (a[name] < b[name]) {
+        return 1;
+      }
+      if (a[name] > b[name]) {
+        return -1;
+      }
     }
     return 0;
   }

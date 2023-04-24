@@ -533,7 +533,7 @@ const testBooks: BookModel[] = [
     paperPrice: 0.0499,
     news: false,
     bestsaller: true,
-    date: '10-04-9125',
+    date: '10-04-1925',
     genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'f553e028-0e28-4b99-812f-69e8f78cbe8d', 'd3a50a2e-877e-4ddc-bc8d-1180eb8a77f3'],
   },
   {
@@ -588,7 +588,7 @@ const testBooks: BookModel[] = [
     news: true,
     bestsaller: false,
     date: '16-11-1880',
-    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967, e74ca3cb-e5ef-4609-aff2-b9e0a9971144'],
+    genre: ['80c5f163-21f3-427b-bfda-89cd6ccd4967', 'e74ca3cb-e5ef-4609-aff2-b9e0a9971144'],
   },
   {
     bookId: 'c363d42a-dc04-4900-a1e3-503008be0ab9',
@@ -638,7 +638,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '16-07-1951',
-    genre: ['d3a50a2e-877e-4ddc-bc8d-1180eb8a77f3, f3eca9f4-514f-4070-bd70-eb82254b8f60'],
+    genre: ['d3a50a2e-877e-4ddc-bc8d-1180eb8a77f3', 'f3eca9f4-514f-4070-bd70-eb82254b8f60'],
   },
   {
     bookId: 'd7fa5e7a-45bc-48ac-99f3-99d9ea7f8126',
@@ -767,7 +767,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '01-01-0000',
-    genre: ['409e9b83-151e-4596-8fc5-029447a3e164, 8136cbfc-8256-4baa-b814-e4bda5c97098'],
+    genre: ['409e9b83-151e-4596-8fc5-029447a3e164', '8136cbfc-8256-4baa-b814-e4bda5c97098'],
   },
   {
     bookId: '8f7043eb-ea34-4716-88b1-dae223a69e45',
@@ -904,7 +904,7 @@ const testBooks: BookModel[] = [
     news: false,
     bestsaller: false,
     date: '21-08-1861',
-    genre: [' Роман, Роман воспитания, Готическая литература'],
+    genre: ['s80c5f163-21f3-427b-bfda-89cd6ccd4967', '1c92e751-0a7c-44c6-a2a3-e0652e3f9108'],
   },
   {
     bookId: 'c184c148-9f88-410e-8f33-334126850613',

@@ -102,7 +102,7 @@ const Body = styled.section`
     display: flex;
     flex-wrap: wrap;
     margin: 40px auto 0;
-    gap: 20px;
+    gap: 17px;
   }
 
   .empty-catalog {
