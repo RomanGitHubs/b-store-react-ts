@@ -107,7 +107,7 @@ const Body = styled.div`
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #B9BAC4;
+    color: var(--dark_grey);
     text-align: center;
     align-items: center;
   }
