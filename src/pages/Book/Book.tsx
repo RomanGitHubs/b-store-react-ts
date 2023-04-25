@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import parse from 'html-react-parser';
 import { CartItem, putCart } from '../../store/reducers/cart';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { getOneBookThunk } from '../../store/reducers/book';
+import { getOneBookThunk, putCatalogBooks } from '../../store/reducers/book';
+import { reqGenres, reqPagination } from '../../store/reducers/request';
 
 import AuthBanner from '../../components/AuthBanner/AuthBanner';
 import BookButton from '../../components/Book/Button/BookButton';
@@ -17,6 +18,7 @@ import StarCounter from '../../components/Book/StarCounter/StarCounter';
 
 const Book: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const params = useParams<{id: string | undefined}>();
 
   const user = useAppSelector((state) => state.userSlice.user);
@@ -43,6 +45,13 @@ const Book: React.FC = () => {
   const handleAddToCartHard = (id: string, available: boolean) => {
     if (!available) return;
     dispatch(putCart({ id, view: 'hard' }));
+  };
+
+  const handleSetGenre = (id: string) => {
+    dispatch(reqGenres({ genresId: [id] }));
+    dispatch(reqPagination(0));
+    dispatch(putCatalogBooks([]));
+    navigate('/catalog');
   };
 
   if (status === 'loading') {
@@ -93,7 +102,12 @@ const Book: React.FC = () => {
               <div className='discription__content__genres'>
                 {book.genre.map((book) => {
                   const name = genres.filter((item) => item.genreId === book)[0];
-                  return <GenreBlock key={name.genreId}>{name.genre}</GenreBlock>;
+                  return <p
+                    key={name.genreId}
+                    onClick={() => handleSetGenre(name.genreId)}
+                  >
+                    {name.genre}
+                  </p>;
                 })}
               </div>
 
@@ -104,7 +118,6 @@ const Book: React.FC = () => {
                     ? <BookCounter id={book.bookId} view='paper'/>
                     : <BookButton
                       title={`$ ${(book.paperPrice * 100).toFixed(2)} USD`}
-                      // view='catalog-small'
                       func={() => handleAddToCartPaper(book.bookId, book.available)}
                       available={book.available}
                     />
@@ -116,7 +129,6 @@ const Book: React.FC = () => {
                     ? <BookCounter id={book.bookId} view='hard'/>
                     : <BookButton
                       title={`$ ${(book.hardPrice * 100).toFixed(2)} USD`}
-                      // view='catalog-small'
                       func={() => handleAddToCartHard(book.bookId, book.available)}
                       available={book.available}
                     />
@@ -189,6 +201,14 @@ const Body = styled.main`
       &__genres {
         display: flex;
         margin: 10px 0 74px;
+
+        p {
+          padding: 3px 8px;
+          border: 1px solid black;
+          border-radius: 5px;
+          margin: 0 12px 12px 0;
+          cursor: pointer;
+        }
       }
 
       .buy__buttons {
@@ -210,11 +230,4 @@ const Body = styled.main`
       }
     }
   }
-`;
-
-const GenreBlock = styled.p`
-  padding: 3px 8px;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 0 12px 12px 0;
 `;

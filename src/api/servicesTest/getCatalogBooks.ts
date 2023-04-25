@@ -10,16 +10,16 @@ interface ICatalogBooks {
   totalBooks: number
 }
 
-export const getCatalogBooks = (state: IRequestState) => {
-  const byGenres = getBooksByGenres(state.selectedGenres);
-  const byPrice = getBooksByPrice(byGenres, +(state.selectedMinPrice /
-  100).toFixed(5), state.selectedMaxPrice / 100);
-  const bySort = getBooksBySort(byPrice, state.selectedSort, state.selectedOrder);
-  const byQuery = getBooksByQuery(bySort, state.selectedQuery.toLocaleLowerCase());
+export const getCatalogBooks = (request: IRequestState) => {
+  const byGenres = getBooksByGenres(request.selectedGenres);
+  const byPrice = getBooksByPrice(byGenres, +(request.selectedMinPrice /
+  100).toFixed(5), request.selectedMaxPrice / 100);
+  const bySort = getBooksBySort(byPrice, request.selectedSort, request.selectedOrder);
+  const byQuery = getBooksByQuery(bySort, request.selectedQuery.toLocaleLowerCase());
 
   const books = byQuery.slice(
-    state.currentPage * state.pageSize,
-    (state.currentPage + 1) * state.pageSize,
+    request.currentPage * request.pageSize,
+    (request.currentPage + 1) * request.pageSize,
   );
 
   const totalBooks = byQuery.length;

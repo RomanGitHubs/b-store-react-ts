@@ -22,6 +22,16 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
   const requestSlice = useAppSelector((state) => state.requestSlice);
 
   useEffect(() => {
+    if (!requestSlice.noLimit) return;
+    dispatch(putCatalogBooks([]));
+  }, [requestSlice.selectedGenres,
+    requestSlice.selectedMaxPrice,
+    requestSlice.selectedMinPrice,
+    requestSlice.selectedOrder,
+    requestSlice.selectedQuery,
+    requestSlice.selectedSort]);
+
+  useEffect(() => {
     if (requestSlice.noLimit) {
       dispatch(getAdditionalBookThunk(requestSlice));
     }
