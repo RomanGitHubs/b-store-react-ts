@@ -9,10 +9,10 @@ import { photoUser, updateUser } from '../../api/services/users';
 import ProfilePhoto from './Components/ProfilePhoto';
 import UProfileInput from '../../components/UI/ProfileInput/UProfileInput';
 import UButton from '../../components/UI/Button/UButton';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 import userIco from '../../assets/user-ico.svg';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
-import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 export interface IProfileValues {
   name: string,

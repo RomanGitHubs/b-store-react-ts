@@ -29,7 +29,7 @@ h1, h2, h3, h4, textarea, input, button, a, div, p, span, label {
 @font-face {
   font-family: 'Poppins';
   font-weight: 300;
-  src: local('Poppins'), url(./fonts/Poppins//Poppins-Light.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins//Poppins-Light.ttf) format('truetype');
   font-display: swap;
 }
 
@@ -37,14 +37,14 @@ h1, h2, h3, h4, textarea, input, button, a, div, p, span, label {
   font-family: 'Poppins';
   font-weight: 300;
   font-style: italic;
-  src: local('Poppins'), url(./fonts/Poppins//Poppins-LightItalic.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins//Poppins-LightItalic.ttf) format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Poppins';
   font-weight: 400;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-Regular.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Regular.ttf) format('truetype');
   font-display: swap;
 }
 
@@ -52,14 +52,14 @@ h1, h2, h3, h4, textarea, input, button, a, div, p, span, label {
   font-family: 'Poppins';
   font-weight: 400;
   font-style: italic;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-Italic.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Italic.ttf) format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Poppins';
   font-weight: 500;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
   font-display: swap;
 }
 
@@ -67,14 +67,14 @@ h1, h2, h3, h4, textarea, input, button, a, div, p, span, label {
   font-family: 'Poppins';
   font-weight: 500;
   font-style: italic;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-MediumItalic.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-MediumItalic.ttf) format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Poppins';
   font-weight: 600;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-SemiBold.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-SemiBold.ttf) format('truetype');
   font-display: swap;
 }
 
@@ -82,14 +82,14 @@ h1, h2, h3, h4, textarea, input, button, a, div, p, span, label {
   font-family: 'Poppins';
   font-weight: 600;
   font-style: italic;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-SemiBoldItalic.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf) format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Poppins';
   font-weight: 700;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-Bold.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-Bold.ttf) format('truetype');
   font-display: swap;
 }
 
@@ -97,6 +97,6 @@ h1, h2, h3, h4, textarea, input, button, a, div, p, span, label {
   font-family: 'Poppins';
   font-weight: 700;
   font-style: italic;
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-BoldItalic.ttf) format('truetype');
+  src: local('Poppins'), url(./assets/fonts/Poppins/Poppins-BoldItalic.ttf) format('truetype');
   font-display: swap;
 }

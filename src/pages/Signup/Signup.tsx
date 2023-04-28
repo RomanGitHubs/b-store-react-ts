@@ -83,8 +83,8 @@ const Signup: React.FC = () => {
 
   return (
     <Body>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='title'>Sign Up</h2>
+      <form className='signup-form' onSubmit={handleSubmit(onSubmit)}>
+        <h2 className='signup-form__title'>Sign Up</h2>
 
         <UInput
           label={constans.labelEmail}
@@ -114,8 +114,9 @@ const Signup: React.FC = () => {
         />
 
         <UButton text='Sing Up' view='primary' />
-      </Form>
-      <Image src={mainPicture}/>
+      </form>
+
+      <img className='signup-form__picture' src={mainPicture} alt='Signup picture'/>
     </Body>
   );
 };
@@ -128,31 +129,31 @@ const Body = styled.main`
   margin: 90px auto 80px;
   padding: 0 calc((1.3% - 9px) * 8);
   max-width: var(--width_content);
-`;
 
-const Form = styled.form`
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 60px;
-  color:  var(--dark);
-  max-width: 413px;
-  width: 100%;
-
-  .title {
+  .signup-form {
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
     color:  var(--dark);
-    margin: 0;
-    margin-bottom: 60px;
-  }
-`;
+    max-width: 413px;
+    width: 100%;
 
-const Image = styled.img`
-  display: flex;
-  max-width: 612px;
-  max-height: 522px;
-  height: 45.7%;
-  min-width: 390px;
-  padding-left:20px;
+    &__title {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 60px;
+      color:  var(--dark);
+      margin: 0;
+      margin-bottom: 60px;
+    }
+
+    &__picture {
+      display: flex;
+      max-width: 612px;
+      max-height: 522px;
+      height: 45.7%;
+      min-width: 390px;
+      padding-left:20px;
+    }
+  }
 `;

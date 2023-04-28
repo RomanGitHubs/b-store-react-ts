@@ -8,11 +8,11 @@ import { BookModel } from '../../models/book';
 import StarCounter from './StarCounter/StarCounter';
 import BookButton from './Button/BookButton';
 import ULink from '../UI/Link/ULink';
+import BookLoader from '../Loaders/BookLoader';
 import favoriteButton from '../../assets/button-favorite_unpressed.svg';
 import favoriteButtonActive from '../../assets/button-favorite_pressed.svg';
 import newBook from '../../assets/new-book.png';
 import bestsellerBook from '../../assets/bestseller-book.webp';
-import BookLoader from '../Loaders/BookLoader';
 import scrollToTop from '../ScrollToTop/ScrollToTop';
 
 interface IBook {

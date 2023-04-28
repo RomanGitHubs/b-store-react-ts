@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+import { useAppSelector } from '../../store/hooks';
 import rightArrow from '../../assets/right-arrow.svg';
 import downArrow from '../../assets/down-arrow.svg';
-import { useAppSelector } from '../../store/hooks';
 
 interface IFilter {
   title: string

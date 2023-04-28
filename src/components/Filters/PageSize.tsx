@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { reqNoLimit, reqPagesize, reqPagination } from '../../store/reducers/request';
+import { putCatalogBooks } from '../../store/reducers/book';
 import fillChBox from '../../assets/checkbox-checked.svg';
 import emptyChBox from '../../assets/checkbox-empty.svg';
-import { putCatalogBooks } from '../../store/reducers/book';
 
 interface IProps {
   setOpenFilter: (name: string) => void

@@ -15,8 +15,7 @@ const TopBanner: React.FC = () => {
           <ULink to='/catalog' text='Choose a book' view='primary' width='long'/>
         </div>
 
-        <div className='banner__girl'/>
-        {/* <img className='banner__girl' src={bannerGirl} alt='girl'/> */}
+        <img className='banner__girl' src={bannerGirl} alt='Girl'/>
       </div>
     </Body>
   );
@@ -80,8 +79,6 @@ const Body = styled.section`
   }
 
   .banner__girl {
-    background: url(${bannerGirl});
-    background-size: cover;
     width: 406px;
     height: 400px;
   }

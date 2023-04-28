@@ -11,10 +11,10 @@ import { loginUser } from '../../api/services/users';
 import { LoginModel } from '../../models/loginForm';
 import UButton from '../../components/UI/Button/UButton';
 import UInput from '../../components/UI/Input/UInput';
+import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 import mailIco from '../../assets/mail-ico.svg';
 import hideIco from '../../assets/hide-ico.svg';
 import mainPicture from '../../assets/reg-chel.webp';
-import scrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const constans = {
   mailIco,
@@ -86,8 +86,8 @@ const Login: React.FC = () => {
 
   return (
     <Body>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='title'>Log In</h2>
+      <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
+        <h2 className='login-form__title'>Log In</h2>
 
         <UInput
           placeholder={constans.placeholderEmail}
@@ -109,9 +109,9 @@ const Login: React.FC = () => {
         />
 
         <UButton text='Log In' view='primary'/>
-      </Form>
+      </form>
 
-      <Image src={mainPicture} alt=''/>
+      <img className='login-form__picture' src={mainPicture} alt='Login picture'/>
     </Body>
   );
 };
@@ -124,31 +124,31 @@ const Body = styled.main`
   margin: 90px auto 80px;
   padding: 0 calc((1.3% - 9px) * 8);
   max-width: var(--width_content);
-`;
 
-const Form = styled.form`
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 60px;
-  color:  var(--dark);
-  max-width: 413px;
-  width: 100%;
-
-  .title {
+  .login-form {
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
-    color: var(--dark);
-    margin: 0;
-    margin-bottom: 60px;
-  }
-`;
+    color:  var(--dark);
+    max-width: 413px;
+    width: 100%;
 
-const Image = styled.img`
-  display: flex;
-  max-width: 612px;
-  max-height: 522px;
-  height: 45.7%;
-  min-width: 390px;
-  padding-left:20px;
+    &__title {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 60px;
+      color: var(--dark);
+      margin: 0;
+      margin-bottom: 60px;
+    }
+
+    &__picture {
+      display: flex;
+      max-width: 612px;
+      max-height: 522px;
+      height: 45.7%;
+      min-width: 390px;
+      padding-left:20px;
+    }
+  }
 `;

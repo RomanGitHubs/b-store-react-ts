@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { putRating } from '../../../store/reducers/book';
+import { putRateBook } from '../../../store/reducers/user';
 import star from '../../../assets/star.svg';
 import starFilled from '../../../assets/star-filled.svg';
 import arrow from '../../../assets/icons/Gray-Back Arrow.svg';
-import { putRateBook } from '../../../store/reducers/user';
 
 interface ICounter {
   bookId: string
@@ -111,12 +111,12 @@ const RateBook: React.FC<ICounter> = ({ bookId, rating }) => {
   );
 };
 
+export default RateBook;
+
 interface IStyledProps {
   ratedBooks: string[] | undefined
   bookId: string
 }
-
-export default RateBook;
 
 const Body = styled.div<IStyledProps>`
   display: flex;

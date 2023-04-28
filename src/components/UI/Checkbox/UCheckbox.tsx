@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { GenreModel } from '../../../models/genre';
 import fillChBox from '../../../assets/checkbox-checked.svg';
 import emptyChBox from '../../../assets/checkbox-empty.svg';
-import { GenreModel } from '../../../models/genre';
 
 interface ICheckbox {
   genre: GenreModel

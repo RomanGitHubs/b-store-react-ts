@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { BookModel } from '../../models/book';
+import { GenreModel } from '../../models/genre';
+import { IRequestState } from '../../models/request';
 import { getBook } from '../../api/servicesTest/getBook';
 import { getCatalogBooks } from '../../api/servicesTest/getCatalogBooks';
 import { getGenres } from '../../api/servicesTest/getGenres';
 import { getCartBooks } from '../../api/servicesTest/getCartBooks';
 import { getFavoriteBooks } from '../../api/servicesTest/getFavoriteBooks';
 import { getAdditionalBook } from '../../api/servicesTest/getAdditionalBook';
-import { BookModel } from '../../models/book';
-import { GenreModel } from '../../models/genre';
-import { IRequestState } from '../../models/request';
 import { getRecomendationBooks } from '../../api/servicesTest/getRecomendationBooks';
 
 interface IBooksState {

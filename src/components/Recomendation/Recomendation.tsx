@@ -11,6 +11,7 @@ interface ILocalBook {
 
 const Recomendation: React.FC<ILocalBook> = ({ thisBook }) => {
   const [recomendationBook, setRecomendationBook] = useState<BookModel[]>([]);
+
   useEffect(() => {
     (async () => {
       try {

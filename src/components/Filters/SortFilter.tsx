@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { reqSort, reqOrder, reqPagination } from '../../store/reducers/request';
-import orderArrow from '../../assets/arrows.png';
 import { putCatalogBooks } from '../../store/reducers/book';
+import orderArrow from '../../assets/arrows.png';
 
 const Sort: React.FC = () => {
   const dispatch = useAppDispatch();
