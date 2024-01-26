@@ -49,6 +49,7 @@ const Body = styled.section`
   position: relative;
   z-index: 1;
   margin-bottom: 150px;
+  margin-top: 50px;
 
   .authbanner {
     &__wrapper {

@@ -47,4 +47,9 @@ const Body = styled.div`
   height: 48px;
   justify-content: space-between;
   position: relative;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    justify-content: space-around;
+  }
 `;

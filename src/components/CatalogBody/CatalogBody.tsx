@@ -24,12 +24,14 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
   useEffect(() => {
     if (!requestSlice.noLimit) return;
     dispatch(putCatalogBooks([]));
-  }, [requestSlice.selectedGenres,
+  }, [
+    requestSlice.selectedGenres,
     requestSlice.selectedMaxPrice,
     requestSlice.selectedMinPrice,
     requestSlice.selectedOrder,
     requestSlice.selectedQuery,
-    requestSlice.selectedSort]);
+    requestSlice.selectedSort
+  ]);
 
   useEffect(() => {
     if (requestSlice.noLimit) {
@@ -94,6 +96,10 @@ const Body = styled.section`
   margin: 90px auto 80px;
   min-height: calc(100vh - 112px - 756px);
 
+  @media (max-width: 1024px) {
+    margin: 60px auto 80px;
+  }
+
   .bar {
     display:flex;
     justify-content: space-between;
@@ -105,6 +111,16 @@ const Body = styled.section`
       line-height: 60px;
       color: var(--dark);
       margin: 0;
+      
+      @media (max-width: 1024px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      align-items: start;
     }
   }
 
@@ -126,7 +142,7 @@ const Body = styled.section`
 `;
 
 const NoResults = styled.div`
-   display: flex;
+  display: flex;
   margin: auto 0;
   
   .image {

@@ -3,15 +3,18 @@ import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 interface IUlink {
-  to: string,
-  text: string,
-  view: string,
-  width?: string,
+  to: string
+  text: string
+  view: string
+  width?: string
+  minWidth? : string
+  className?: any
+  style?: any
 }
 
-const ULink: React.FC<IUlink> = ({ to, text, view, width }) => {
+const ULink: React.FC<IUlink> = ({ to, text, view, width, className, style }) => {
   return (
-    <Body to={to} view={view} width={width}>
+    <Body to={to} view={view} width={width} className={className} style={style}>
       {text}
     </Body>
   );
@@ -20,9 +23,9 @@ const ULink: React.FC<IUlink> = ({ to, text, view, width }) => {
 export default ULink;
 
 interface IStyledProps {
-  to: string,
-  view: string,
-  width?: string,
+  view: string
+  width?: string
+  minWidth?: string
 }
 
 const Body = styled(NavLink)<IStyledProps>`
@@ -37,6 +40,16 @@ const Body = styled(NavLink)<IStyledProps>`
   text-decoration: none;
   width: ${(props) => {
     switch (props.width) {
+    case 'long':
+      return '220px';
+
+    default:
+      return '100px';
+    }
+  }};
+
+  min-width: ${(props) => {
+    switch (props.minWidth) {
     case 'long':
       return '220px';
 
@@ -73,4 +86,16 @@ const Body = styled(NavLink)<IStyledProps>`
       `;
     }
   }}
+
+  @media (max-width: 768px) {
+    min-width: ${(props) => {
+      switch (props.width) {
+      case 'long':
+        return '220px';
+
+      default:
+        return '70px';
+      }
+    }};
+  }
 `;

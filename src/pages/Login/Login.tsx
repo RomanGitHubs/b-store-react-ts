@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { AxiosError } from 'axios';
 import * as yup from 'yup';
 import { useAppDispatch } from '../../store/hooks';
-import { putUser } from '../../store/reducers/user';
+import { loadUserThunk, putUser } from '../../store/reducers/user';
 import { loginUser } from '../../api/services/users';
 import { LoginModel } from '../../models/loginForm';
 import UButton from '../../components/UI/Button/UButton';
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
     register,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    // resolver: yupResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -72,8 +72,9 @@ const Login: React.FC = () => {
 
   const onSubmit = async (data: LoginModel) => {
     try {
-      const response = await loginUser(data);
-      dispatch(putUser(response.data.user));
+      // const response = await loginUser(data);
+      // dispatch(putUser(response.data.user));
+      dispatch(loadUserThunk());
 
       navigate(from.from.pathname, { replace: true });
     } catch (e) {

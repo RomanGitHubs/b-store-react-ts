@@ -74,5 +74,9 @@ const Body = styled.div`
 
   :nth-child(1) {
     width: 50px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;

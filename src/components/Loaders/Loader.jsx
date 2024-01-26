@@ -1,32 +1,43 @@
 import styled from 'styled-components';
+import castle from '../../assets/castle.png';
 
-const Loader = styled.div`
-  display: inline-block;
-  width: 80px;
-  height: 80px;
+const Loader = () => {
+  
+  return (
+    <Body  >
+      <img src={castle} alt='castle' className='flash' data-test="app-vertical-list"/>
+    </Body>
+  )
+}
+
+const Body = styled.span`
   margin: auto;
-    
-  :after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6px solid #000000;
-    border-color: #000000 transparent #000000 transparent;
-    animation: dual-ring 5s linear infinite;
+
+  .flash {
+    animation-name: flash;
+    width: 300px;
+    height: 300px;
   }
 
-  @keyframes dual-ring {
-    0% {
-      transform: rotate(0deg);
+  @keyframes flash {
+    from,
+    50%,
+    to {
+      opacity: 1;
     }
 
-    100% {
-      transform: rotate(360deg);
+    25%,
+    75% {
+      opacity: 0;
     }
   }
-`;
+
+  [data-test="app-vertical-list"] {
+    animation: flash 1s infinite;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-fill-mode: forwards;
+  }
+`
 
 export default Loader;

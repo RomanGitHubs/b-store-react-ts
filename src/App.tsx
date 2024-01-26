@@ -26,7 +26,7 @@ const App: React.FC = () => {
       try {
         const token = localStorage.getItem('token');
 
-        if (!token) {
+        if (token) {
           dispatch(loadUserThunk());
         }
         dispatch(loadGenreThunk());

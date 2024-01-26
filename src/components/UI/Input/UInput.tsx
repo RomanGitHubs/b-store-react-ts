@@ -69,14 +69,14 @@ const Body = styled.div<IStyledProps>`
     }
 
     &__input{
-      border: ${(props) => (props.error ? '2px solid red' : 'none')};
+      border: ${(props) => (props.error ? '2px solid #c30052' : '2px solid #F0F4EF')};
       position: relative;
       width: 100%;
       height: 24px;
       display: flex;
       background: #F0F4EF;
       border-radius: 16px;
-      padding: 18px 18px 18px 64px;
+      padding: 16px 16px 16px 62px;
       outline: none;
       align-items: center;
       font-size: 16px;

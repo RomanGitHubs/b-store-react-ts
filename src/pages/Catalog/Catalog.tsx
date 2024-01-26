@@ -26,4 +26,8 @@ const Body = styled.main`
   margin: 40px auto 150px;
   padding: 0 calc((1.3% - 9px) * 8); 
   max-width: var(--width_content);
+
+  @media (max-width: 1024px) {
+    padding: 0 16px;   
+  }
 `;
