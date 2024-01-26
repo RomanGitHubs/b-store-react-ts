@@ -89,13 +89,13 @@ const Body = styled(NavLink)<IStyledProps>`
 
   @media (max-width: 768px) {
     min-width: ${(props) => {
-      switch (props.width) {
-      case 'long':
-        return '220px';
+    switch (props.width) {
+    case 'long':
+      return '220px';
 
-      default:
-        return '70px';
-      }
-    }};
+    default:
+      return '70px';
+    }
+  }};
   }
 `;

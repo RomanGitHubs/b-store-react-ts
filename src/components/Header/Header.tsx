@@ -43,23 +43,23 @@ const Header: React.FC = () => {
   const getPageName = () => {
     const pathName = window.location.pathname;
     switch (pathName) {
-      // case '/': return 'Catalog';
-      // case '/cart': return 'Cart';
-      // case '/signup': return 'Sign Up';
-      // case '/login': return 'Log In';
-      // case '/catalog': return 'Catalog';
-      // case '/favorite': return 'Favorite';
-      // case '/profile': return 'Profile';
-      default: return 'Catalog';
+    // case '/': return 'Catalog';
+    // case '/cart': return 'Cart';
+    // case '/signup': return 'Sign Up';
+    // case '/login': return 'Log In';
+    // case '/catalog': return 'Catalog';
+    // case '/favorite': return 'Favorite';
+    // case '/profile': return 'Profile';
+    default: return 'Catalog';
     }
-  }
+  };
 
   const clearInput = () => {
     if (inputRef.current == null) return;
     inputRef.current.value = '';
     navigate('catalog');
     dispatch(reqQuery({ query: inputRef.current.value }));
-  }
+  };
 
   return (
     <Body>
@@ -75,8 +75,8 @@ const Header: React.FC = () => {
             <input className='header__input__body' placeholder="Search in catalog" onChange={debounceQuery} ref={inputRef}/>
 
             {
-              inputRef.current !== null && inputRef.current.value.length > 0
-             && <img className='header__input__clear' src={clearIco} alt='search icon' onClick={clearInput}/>
+              inputRef.current !== null && inputRef.current.value.length > 0 &&
+              <img className='header__input__clear' src={clearIco} alt='search icon' onClick={clearInput}/>
             }
           </div>
         </div>
@@ -102,8 +102,8 @@ const Header: React.FC = () => {
         <img className='header__input__ico' src={searchIco} alt='search icon'/>
         <input className='header__input__body' placeholder="Search in catalog" onChange={debounceQuery}/>
         {
-          inputRef.current !== null && inputRef.current.value.length > 0
-          && <img className='header__input__clear' src={clearIco} alt='search icon' onClick={clearInput}/>
+          inputRef.current !== null && inputRef.current.value.length > 0 &&
+          <img className='header__input__clear' src={clearIco} alt='search icon' onClick={clearInput}/>
         }
       </div>
 

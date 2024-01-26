@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import castle from '../../assets/castle.png';
 
 const Loader = () => {
-  
   return (
-    <Body  >
+    <Body>
       <img src={castle} alt='castle' className='flash' data-test="app-vertical-list"/>
     </Body>
-  )
-}
+  );
+};
 
 const Body = styled.span`
   margin: auto;
@@ -38,6 +37,6 @@ const Body = styled.span`
     animation-fill-mode: none;
     animation-fill-mode: forwards;
   }
-`
+`;
 
 export default Loader;

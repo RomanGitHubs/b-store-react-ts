@@ -30,7 +30,7 @@ const CatalogBody: React.FC<ICatalogBody> = (props) => {
     requestSlice.selectedMinPrice,
     requestSlice.selectedOrder,
     requestSlice.selectedQuery,
-    requestSlice.selectedSort
+    requestSlice.selectedSort,
   ]);
 
   useEffect(() => {
