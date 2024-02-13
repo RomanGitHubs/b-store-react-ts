@@ -18,7 +18,7 @@ const AuthBanner: React.FC = () => {
   return (
     <Body>
       <div className='authbanner__wrapper'>
-        <img className='authbanner__castle' src={castle} alt='castle' onClick={handleAuth}/>
+        <img className='authbanner__castle' src={castle} alt='castle' />
 
         <div className='authbanner__content'>
           <img className='authbanner__witch' src={witch} alt='witch'/>
@@ -30,7 +30,9 @@ const AuthBanner: React.FC = () => {
               Authorize now and discover the fabulous<br/>world of books
             </p>
 
-            <ULink to='#' text='Click on castle!' view='primary' width='long'/>
+            <div onClick={handleAuth}>
+              <ULink to='#' text='Login me!' view='primary' width='long' />
+            </div>
           </div>
         </div>
       </div>

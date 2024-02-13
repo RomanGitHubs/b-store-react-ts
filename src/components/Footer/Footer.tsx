@@ -23,8 +23,8 @@ const Footer: React.FC = () => {
 
         <div className='footer-column'>
           <NavLink to={'/'} className='footer-column__logo'>Footer logo</NavLink>
-          <span className='footer-column__title'>email@gmail.com</span>
-          <span className='footer-column__title'>+7 (777) 777-77-77 </span>
+          <span className='footer-column__title'>roman.shiryaev.ru@gmail.com</span>
+          <span className='footer-column__title'>+7 (928) 169-56-50 </span>
         </div>
 
         <div className='footer-column'>
